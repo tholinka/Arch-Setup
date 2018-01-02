@@ -19,6 +19,7 @@
 1. Reconfigure boot options to enable hibernate, and be quieter and faster
     * Add the following to the end of the ```options``` line in ```/boot/loader/[your config]```
         * ```rw splash quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log-priority=3``` to have startup / stop be show less information
+        * ```nowatchdog``` to [disable the software watchdog](https://wiki.archlinux.org/index.php/Improving_performance#Watchdogs)
         * ```resume=PARTUUID=[your swap partition's partuuid]``` to enable hibernation
     * For a marginal boot speed increase, edit ```/etc/fstab``` and remove the ```rw``` line from your ```/``` partition, as systemd will now do that instead
 1. reboot again, you should reboot into a login menu.
