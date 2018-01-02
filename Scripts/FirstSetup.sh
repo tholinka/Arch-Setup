@@ -21,8 +21,8 @@ sudo pacman -Syu
 
 echo;
 
-PACKAGES="xorg zsh git nemo chromium guake vim gufw plasma kde-applications cpupower openssh networkmanager ccache fakeroot colorgcc irqbalance procps-ng dnsmasq dnscrypt-proxy"
-PACKAGESdeps="dhclient blueman libproxy modem-manager-gui packagekit"
+PACKAGES="xorg zsh git nemo chromium guake vim gufw plasma kde-applications cpupower openssh networkmanager ccache fakeroot colorgcc irqbalance procps-ng unbound curl"
+PACKAGESdeps="dhclient blueman libproxy modem-manager-gui packagekit expat"
 
 cbecho "Enter "y" if the case applies to you"
 
@@ -73,8 +73,8 @@ echo;
 remove_pkgs KERNEL_SET
 echo;
 
-# setup dnsmasq to act as a local dns server to cache requests
-setup_dnsmasq
+# setup unbound to act as a local dns server to cache requests
+setup_unbound
 echo;
 
 # various config patches

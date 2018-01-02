@@ -11,6 +11,7 @@ function remove_pkgs()
     fi
     if pacman -Q dhcpcd &>/dev/null; then
         REMOVE_PACKAGES="$REMOVE_PACKAGES dhcpcd"
+    fi
 
     if __get "Remove konqueror, dolphin, sddm, and kate"; then
         if pacman -Q konqueror &> /dev/null; then
