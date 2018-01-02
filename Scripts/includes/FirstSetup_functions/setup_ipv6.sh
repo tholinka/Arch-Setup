@@ -17,7 +17,8 @@ net.ipv6.conf.default.use_tempaddr = 2"
 
         IPPRIV="$IPPRIV
 net.ipv6.conf.$i.use_tempaddr = 2"
+    done
 
     # networkmanager ignores this -.-, but we fix it in general_patches, https://wiki.archlinux.org/index.php/IPv6#NetworkManager
-    echo "$IPPRIV" | sudo tee /etc/sysctl.d/40-ipv6.conf
+    echo "$IPPRIV" | sudo tee /etc/sysctl.d/40-ipv6.conf 1>/dev/null
 }

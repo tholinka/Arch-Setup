@@ -10,9 +10,9 @@ function setup_systemctl()
     sudo systemctl enable NetworkManager.service
     sudo systemctl start NetworkManager.service
 
-    cecho "Enabling dnsmasq"
-    sudo systemctl enable dnsmasq.service
-    sudo systemctl start dnsmasq.service
+    cecho "Enabling unbound"
+    sudo systemctl enable unbound.service
+    sudo systemctl start unbound.service
 
     cecho "Enabling cpupower"
     sudo systemctl enable cpupower.service

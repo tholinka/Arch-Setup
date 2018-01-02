@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# "general" patches, aka one or two off patches for random things (e.g. dnsmasq is a seperate file because there are many patches for one "thing"
+# "general" patches, aka one or two off patches for random things (e.g. unbound is a seperate file because there are many patches for one "thing"
 general_patches()
 {
     cbecho "Applying patches to config files"
@@ -62,7 +62,9 @@ general_patches()
 
     ## NetworkManager
     cecho "Patching NetworkManager to use ipv6 privacy extensions"
-    echo "@@ -8 +8,16 @@
+    echo "@@ -6,3 +6,18 @@
+
+ #[ifupdown]
  #managed=false
 +
 +# https://wiki.archlinux.org/index.php/IPv6#NetworkManager
