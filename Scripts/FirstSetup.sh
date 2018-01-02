@@ -4,7 +4,7 @@ source includes/colordefines.sh
 echo -e "$CYAN Updating pacman (pacman -Syu) to make sure package lists are up to day $RESET"
 sudo pacman -Syu
 
-PACKAGES="xorg zsh git nemo chromium guake vim gufw plasma-desktop kde-applications cpupower openssh networkmanager ccache fakeroot colorgcc syslog-ng"
+PACKAGES="xorg zsh git nemo chromium guake vim gufw plasma-desktop kde-applications cpupower openssh networkmanager ccache fakeroot colorgcc syslog-ng irqbalance procps-ng"
 PACKAGESdeps="dhclient blueman libproxy modem-manager-gui packagekit"
 echo -e "$CB Enter "y" if the case applies to you $RESET"
 
@@ -213,6 +213,11 @@ fi
 echo -e "$CYAN Setting CPUPOWER governer to Performance $RESET"
 
 echo "governer='performance'" | sudo tee /etc/default/cpupower > /dev/null
+
+# https://wiki.archlinux.org/index.php/improving_performance#irqbalance
+echo -e "$CYAN Enabling irqbalance $RESET"
+sudo systemctl enable irqbalance
+sudo systemctl start irqbalance
 
 echo -e "$CYAN Patching pacman.conf $RESET"
 echo "@@ -34 +34 @@
