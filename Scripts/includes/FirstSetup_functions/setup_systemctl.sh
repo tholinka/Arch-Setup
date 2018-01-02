@@ -14,6 +14,11 @@ function setup_systemctl()
     sudo systemctl enable unbound.service
     sudo systemctl start unbound.service
 
+    cecho "Enabling unbound root hint updater"
+    sudo systemctl enable roothints.timer
+    sudo systemctl start roothints.timer
+
+
     cecho "Enabling cpupower"
     sudo systemctl enable cpupower.service
     sudo systemctl start cpupower.service

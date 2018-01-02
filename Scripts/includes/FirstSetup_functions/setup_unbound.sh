@@ -30,8 +30,6 @@ Persistent=true
 
 [Install]
 WantedBy=timers.target" | sudo tee /etc/systemd/system/roothints.timer 1>/dev/null
-    sudo systemctl enable roothints.timer
-    sudo systemctl start roothints.timer
 
     cecho "Patching unbound.conf"
     sudo rm /etc/unbound/unbound.conf
