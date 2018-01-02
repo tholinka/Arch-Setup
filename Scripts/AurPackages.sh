@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 # libc++ and therefor discord requires an import of a key
 gpg --recv-keys 11E521D646982372EB577A1F8F0871F202119294
 
@@ -35,8 +34,9 @@ trizen -S --needed --noconfirm --asdeps \
 ffmpeg0.10 libnotify zenity
 ttf-symbola
 
-# remove desktop file electron adds -.-
-rm "$HOME/.config/autostart/electron.desktop"
-
 # add rambox autostart
 cp "/usr/share/applications/rambox.desktop" "$HOME/.config/autostart"
+
+# set electron.desktop to null and set to readonly, since rambox recreates it on every startup -.-
+echo "" > "$HOME/.config/autostart/electron.desktop"
+chmod 0444 "$HOME/.config/autostart/electron.desktop"
