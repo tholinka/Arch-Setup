@@ -80,5 +80,5 @@ general_patches()
 +[ipv6]
 +method=auto
 +dns=::1;
-+ignore-auto-dns=true" | sudo patch -p0 -N /etc/NetworkManager/NetworkManager.conf
++ignore-auto-dns=true" | sudo patch -p0 -N -F0 /etc/NetworkManager/NetworkManager.conf
 }
