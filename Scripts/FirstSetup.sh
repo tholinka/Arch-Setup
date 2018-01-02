@@ -39,7 +39,8 @@ echo;
 # ask which video drivers to install
 VIDEO_CARD=""
 NEEDS_KERNEL_HEADERS=""
-get_graphics VIDEO_CARD NEEDS_KERNEL_HEADERS
+VIDEO_CARD_IS=""
+get_graphics VIDEO_CARD NEEDS_KERNEL_HEADERS VIDEO_CARD_IS
 echo;
 
 # only include headers if needed
@@ -87,7 +88,7 @@ setup_vm
 sudo ln -sf /proc/version /etc/arch-release
 
 # finish setting up graphics drivers
-setup_graphics
+setup_graphics "$VIDEO_CARD_IS"
 echo;
 
 # set up wifi regdom, echo newline if it set anything
