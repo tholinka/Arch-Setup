@@ -5,7 +5,8 @@
 1. use ```lsblk``` to find a list of connected drives, note down the /dev/sdX of the drive(s) you want to install / format / partition, with the X being the drive letter.
 1. Use ```cfdisk /dev/sdX``` to Partition the deivce as you wish
     1. Partition strategies - Need ~500mb boot partition (if your using UEFI, 2-3 MB if your using bios boot), the rest is up to you.
-        * Note: I recommend /var is additionally split off into it's own ~5-10 GB partition, as the pacman cache can (rarely) fill up, leaving you unbootable
+        * Note: I recommend /var is additionally split off into it's own ~5-10 GB partition, as the pacman cache can (rarely) fill up, leaving you unbootable.
+        * Note: I would recommend against partitioning /tmp and /run, as arch defaults to a [tmpfs](https://wiki.archlinux.org/index.php/tmpfs) for them.
         1. Strategy 1 [device - size [mount point], [format to]
             * /dev/sdX1 - 500 MB /boot, format to fat32 **DO NOT FORMAT IF DUAL BOOTING**, it should already exist in that case, leave it alone, even if it's a bit small
             * /dev/sdX2 - [size of ram] swap partition, use ```mkswap``` on it later
