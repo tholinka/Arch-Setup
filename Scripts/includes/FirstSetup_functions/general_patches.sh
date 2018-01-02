@@ -59,4 +59,24 @@ general_patches()
     echo "@@ -3 +3 @@
 -#governor='ondemand'
 +governor='performance'" | sudo patch -p0 -N /etc/default/cpupower
+
+    ## NetworkManager
+    cecho "Patching NetworkManager to use ipv6 privacy extensions"
+    echo "@@ -8 +8,16 @@
+ #managed=false
++
++# https://wiki.archlinux.org/index.php/IPv6#NetworkManager
++[connection]
++ipv6.ip6-privacy=2
++
++# https://unix.stackexchange.com/a/90061
++[ipv4]
++method=auto
++dns=127.0.0.1;
++ignore-auto-dns=true
++
++[ipv6]
++method=auto
++dns=::1;
++ignore-auto-dns=true" | sudo patch -p0 -N /etc/NetworkManager/NetworkManager.conf
 }

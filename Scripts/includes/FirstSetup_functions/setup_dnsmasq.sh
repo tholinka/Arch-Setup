@@ -13,6 +13,7 @@ setup_dnsmasq()
 
     cecho "Setting system resolver to use dnsmasq"
     echo "nameserver 127.0.0.1
+nameserver ::1
 options timeout:1" | sudo tee /etc/resolv.conf 1>/dev/null
 
     # protect /etc/resolv.conf so NetworkManager doesn't overwrite it

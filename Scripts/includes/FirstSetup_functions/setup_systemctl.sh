@@ -22,4 +22,8 @@ function setup_systemctl()
     cecho "Enabling irqbalance"
     sudo systemctl enable irqbalance
     sudo systemctl start irqbalance
+
+    cecho "Disabling dhcpcd (NetworkManager uses dhclient)"
+    sudo systemctl disable dhcpcd
+    sudo systemctl stop dhcpcd
 }
