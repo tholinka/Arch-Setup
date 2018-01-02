@@ -21,7 +21,7 @@ sudo pacman -Syu
 
 echo;
 
-PACKAGES="xorg zsh git nemo chromium guake vim gufw plasma-desktop kde-applications cpupower openssh networkmanager ccache fakeroot colorgcc irqbalance procps-ng dnsmasq"
+PACKAGES="xorg zsh git nemo chromium guake vim gufw plasma kde-applications cpupower openssh networkmanager ccache fakeroot colorgcc irqbalance procps-ng dnsmasq"
 PACKAGESdeps="dhclient blueman libproxy modem-manager-gui packagekit"
 
 cbecho "Enter "y" if the case applies to you"
