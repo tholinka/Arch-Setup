@@ -37,7 +37,10 @@ WantedBy=timers.target" | sudo tee /etc/systemd/system/roothints.timer 1>/dev/nu
 
     echo "@@ -38 +38 @@
 -	# num-threads: 1
-+	num-threads: "$(nrpoc --all)"
++	num-threads: $(nproc --all)
+@@ -159 +159 @@
+-	# cache-min-ttl: 0
++	cache-min-ttl: 1800
 @@ -216 +216 @@
 -	# use-systemd: no
 +	use-systemd: yes
@@ -76,5 +79,11 @@ WantedBy=timers.target" | sudo tee /etc/systemd/system/roothints.timer 1>/dev/nu
 +	unblock-lan-zones: yes
 @@ -614 +614 @@
 -	# insecure-lan-zones: no
-+	insecure-lan-zones: yes" | sudo patch -p0 -N /etc/unbound/unbound.conf
++	insecure-lan-zones: yes
+@@ -751 +751 @@0000000000000000000000000000000000000000
+-	# control-enable: no
++	control-enable: yes" | sudo patch -p0 -N /etc/unbound/unbound.conf
+
+    cecho "Initializing unbound-control"
+    sudo unbound-control-setup
 }
