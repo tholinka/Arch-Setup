@@ -29,8 +29,8 @@ PACKAGESdeps="dhclient blueman libproxy modem-manager-gui packagekit expat"
 cbecho "Enter "y" if the case applies to you"
 
 # ask if using wifi
-WIFI=""
-get_wifi WIFI
+GENERAL=""
+get_general GENERAL
 echo;
 
 # ask which kernel to use
@@ -51,7 +51,7 @@ if [ "$NEEDS_KERNEL_HEADERS" == "y" ]; then
 fi
 
 cbecho "Installing packages"
-sudo pacman -S --needed --noconfirm $PACKAGES $WIFI $KERNEL $VIDEO_CARD
+sudo pacman -S --needed --noconfirm $PACKAGES $GENERAL $KERNEL $VIDEO_CARD
 
 echo;
 

@@ -26,9 +26,6 @@ function remove_pkgs()
         if pacman -Q sdd-kcm &>/dev/null; then
             REMOVE_PACKAGES="$REMOVE_PACKAGES sddm-kcm"
         fi
-        if pacman -Q sddm &>/dev/null; then
-            REMOVE_PACKAGES="$REMOVE_PACKAGES sddm"
-        fi
         if pacman -Q kate &> /dev/null; then
             REMOVE_PACKAGES="$REMOVE_PACKAGES kate"
         fi

@@ -41,7 +41,7 @@ WantedBy=timers.target" | sudo tee /etc/systemd/system/roothints.timer 1>/dev/nu
 +	num-threads: $(nproc --all)
 @@ -159 +159 @@
 -	# cache-min-ttl: 0
-+	cache-min-ttl: 1800
++	cache-min-ttl: 3600
 @@ -216 +216 @@
 -	# use-systemd: no
 +	use-systemd: yes

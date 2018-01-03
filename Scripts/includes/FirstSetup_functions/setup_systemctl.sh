@@ -28,6 +28,13 @@ function setup_systemctl()
     sudo systemctl enable irqbalance
     sudo systemctl start irqbalance
 
+    if pacman -Q systemd-swap &>/dev/null; then
+        # https://wiki.archlinux.org/index.php/zswap#Enabling_zswap
+        cecho "Enabling systemd-swap (zswap)"
+        sudo systemctl enable systemd-swap
+        sudo systemctl start systemd-swap
+    fi
+
     cecho "Disabling dhcpcd (NetworkManager uses dhclient)"
     sudo systemctl disable dhcpcd
     sudo systemctl stop dhcpcd
