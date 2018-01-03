@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # libc++ and therefor discord requires an import of a key
 gpg --recv-keys 11E521D646982372EB577A1F8F0871F202119294

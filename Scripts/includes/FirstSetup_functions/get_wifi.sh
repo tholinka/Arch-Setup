@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # pass in a variable to set with package names
 function get_wifi()

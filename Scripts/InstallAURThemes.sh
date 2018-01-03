@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 trizen -S --needed --noedit \
 vertex-themes \
 moka-icon-theme \

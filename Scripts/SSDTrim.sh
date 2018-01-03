@@ -1,6 +1,6 @@
-#!/bin/sh
-# enable periodic trim timers, it's part of util-linux so it should be installed anyway
+#!/bin/bash
 
+# enable periodic trim timers, it's part of util-linux so it should be installed anyway
 source includes/colordefines.sh
 
 echo -e "${GB}Enabling & starting fstrim.timer${RESET}"

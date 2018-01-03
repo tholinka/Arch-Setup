@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # pass in a variable to get kernel name, returns true (0) if zen or hardned set, otherwise returns false (1)
 function get_kernel()

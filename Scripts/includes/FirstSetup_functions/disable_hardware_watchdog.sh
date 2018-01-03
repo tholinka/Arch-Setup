@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # https://wiki.archlinux.org/index.php/Improving_performance#Watchdogs
 function disable_hardware_watchdog()

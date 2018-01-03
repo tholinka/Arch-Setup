@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
+   echo "This script must be run as root"
    exit 1
 fi
 
@@ -27,14 +27,14 @@ ExecStart=/etc/systemd/system/low-battery.sh" > /etc/systemd/system/low-battery.
 # low-battery.sh
 echo "acpi -b | grep 'Battery 1' | awk -F'[,:%]' '{print $2, $3}' | {
      read -r status capacity
- 
+
      msg=\"Battery is: \$status, \$capacity%\"
- 
+
      if [ \"\$status\" = Discharging ] && [ \"\$capacity\" -lt 5 ]; then
          critMsg=\"Critical Battery Threshold.\"
- 
+
          logger \"\$critMsg \$msg\"
-         
+
          systemctl hibernate
      else
          logger \"Battery Not Low. \$msg\"

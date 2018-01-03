@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # install a bunch of packages
 # in order of each line:

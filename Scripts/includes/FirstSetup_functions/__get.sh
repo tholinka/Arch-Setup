@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # pass in the first arg the package name
 function __get()

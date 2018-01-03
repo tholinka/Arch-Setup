@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # get trizen if it's not installed
 function setup_aur()

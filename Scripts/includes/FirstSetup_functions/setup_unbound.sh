@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 setup_unbound()
 {
     cbecho "Setting up unbound as local dns server / cache"

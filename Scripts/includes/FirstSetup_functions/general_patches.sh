@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # "general" patches, aka one or two off patches for random things (e.g. unbound is a seperate file because there are many patches for one "thing"
 general_patches()

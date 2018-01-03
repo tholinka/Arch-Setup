@@ -1,5 +1,7 @@
-#!/bin/sh
+#!/bin/bash
+
 #set -x
+
 # find script location so we can get includes
 SCRIPTSLOC=$(dirname "$0")
 INCLUDESLOC="$SCRIPTSLOC/includes"

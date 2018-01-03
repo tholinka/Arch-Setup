@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # pass in a variable to get video packages, and other to get if that requires kernel headers
 function get_graphics()

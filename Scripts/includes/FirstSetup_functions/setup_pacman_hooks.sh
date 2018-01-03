@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function setup_pacman_hooks()
 {
