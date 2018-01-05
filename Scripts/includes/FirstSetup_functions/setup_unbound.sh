@@ -54,6 +54,18 @@ WantedBy=timers.target" | sudo tee /etc/systemd/system/roothints.timer 1>/dev/nu
 @@ -316 +316 @@
 -	# root-hints: \"\"
 +	root-hints: \"/etc/unbound/root.hints\"
+@@ -319 +319 @@
+-	# hide-identity: no
++	hide-identity: yes
+@@ -322 +322 @@
+-	# hide-version: no
++	hide-version: yes
+@@ -350 +350 @@
+-	# harden-glue: yes
++	harden-glue: yes
+@@ -356 +356 @@
+-	# harden-dnssec-stripped: yes
++	harden-dnssec-stripped: yes
 @@ -375 +375 @@
 -	# qname-minimisation: no
 +	qname-minimisation: yes
@@ -72,16 +84,20 @@ WantedBy=timers.target" | sudo tee /etc/systemd/system/roothints.timer 1>/dev/nu
 +	private-address: fd00::/8
 +	private-address: fe80::/10
 +	private-address: ::ffff:0:0/96
-@@ -467 +467 @@
+@@ -414 +414 @@
+-	# unwanted-reply-threshold: 0
++	unwanted-reply-threshold: 10000000
+@@ -467 +467,2 @@
 -	# trust-anchor-file: \"\"
++	# --Note: pacman updates this
 +	trust-anchor-file: \"trusted-key.key\"
-@@ -610 +610 @@
+@@ -610 +611 @@
 -	# unblock-lan-zones: no
 +	unblock-lan-zones: yes
-@@ -614 +614 @@
+@@ -614 +615 @@
 -	# insecure-lan-zones: no
 +	insecure-lan-zones: yes
-@@ -751 +751 @@0000000000000000000000000000000000000000
+@@ -751 +752 @@
 -	# control-enable: no
 +	control-enable: yes" | sudo patch -p0 -N /etc/unbound/unbound.conf
 
