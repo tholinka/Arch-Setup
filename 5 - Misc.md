@@ -2,7 +2,7 @@
     * chrome://flags/#ignore-gpu-blacklist -> enable
     * chrome://flags/#enable-gpu-rasterization -> enable (this might break some websites fonts)
     * chrome://flags/#enable-zero-copy -> enable
-1. Enable nightlight / flux.  Install ```redshift plasma5-applets-redshift-control``` and then ```right click on the task bar -> unlock widgets``` ```Right click on taskbar again -> Panel options -> Add widgets -> redshift```
+1. Enable nightlight / flux.  Install ```plasma5-applets-redshift-control``` and then ```right click on the task bar -> unlock widgets``` ```Right click on taskbar again -> Panel options -> Add widgets -> redshift```
 1. set up firewall
     * run ```gufw```, turn ```status``` to on, and that's good enough
 1. enable color in pacman: uncomment ```Color``` in ```/etc/pacman.conf```
