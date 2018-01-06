@@ -21,3 +21,13 @@ function cbecho()
 {
     echo -e "${CB}${@}${RESET}"
 }
+
+function gecho()
+{
+    echo -e "${GREEN}${@}${RESET}"
+}
+
+function gbecho()
+{
+    echo -e "${GB}${@}${RESET}"
+}
