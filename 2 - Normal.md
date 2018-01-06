@@ -24,7 +24,6 @@
             * /dev/sdX5 - [at least 20GB] /usr (Arch defaults to /lib and some other directories point to this, so it gets decently big, same as /)
             * /dev/sdX6 - [at least 10GB[ /usr/bin (and /bin and /sbin, Arch defaults to /bin and /sbin being a link to /usr/bin - this contains all your pacman installed programs), format same as /
             * /dev/sdX7 - [~1GB] /etc, same as /
-            * /dev/sdX8 - [~ around ram size (ish)] /tmp, same as /
             * /dev/sdX9 - [depends, can be as low as ~600MB, or as high as 20GB+] /opt (most programs don't install here, mostly from bigger non-linux first projects (e.g. my /opt has discord, teamviewer, visual-studio-code, android-sdk in it, using ~500MB), same as /
             */dev/sdX10 - [rest of drive] /home, see above
 1. After using lsblk to format to whatever your strategy is, you have to format the drives
