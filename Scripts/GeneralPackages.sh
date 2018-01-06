@@ -22,9 +22,8 @@ libreoffice-fresh \
 jre8-openjdk alsa-lib icedtea-web java-openjfx \
 gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly flac \
 exa \
-nemo-fileroller p7zip unrar nemo-preview nemo-seahorse nemo-share \
+nemo-fileroller p7zip unrar nemo-preview nemo-share \
 gedit \
-eog eog-plugins \
 krita \
 net-tools wget \
 htop iotop glances \
