@@ -1,62 +1,49 @@
 #!/bin/bash
 
-source includes/colordefines.sh
+# find script location so we can get includes
+SCRIPTSLOC=$(dirname "$0")
+INCLUDESLOC="$SCRIPTSLOC/includes"
 
-echo -e "${GB}Installing reflector and reflector-timer${RESET}"
+source "$INCLUDESLOC/colordefines.sh"
+
+cbecho "Installing reflector and to handle Mirror Rank"
 
 # install Reflector, which can rank mirrors, and reflector-timer, which does it on a timer
-packages=""
-if ! pacman -Q reflector &> /dev/null; then
-    packages="${packages} reflector"
-fi
-if ! pacman -Q rsync &> /dev/null; then
-    packages="${packages} rsync"
-fi
+PACKAGES="reflector"
+PACKAGESdeps="rsync"
+sudo pacman -S --needed --noconfirm $PACKAGESdeps
+sudo pacman -S --needed --noconfirm --asdeps $PACKAGESdeps
 
-if [ ! -z "$packages" ]; then
-    sudo pacman -S --needed $packages
-fi
+cbecho "Setting up reflector config"
+echo -en "$GREEN What's your country? (2 letter code (or name), e.g. United States is US, Great Briten is GB, etc.): $RESET"
+read COUNTRY
 
-packages=""
-if ! pacman -Q reflector-timer &> /dev/null; then
-    packages="${packages} reflector-timer"
-fi
+cecho "Writing Systemd Service / Timer"
+# only using https, as it's more secure, hopefully there are enough mirrors, otherwise rsync?
+echo "[Unit]
+Description=Pacman mirrorlist update
+Documentation=https://wiki.archlinux.org/index.php/Reflector
+Requires=network-online.target
+After=network-online.target
 
-if [ ! -z "$packages" ]; then
-    trizen -S --needed --noedit $packages
-fi
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/reflector --age 24 --country \"${COUNTRY}\" --latest 100 --number 30 --sort rate --save /etc/pacman.d/mirrorlist -p https
+" | sudo tee /etc/systemd/system/reflector.service 1>/dev/null
 
-# echo -e "${GREEN}To change which country is put in /etc/conf.d/reflector.conf, ${BOLD}env COUNTRY=\"YOUR COUNTRY\"${RESET}${GREEN} before hand${RESET}"
+echo "[Unit]
+Description=Weekly pacman mirrorlist refresh
 
-echo -e "${GB}Chaning default country for reflector-timer${RESET}"
+[Timer]
+OnCalendar=weekly
+Persistent=true
+AccuracySec=12h
 
-if [ -z ${COUNTRY+x} ]; then
-    echo -e "${GREEN}run this command with ${BOLD}env COUNTRY="your country"${RESET}${GREEN} before the command to use something other than 'us' as your country ${RESET}"
-    COUNTRY="us"
-else
-    COUNTRY="${COUNTRY}"
-fi
-
-echo -e "${CYAN}ignore the following, it's being tee'd to /etc/conf.d/reflector.conf${RESET}"
-
-# update country setting
-echo "COUNTRY=${COUNTRY}" | sudo tee /etc/conf.d/reflector.conf
+[Install]
+WantedBy=timers.target" | sudo tee /etc/systemd/system/reflector.timer 1> /dev/null
 
 
-echo -e "${GB}Enabling reflector.timer in systemctl${RESET}"
-
-# enable / start service
-sudo systemctl enable reflector.timer
-sudo systemctl start reflector.timer
-
-# manually run reflector, because timer won't trigger for ~a week
-
-echo -e "${GB}Manually running reflector since timer won't trigger for a week${RESET}"
-
-sudo reflector --country "${COUNTRY}" --age 12 --protocol https --protocol http --protocol ftp --protocol rsync --sort rate --save /etc/pacman.d/mirrorlist
-
-echo -e "${GB}Adding packman hook to update reflector after macman-mirrorlist gets updated${RESET}"
-
+cbecho "Adding packman hook to update reflector after pacman-mirrorlist gets updated"
 if [ ! -d /etc/pacman.d/hooks ]; then
     sudo mkdir /etc/pacman.d/hooks
 fi
@@ -70,4 +57,12 @@ Target = pacman-mirrorlist
 Description = Updating pacman-mirrorlist with reflector and removing pacnew...
 When = PostTransaction
 Depends = reflector
-Exec = /bin/sh -c \"reflector --country 'United States' --latest 200 --age 24 --sort rate --save /etc/pacman.d/mirrorlist;  rm -f /etc/pacman.d/mirrorlist.pacnew\"" | sudo tee /etc/pacman.d/hooks/mirrorupgrade.hook 1>/dev/null
+Exec = /bin/sh -c \"sudo systemctl start reflector.service;  rm -f /etc/pacman.d/mirrorlist.pacnew\"" | sudo tee /etc/pacman.d/hooks/mirrorupgrade.hook 1>/dev/null
+
+
+cbecho "Enabling reflector.timer in systemctl"
+sudo systemctl enable reflector.timer
+sudo systemctl start reflector.timer
+
+cecho "Running reflector as otherwise it won't run for a week"
+sudo systemctl start reflector.service
