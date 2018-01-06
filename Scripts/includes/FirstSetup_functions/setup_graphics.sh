@@ -11,7 +11,7 @@ function setup_graphics()
     fi
 
     # intel
-    if [ "$1 == intel" ]; then
+    if [ "$1" == "intel" ]; then
         # https://wiki.archlinux.org/index.php/intel_graphics#Module-based_Powersaving_Options this does taint the kernel
         # https://wiki.archlinux.org/index.php/intel_graphics#Enable_GuC_.2F_HuC_firmware_loading for the enable_guc_loading portion
         cecho "Enabling intel powersaving"

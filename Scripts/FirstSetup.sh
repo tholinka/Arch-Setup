@@ -56,7 +56,7 @@ sudo pacman -S --needed --noconfirm $PACKAGES $GENERAL $KERNEL $VIDEO_CARD
 echo;
 
 cecho "Installing optional deps"
-sudo pacman -S --needed --noconfirm $PACKAGESdeps
+sudo pacman -S --needed --noconfirm --asdeps $PACKAGESdeps
 
 echo;
 

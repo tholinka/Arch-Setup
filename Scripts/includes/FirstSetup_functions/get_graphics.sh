@@ -5,7 +5,7 @@ function get_graphics()
 {
     cecho "Which video card do you have? [Nvidia, AMD, Intel, VMware/Virtualbox]"
 
-    nvidia="nvidia-dkms nvidia-utils libva-vdpau-driver xorg-server-devel nvidia-settigns opencl-nvidia" # closed source drivers
+    nvidia="nvidia-dkms nvidia-utils libva-vdpau-driver xorg-server-devel nvidia-settings opencl-nvidia" # closed source drivers
     amd="xf86-video-amdgpu mesa libva-mesa-driver mesa-vdpau" # open source drivers
     intel="xf86-video-intel mesa libva-intel-driver libvdpau-va-gl" # open source drivers
     vm="open-vm-tools xf86-video-vmware xf86-input-vmmouse mesa-libgl libva-mesa-driver mesa-vdpau virtualbox-guest-dkms virtualbox-guest-utils gtkmm libxtst" # open source drivers

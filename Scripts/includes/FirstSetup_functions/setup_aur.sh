@@ -19,7 +19,7 @@ function setup_aur()
 	cecho "Making Trizen"
 	echo
 
-	makepkg -si
+	makepkg -si --noconfirm --needed
 	cd - 1>/dev/null
 	rm trizen -rf
 
