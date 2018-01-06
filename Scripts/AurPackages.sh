@@ -1,10 +1,29 @@
 #!/bin/bash
 
-# libc++ and therefor discord requires an import of a key
-gpg --recv-keys 11E521D646982372EB577A1F8F0871F202119294
+# find script location so we can get includes
+SCRIPTSLOC=$(dirname "$0")
+INCLUDESLOC="$SCRIPTSLOC/includes"
+FIRSTSETUPINCLUDES="$INCLUDESLOC/FirstSetup_functions"
+
+source "$INCLUDESLOC/colordefines.sh"
+
+cbecho "Importing required gpg keys"
+
+# libc++ and therefor discord requires an import of a keyi
+libckey="11E521D646982372EB577A1F8F0871F202119294"
+if ! gpg --list-keys | grep "$libckey" &>/dev/null; then
+    cecho "Importing libc++ key"
+    gpg --recv-keys "$libckey"
+fi
 
 # for spotify-stable
-gpg --keyserver hkps://pgp.mit.edu --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+spotifykey="0DF731E45CE24F27EEEB1450EFDC8610341D9410"
+if ! gpg --list-keys | grep "$spotifykey" &>/dev/null; then
+    cecho "Importing spotify key, this seems to hang sometimes, give it a sec"
+    gpg --keyserver hkps://pgp.mit.edu --recv-keys
+fi
+
+cbecho "Imports done, installing packages"
 
 # install a bunch of packages
 # in order of each line:
@@ -31,7 +50,7 @@ visual-studio-code-bin
 # spotify deps
 # discord deps
 trizen -S --needed --noconfirm --asdeps \
-ffmpeg0.10 libnotify zenity
+ffmpeg0.10 libnotify zenity \
 ttf-symbola
 
 # add rambox autostart
