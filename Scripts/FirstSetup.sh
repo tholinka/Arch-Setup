@@ -96,6 +96,10 @@ echo;
 # set up wifi regdom, echo newline if it set anything
 setup_wifi && echo;
 
+# set up ufw
+setup_firewall
+echo;
+
 # network perf speed
 setup_sysctl
 echo;
