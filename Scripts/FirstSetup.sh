@@ -24,7 +24,11 @@ sudo pacman -Syu
 echo;
 
 PACKAGES="xorg zsh git nemo chromium guake vim gufw plasma kde-applications cpupower openssh networkmanager ccache fakeroot colorgcc irqbalance procps-ng unbound curl"
-PACKAGESdeps="dhclient blueman libproxy modem-manager-gui packagekit expat"
+
+# all the deps
+PACKAGESdeps=""
+get_deps PACKAGESdeps
+
 
 cbecho "Enter "y" if the case applies to you"
 
