@@ -32,7 +32,7 @@ general_patches()
 +CXXFLAGS=\"-march=native -mtune=native -O3 -pipe -fstack-protector-strong -fno-plt\"
 @@ -44 +44 @@
 -#MAKEFLAGS=\"-j2\"
-+MAKEFLAGS=\"-j$(nproc)\"
++MAKEFLAGS=\"-j\$(nproc --all)\"
 @@ -62 +62 @@
 -BUILDENV=(\!distcc color \!ccache check \!sign)
 +BUILDENV=(fakeroot \!distcc color ccache check \!sign)" | sudo patch -p0 -N /etc/makepkg.conf
