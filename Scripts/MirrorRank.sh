@@ -28,7 +28,7 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/reflector --age 24 --country \"${COUNTRY}\" --latest 100 --number 30 --sort rate --save /etc/pacman.d/mirrorlist -p https
+ExecStart=/usr/bin/reflector --age 24 --country \"${COUNTRY}\" --latest 300 --number 50 --sort rate --save /etc/pacman.d/mirrorlist -p https -p http -p rsync -p ftp
 " | sudo tee /etc/systemd/system/reflector.service 1>/dev/null
 
 echo "[Unit]
