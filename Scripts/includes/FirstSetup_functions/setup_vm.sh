@@ -6,6 +6,9 @@ function setup_vm()
         return 1;
     fi
 
+    cecho "Enabling vmtoolsd"
+    sudo systemctl enable vmtoolsd.service
+
     echo -e "$CYAN Enabling vmware vmblock fuse $RESET"
     sudo systemctl enable vmware-vmblock-fuse.service
 
