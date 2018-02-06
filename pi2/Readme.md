@@ -10,10 +10,10 @@
     * or, change it if you _really_ want to use the root account (seriously, you should lock it)
 1) Updating locale:
     1) Uncomment your locale (and any others you want) in ```/etc/locale.gen``` (e.g. uncomment ```en_US.UTF-8 UTF-8```)
-      * if you only want one locale, you can instead just echo to it, e.g. for en_US.UTF-8: ```echo LANG=en_US.UTF-8 | sudo tee /etc/locale.gen```
+        * if you only want one locale, you can instead just echo to it, e.g. for en_US.UTF-8: ```echo LANG=en_US.UTF-8 | sudo tee /etc/locale.gen```
     1) then run ```sudo locale-gen```
     1) then echo your locale to /etc/locale.conf, this sets your perferred locale, e.g. for en_US.UTF-8, ```echo "en_US.UTF-8 UTF-8" | sudo tee /etc/locale.conf```
-Note: at this point you can download dotfiles and set up zsh (zplug glitches on zsh themes if the locale isn't set)
+1) Note: at this point you can download dotfiles and set up zsh (zplug glitches on zsh themes if the locale isn't set)
 1) Set the timerzone: Find out your timezone zone/subzone through ```tzselect```, and then manually link it using ```ln -sf /usr/share/zoneinfo/[zone]/[subzone] /etc/localtime```
     * you may want to check ```timedatectl``` to see if Network time or NTP sync is off, if it is, run ```timedatectl set-ntp true```.  This is normally unnecessary.
 1) Change the hostname in ```/etc/hostname```
