@@ -6,7 +6,7 @@
 1. add a new user: ```useradd -m -g users -G wheel,storage,power,input,lp -s /bin/bash 'username'```
     * set a password for this user, ```passwd [username]```
 1. Add the ```wheel``` group to sudoers
-    * echo '```%wheel ALL=(ALL) ALL' > /etc/sudoers.d/99_wheel_is_cool```
+    * ```echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/99_wheel_is_cool```
 1. ```exit``` and login to your user account
 1. ```ping google.com```, if you don't have a connection, repeat process from step 1
 1. Clone this repository into something like .settings-git, ```git clone --recursive git@github.com:link07/Linux-Settings-and-Setup.git .settings-git
