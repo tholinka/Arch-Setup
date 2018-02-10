@@ -11,7 +11,7 @@ cbecho "Installing reflector and to handle Mirror Rank"
 # install Reflector, which can rank mirrors, and reflector-timer, which does it on a timer
 PACKAGES="reflector"
 PACKAGESdeps="rsync"
-sudo pacman -S --needed --noconfirm $PACKAGESdeps
+sudo pacman -S --needed --noconfirm $PACKAGES
 sudo pacman -S --needed --noconfirm --asdeps $PACKAGESdeps
 
 cbecho "Setting up reflector config"
