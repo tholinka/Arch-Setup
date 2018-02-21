@@ -13,7 +13,7 @@ function remove_pkgs()
         REMOVE_PACKAGES="$REMOVE_PACKAGES dhcpcd"
     fi
 
-    if __get "Remove konqueror, dolphin, sddm, and kate"; then
+    if __get "Remove konqueror, dolphin, sddm, kalzium, and kate"; then
         if pacman -Q konqueror &> /dev/null; then
             REMOVE_PACKAGES="$REMOVE_PACKAGES konqueror"
         fi
@@ -26,8 +26,15 @@ function remove_pkgs()
         if pacman -Q sddm &>/dev/null; then
             REMOVE_PACKAGES="$REMOVE_PACKAGES sddm"
         fi
+
         if pacman -Q sddm-kcm &>/dev/null; then
             REMOVE_PACKAGES="$REMOVE_PACKAGES sddm-kcm"
+        elif pacman -Q sddm &>/dev/null; then
+            REMOVE_PACKAGES="$REMOVE_PACKAGES sddm"
+        fi
+
+        if pacman -Q kalzium &>/dev/null; then
+            REMOVE_PACKAGES="$REMOVE_PACKAGES kalzium"
         fi
         if pacman -Q kate &> /dev/null; then
             REMOVE_PACKAGES="$REMOVE_PACKAGES kate"
