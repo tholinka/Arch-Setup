@@ -61,24 +61,39 @@ general_patches()
 +governor='performance'" | sudo patch -p0 -N /etc/default/cpupower
 
     ## NetworkManager
-    cecho "Patching NetworkManager to use ipv6 privacy extensions"
-    echo "@@ -6,3 +6,18 @@
+    cecho "Setting up NetworkManager to use ipv6 privacy extensions & dnsmasq"
 
- #[ifupdown]
- #managed=false
-+
-+# https://wiki.archlinux.org/index.php/IPv6#NetworkManager
-+[connection]
-+ipv6.ip6-privacy=2
-+
-+# https://unix.stackexchange.com/a/90061
-+[ipv4]
-+method=auto
-+dns=127.0.0.1;
-+ignore-auto-dns=true
-+
-+[ipv6]
-+method=auto
-+dns=::1;
-+ignore-auto-dns=true" | sudo patch -p0 -N -F0 /etc/NetworkManager/NetworkManager.conf
+    # Tell dnsmasq to listen for ipv6 as well
+    echo "listen-address=::1" | sudo tee /etc/NetworkManager/dnsmasq.d/ipv6_listen.conf &>/dev/null
+
+    # use the patch below that's being echo'd to /dev/null if your using unbound
+    echo "# Configuration file for NetworkManager.
+# See \"man 5 NetworkManager.conf\" for details.
+
+# https://wiki.archlinux.org/index.php/dnsmasq#NetworkManager
+[main]
+dns=dnsmasq
+
+# https://wiki.archlinux.org/index.php/IPv6#NetworkManager
+[connection]
+ipv6.ip6-privacy=2" | sudo tee /etc/NetworkManager/NetworkManager.conf &>/dev/null
+
+    # disabled, use instead of above if your using unbound
+    echo "# Configuration file for NetworkManager.
+# See \"man 5 NetworkManager.conf\" for details.
+
+# https://wiki.archlinux.org/index.php/IPv6#NetworkManager
+[connection]
+ipv6.ip6-privacy=2
+
+# https://unix.stackexchange.com/a/90061
+[ipv4]
+method=auto
+dns=127.0.0.1;
+ignore-auto-dns=true
+
+[ipv6]
+method=auto
+dns=::1;
+ignore-auto-dns=true" &> /dev/null # sudo tee /etc/NetworkManager/NetworkManager.conf &>/dev/null
 }

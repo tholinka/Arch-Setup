@@ -10,13 +10,14 @@ function setup_systemctl()
     sudo systemctl enable NetworkManager.service
     sudo systemctl start NetworkManager.service
 
-    cecho "Enabling unbound"
-    sudo systemctl enable unbound.service
-    sudo systemctl start unbound.service
+    ## unbound is not installed, using dnsmasq instead, which is handled by NetworkManager
+    #cecho "Enabling unbound"
+    #sudo systemctl enable unbound.service
+    #sudo systemctl start unbound.service
 
-    cecho "Enabling unbound root hint updater"
-    sudo systemctl enable roothints.timer
-    sudo systemctl start roothints.timer
+    #cecho "Enabling unbound root hint updater"
+    #sudo systemctl enable roothints.timer
+    #sudo systemctl start roothints.timer
 
 
     cecho "Enabling cpupower"

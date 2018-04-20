@@ -79,9 +79,10 @@ echo;
 remove_pkgs KERNEL_SET
 echo;
 
+## Disabled, running local pihole now, so just standard networkmanger + dnsmasq works better
 # setup unbound to act as a local dns server to cache requests
-setup_unbound
-echo;
+# setup_unbound
+# echo;
 
 # various config patches
 general_patches
