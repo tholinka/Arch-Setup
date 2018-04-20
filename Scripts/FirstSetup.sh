@@ -68,8 +68,8 @@ echo;
 setup_aur
 
 echo;
-cecho "Installing lightdm greeter (from aur, using trizen)"
-trizen -S --noconfirm --needed lightdm-webkit2-theme-material2
+cecho "Installing lightdm greeter, and systemd-boot pacman hook (from aur, using trizen)"
+trizen -S --noconfirm --needed lightdm-webkit2-theme-material2 systemd-boot-pacman-hook
 
 echo;
 cbecho "Package Installation done"
