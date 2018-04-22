@@ -173,6 +173,12 @@ DOMAINS="$DOMAINS cwtv-prod-elb.digitalsmiths.net cwtv-mrss-akamai.cwtv.com imas
 ## click.email.roosterteeth.com (unsub from roosterteeth emails)
 DOMAINS="$DOMAINS click.virt.s7.exacttarget.com"
 
+# www.bing.com
+DOMAINS="$DOMAINS a-0001.a-msedge.net"
+
+# www.live.com
+DOMAINS="$DOMAINS a-0010.a-msedge.net"
+
 ### Whitelist items
 # unquoted so the spaces spit then into new arguments
 pihole -w $DOMAINS
