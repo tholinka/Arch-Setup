@@ -9,7 +9,7 @@ fi
 
 echo -e "${GB}Installing laptop-mode-tools + optional deps ${RESET}"
 
-trizen -S --needed --noconfirm laptop-mode-tools
+yay -S --needed --noconfirm laptop-mode-tools
 sudo pacman -S --asdeps --needed --noconfirm acpid bluez-utils hdparm sdparm ethtool wireless_tools xorg-xset python2-pyside
 
 echo -e "${GB}Enabling laptop mode service in systemctl ${RESET}"

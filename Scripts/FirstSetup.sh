@@ -64,12 +64,12 @@ sudo pacman -S --needed --noconfirm --asdeps $PACKAGESdeps
 
 echo;
 
-# install trizen, we need it for the next step
+# install yay, we need it for the next step
 setup_aur
 
 echo;
-cecho "Installing lightdm greeter, and systemd-boot pacman hook (from aur, using trizen)"
-trizen -S --noconfirm --needed lightdm-webkit2-theme-material2 systemd-boot-pacman-hook
+cecho "Installing lightdm greeter, and systemd-boot pacman hook (from aur, using yay)"
+yay -S --noconfirm --needed lightdm-webkit2-theme-material2 systemd-boot-pacman-hook
 
 echo;
 cbecho "Package Installation done"

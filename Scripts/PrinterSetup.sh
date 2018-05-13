@@ -21,11 +21,11 @@ curl http://splix.ap2c.org/samsung_cms.tar.bz2 | sudo tar xj -C "$samsungdir"
 
 cecho "Installing canon, and epson drivers from the AUR"
 aurPackages="capt-src epson-inkjet-printer-escpr"
-trizen -S $aurPackages --needed --noconfirm
+yay -S $aurPackages --needed --noconfirm
 
 cecho "Trizen seems to have issues installing the samsung-unified-driver, it needs to install samsung-unified-driver-common, then -printer and -scanner, then finally the base package, you might have to manually do this step after the script finishes, we install the deps first because that seems to /mostly/ work"
-trizen -S --asdeps samsung-unified-driver-printer --needed --noconfirm
-trizen -S samsung-unified-driver --needed --noconfirm
+yay -S --asdeps samsung-unified-driver-printer --needed --noconfirm
+yay -S samsung-unified-driver --needed --noconfirm
 
 cecho "Enabling / Starting CUPS"
 

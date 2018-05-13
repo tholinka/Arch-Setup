@@ -1,6 +1,6 @@
 #!/bin/bash
 
-trizen -S --needed --noedit \
+yay -S --needed --noedit \
 vertex-themes \
 moka-icon-theme \
 xcursor-human

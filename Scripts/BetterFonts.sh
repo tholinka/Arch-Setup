@@ -12,12 +12,12 @@ sudo ln -sf /etc/fonts/conf.avail/10-hinting-slight.conf /etc/fonts/conf.d
 echo -e "${CB}Symlinking done ${RESET}"; echo # newline
 echo -e "${CB}Installing font packages ${RESET}"
 # install fonts-meta-extened-lt + some more fonts from the aur -- note: manually install win 7 / 8 /10 fonts if win 7 / 8 / 10 install to link against is available, remove ttf-ms-fonts and ttf-vista-fonts if you do
-trizen -S --needed --noedit fonts-meta-extended-lt ttf-hack
+yay -S --needed --noedit fonts-meta-extended-lt ttf-hack
 
 # install win fonts seperately, so if you have win-7/8/10 fonts installed you can cancel without loosing the rest
 echo # newline
 echo -e "${GB}Cancel this if you have win7/8/10 fonts installed ${RESET}"
-trizen -S --needed --noedit ttf-ms-fonts ttf-vista-fonts ttf-tahoma
+yay -S --needed --noedit ttf-ms-fonts ttf-vista-fonts ttf-tahoma
 
 echo -e "${CB}Font's installed ${RESET}"; echo # newline
 echo -e "${CB}Updating Font Cache ${RESET}"
