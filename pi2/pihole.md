@@ -32,14 +32,13 @@ and Dnscrypt for secure dns
 1) Set up ```dnscrypt-proxy```
     1) Enable ```dnscrypt-proxy.service``` in ```systemctl``` (to create symlink to socket)
     1) Change the port it listens on to not conflict with unbound / dnsmasq
-        1) Edit ```/etc/systemd/system/sockets.target.wants/dnscrypt-proxy.socket```
+        1) Edit the ```dnscrypt-proxy.socket``` systemd service, ```systemctl edit --full dnscrypt-proxy.socket```
         1) Change the port from ```53``` to ```513```
-        1) Create
     1) Edit ```/etc/dnscrypt-proxy/dnscrypt-proxy.toml```
         1) Change ```ipv6_servers``` from ```false``` to ```true``` if you have ipv6 access.
         1) Change ```require_dnssec``` from ```false``` to ```true```
         1) Change ```fallback_resolver``` to ```1.1.1.1:53``` (cloudflare dns, see https://1.1.1.1)
-    1) Start ```dnscrypt-proxy.service``` in ```systemctl```
+    1) Start/Enable ```dnscrypt-proxy.service``` in ```systemctl```
 1) Set up unbound
     1) Edit ```/etc/unbound/unbound.conf``` with the following: (change the ```access-control``` line to your ```newtork-ip/subnet-mask```)
 ```
