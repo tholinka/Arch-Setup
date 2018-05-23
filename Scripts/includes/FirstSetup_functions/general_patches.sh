@@ -82,18 +82,22 @@ ipv6.ip6-privacy=2" | sudo tee /etc/NetworkManager/NetworkManager.conf &>/dev/nu
     echo "# Configuration file for NetworkManager.
 # See \"man 5 NetworkManager.conf\" for details.
 
+[main]
+dns=dnsmasq
+
 # https://wiki.archlinux.org/index.php/IPv6#NetworkManager
 [connection]
 ipv6.ip6-privacy=2
 
+## disabled for dnsmasq
 # https://unix.stackexchange.com/a/90061
-[ipv4]
-method=auto
-dns=127.0.0.1;
-ignore-auto-dns=true
+#[ipv4]
+#method=auto
+#dns=127.0.0.1;
+#ignore-auto-dns=true
 
-[ipv6]
-method=auto
-dns=::1;
-ignore-auto-dns=true" &> /dev/null # sudo tee /etc/NetworkManager/NetworkManager.conf &>/dev/null
+#[ipv6]
+#method=auto
+#dns=::1;
+#ignore-auto-dns=true" &> /dev/null # sudo tee /etc/NetworkManager/NetworkManager.conf &>/dev/null
 }
