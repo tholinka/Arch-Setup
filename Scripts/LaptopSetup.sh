@@ -2,9 +2,9 @@
 
 source includes/colordefines.sh
 
-if ! type trizen &>/dev/null; then
-    echo -e "${GB}NO trizen, use \"AurSetup\" script first! ${RESET}"
-    return;
+if ! type yay &>/dev/null; then
+    echo -e "${GB}NO yay, use \"AurSetup\" script first! ${RESET}"
+    exit 1
 fi
 
 echo -e "${GB}Installing laptop-mode-tools + optional deps ${RESET}"
