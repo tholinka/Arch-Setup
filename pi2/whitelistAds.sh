@@ -179,6 +179,18 @@ DOMAINS="$DOMAINS a-0001.a-msedge.net"
 # www.live.com
 DOMAINS="$DOMAINS a-0010.a-msedge.net"
 
+# twitter.com images
+DOMAINS="$DOMAINS pbs.twimg.com"
+
+# tinyurl.com
+DOMAINS="$DOMAINS tinyurl.com"
+
+# serverfault.com
+DOMAINS="$DOMAINS serverfault.com"
+
+# www.spotify.com
+DOMAINS="$DOMAINS weblb-wg.dual-gslb.spotify.com"
+
 ### Whitelist items
 # unquoted so the spaces spit then into new arguments
 pihole -w $DOMAINS
