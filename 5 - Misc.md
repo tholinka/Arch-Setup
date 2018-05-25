@@ -6,6 +6,7 @@
 1. set up firewall
     * run ```gufw```, turn ```status``` to on, and that's good enough
 1. enable color in pacman: uncomment ```Color``` in ```/etc/pacman.conf```
+    * Add ```ILoveCandy``` at the bottom of the ```Misc``` section for a fun easter egg
 1. enable fingerprint unlocking.  Install ```fprint```
     * enroll fingerprint using ```fprintd-enroll```
     * add the following: ```auth      sufficient pam_fprintd.so``` to the top of the auth lines in the following files
