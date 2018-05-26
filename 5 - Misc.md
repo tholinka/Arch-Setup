@@ -22,3 +22,7 @@
     * PrinterSetup: Install a bunch of printer drivers
     * QtUserGtkTheme: Mostly useful for gnome-based environments, makes Qt apps look better
     * LaptopSetup: Instal laptop-mode-tools and set it up
+1. Setup GPG
+    * See https://help.github.com/articles/generating-a-new-gpg-key/
+    * and https://help.github.com/articles/telling-git-about-your-gpg-key/
+    * and to import a key from a different computer: https://unix.stackexchange.com/questions/184947/how-to-import-secret-gpg-key-copied-from-one-machine-to-another
