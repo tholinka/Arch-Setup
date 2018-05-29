@@ -3,7 +3,7 @@
 echo "Download adlist from wally3k.firebog.net"
 echo;
 
-#sudo curl "https://v.firebog.net/hosts/lists.php?type=tick" -o /etc/pihole/adlists.list
+sudo curl "https://v.firebog.net/hosts/lists.php?type=tick" -o /etc/pihole/adlists.list
 # firebog's list is blank right now, use this for now
 echo "https://hosts-file.net/grm.txt
 https://reddestdream.github.io/Projects/MinimalHosts/etc/MinimalHostsBlocker/minimalhosts
@@ -39,7 +39,7 @@ https://raw.githubusercontent.com/quidsup/notrack/master/malicious-sites.txt
 https://ransomwaretracker.abuse.ch/downloads/RW_DOMBL.txt
 https://v.firebog.net/hosts/Shalla-mal.txt
 https://raw.githubusercontent.com/StevenBlack/hosts/master/data/add.Risk/hosts
-https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist" | sudo tee /etc/pihole/adlists.list >/dev/null
+https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist" &>/dev/null # | sudo tee /etc/pihole/adlists.list >/dev/null
 
 echo;
 echo;
