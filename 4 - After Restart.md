@@ -3,7 +3,7 @@
 > This assumes that Part 3 is already done and you restarted.    And that succeeded.
 
 1. Login as root
-1. add a new user: ```useradd -m -g users -G wheel,storage,power,input,lp -s /bin/bash 'username'```
+1. add a new user: ```useradd -m -g users -G wheel,storage,power,input,lp,sys -s /bin/bash 'username'```
     * set a password for this user, ```passwd [username]```
 1. Add the ```wheel``` group to sudoers
     * ```echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/99_wheel_is_cool```
