@@ -191,6 +191,9 @@ DOMAINS="$DOMAINS serverfault.com"
 # www.spotify.com
 DOMAINS="$DOMAINS weblb-wg.dual-gslb.spotify.com"
 
+# www.howtogeek.com
+DOMAINS="$DOMAINS www.howtogeek.com"
+
 ### Whitelist items
 # unquoted so the spaces spit then into new arguments
 pihole -w $DOMAINS
