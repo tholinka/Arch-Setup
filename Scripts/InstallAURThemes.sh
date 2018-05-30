@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yay -S --needed --noedit \
+yay -S --needed \
 vertex-themes \
 moka-icon-theme \
 xcursor-human
