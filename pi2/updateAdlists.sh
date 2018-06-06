@@ -45,7 +45,7 @@ echo;
 echo;
 echo "Adding windows tracking list"
 
-echo "https://link07.github.io/projects/hosts/wintracking/normal" | sudo tee -a /etc/pihole/adlists.list >/dev/null
+echo "https://tholinka.github.io/projects/hosts/wintracking/normal" | sudo tee -a /etc/pihole/adlists.list >/dev/null
 
 echo;
 echo "Running pihole gravity"
