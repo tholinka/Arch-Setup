@@ -20,8 +20,15 @@
 1) Change to using the hardware RNG generation
     1) Install ```rng-tools``` using ```pacman```
     1) Tell rngd where to find the hardware generation at by editing ```/etc/conf.d/rngd``` to include ```RNGD_OPTS="-o /dev/random -r /dev/hwrng"``` (currently tee'ing this works, as the file doesn't include anything else)
-    1) disable / stop the systemctl ```haveged``` service
+    1) disable / stop the systemctl ```haveged``` service, it can then be uninstalled through `pacman`
     1) enable / start the systemctl ```rngd``` service
+1) Enable pacman package signing (this requires either `haveged` or `rngd` to be running)
+   1) run `pacman-key --init`
+   1) run `pacman -S archlinuxarm-keyring --needed`
+   1) run `pacman-key --populate archlinuxarm`
+   1) edit `/etc/pacman.conf` and uncomment (or add) the following: (each bullet is a new line)
+      * `SigLevel = Required DatabaseOptional`
+      * `LocalFileSigLevel = Optional`   
 1) Update mkinitcpio settings in ```/etc/mkinitcpio.conf:
     1) Change HOOKS line to ```HOOKS=(base systemd autodetect modconf block keyboard fsck filesystems)```
     1) run ```mkinitcpio -P``` to regen the image, having no modules is normal
