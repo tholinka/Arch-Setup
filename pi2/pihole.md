@@ -10,7 +10,7 @@ and Dnscrypt for secure dns
 1) Install needed packages:
     1) ```pacman```: ```dnscrypt-proxy php-sqlite```
     1) ```pacman --asdeps```: ```lighttpd php-cgi```
-    1) ```trizen``` ```pi-hole-server```
+    1) ```trizen```: ```pi-hole-server```
 1) Set up ```dnsmasq```
     1) Edit the following in ```/etc/dnsmasq.conf```
         * Uncomment: `no-resolv`
@@ -40,12 +40,14 @@ and Dnscrypt for secure dns
           * `ListenDatagram=`
           * `ListenStream=127.0.0.1:513`
           * `ListenDatagram=127.0.0.1:513`
-    1) Edit ```/etc/dnscrypt-proxy/dnscrypt-proxy.toml```
-        1) Change ```ipv6_servers``` from ```false``` to ```true``` if you have ipv6 access.
-        1) Change ```require_dnssec``` from ```false``` to ```true```
-        1) Change ```fallback_resolver``` to ```1.1.1.1:53``` (cloudflare dns, see https://1.1.1.1)\
-        1) Change ```listen_addresses``` to an empty array ```[]```
-        1) Change `ignore_systemd_dns` to `true`
+    1) Edit `/etc/dnscrypt-proxy/dnscrypt-proxy.toml`
+        1) Change `listen_addresses` to an empty array:``[]`
+        1) Change `ipv6_servers` from `false` to `true` if you have ipv6 access.
+        1) Change `require_dnssec` from `false` to `true`
+        1) Change `timeout` to something lower (e.g. `1000`) (or leave it if your connection is pretty spotty)
+        1) Change `fallback_resolver` to `1.1.1.1:53` (cloudflare dns, see https://1.1.1.1)\
+        1) Change `ignore_systemd_dns` to `true` (if dnscrypt-proxy needs a backup dns, the system one is down anyway)
+        1) Change `cache` from `true` to `false` (dnsmasq handles this)
     1) Sandbox dnscrypt-proxy: `systemctl edit dnscrypt-proxy.service` (each bulletpoint is a new line)
       * `[Service]`
       * `CapabilityBoundingSet=CAP_IPC_LOCK CAP_SETGID CAP_SETUID CAP_NET_BIND_SERVICE`
