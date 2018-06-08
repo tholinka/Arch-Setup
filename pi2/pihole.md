@@ -13,8 +13,6 @@ and Dnscrypt for secure dns
     1) ```trizen``` ```pi-hole-server```
 1) Set up ```dnsmasq```
     1) Edit the following in ```/etc/dnsmasq.conf```
-        * Uncomment: `conf-file=/usr/share/dnsmasq/trust-anchors.conf`
-        * Uncomment: `dnssec`
         * Uncomment: `no-resolv`
         * Uncomment: `no-poll`
         * Set ```server=127.0.0.1#513```
