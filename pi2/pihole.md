@@ -10,7 +10,7 @@ and Dnscrypt for secure dns
 1) Install needed packages:
     1) ```pacman```: ```dnscrypt-proxy php-sqlite```
     1) ```pacman --asdeps```: ```lighttpd php-cgi```
-    1) ```trizen``` ```pi-hole-ftl pi-hole-server```
+    1) ```trizen``` ```pi-hole-server```
 1) Set up ```dnsmasq```
     1) Edit the following in ```/etc/dnsmasq.conf```
         * Uncomment: `conf-file=/usr/share/dnsmasq/trust-anchors.conf`
