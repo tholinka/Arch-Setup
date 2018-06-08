@@ -13,9 +13,12 @@ and Dnscrypt for secure dns
     1) ```trizen``` ```pi-hole-ftl pi-hole-server```
 1) Set up ```dnsmasq```
     1) Edit the following in ```/etc/dnsmasq.conf```
-        * Uncomment ```conf-dir=/etc/dnsmasq.d/,*.conf```
+        * Uncomment: `conf-file=/usr/share/dnsmasq/trust-anchors.conf`
+        * Uncomment: `dnssec`
+        * Uncomment: `no-resolv`
+        * Uncomment: `no-poll`
         * Set ```server=127.0.0.1#513```
-        * Set ```port=5333```
+        * Uncomment ```conf-dir=/etc/dnsmasq.d/,*.conf```
     1) In ```/etc/dnsmasq.d/01-pihole.conf```
         * Comment out the ```servers=``` list
     1) Enable/Start ```dnsmasq.service``` using systemctl
@@ -32,45 +35,39 @@ and Dnscrypt for secure dns
 1) Set up ```dnscrypt-proxy```
     1) Enable ```dnscrypt-proxy.service``` in ```systemctl``` (to create symlink to socket)
     1) Change the port it listens on to not conflict with unbound / dnsmasq
-        1) Edit the ```dnscrypt-proxy.socket``` systemd service, ```systemctl edit --full dnscrypt-proxy.socket```
-        1) Change the port from ```53``` to ```513```
+        1) Edit the ```dnscrypt-proxy.socket``` systemd service, ```systemctl edit dnscrypt-proxy.socket```
+        1) Add the following:
+```
+[Socket]
+ListenStream=
+ListenDatagram=
+ListenStream=127.0.0.1:513
+ListenDatagram=127.0.0.1:513
+```
     1) Edit ```/etc/dnscrypt-proxy/dnscrypt-proxy.toml```
         1) Change ```ipv6_servers``` from ```false``` to ```true``` if you have ipv6 access.
         1) Change ```require_dnssec``` from ```false``` to ```true```
         1) Change ```fallback_resolver``` to ```1.1.1.1:53``` (cloudflare dns, see https://1.1.1.1)\
         1) Change ```listen_addresses``` to an empty array ```[]```
-    1) Start/Enable ```dnscrypt-proxy.service``` in ```systemctl```
-1) Set up unbound
-    1) Edit ```/etc/unbound/unbound.conf``` with the following: (change the ```access-control``` line to your ```newtork-ip/subnet-mask```)
+    1) Sandbox dnscrypt-proxy: `systemctl edit dnscrypt-proxy.service`
 ```
-server:
-    hide-identity: yes
-    hide-version: yes
-    harden-glue: yes
-    harden-dnssec-stripped: yes
-    qname-minimisation: yes
-    unwanted-reply-threshold: 10000000
-    cache-min-ttl: 3600
-    num-threads: $(nproc --all)
-    use-systemd: yes
-    do-daemonize: no
-    use-syslog: yes
-    do-not-query-localhost: no
-    interface: 0.0.0.0
-    access-control: 0.0.0.0/0 allow
-    port: 53
-    do-ip4: yes
-    do-ip6: yes
-    do-udp: yes
-    do-tcp: yes
-    forward-zone:
-        name: "."
-        forward-addr: 127.0.0.1@5333
-        forward-first: no
-remote-control:
-    control-enable: no
+[Service]
+CapabilityBoundingSet=CAP_IPC_LOCK CAP_SETGID CAP_SETUID CAP_NET_BIND_SERVICE
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+PrivateTmp=true
+PrivateDevices=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+RestrictRealtime=true
+RestrictAddressFamilies=AF_INET AF_INET6
+SystemCallArchitectures=native
+SystemCallFilter=~@clock @cpu-emulation @debug @keyring @ipc @module @mount @obsolete @raw-io
 ```
-    1) enable/start ```unbound.service``` in ```systemctl```
+    1) Start/Enable ```dnscrypt-proxy.socket``` in ```systemctl```
 1) Set up ```pi-hole-ftl```
     1) Edit the following in ```/etc/pihole/pihole-FTL.conf```
         * Change ```SOCKET_LISTENING``` to ```all```
