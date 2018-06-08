@@ -13,7 +13,7 @@ and Dnscrypt for secure dns
     1) ```trizen```: ```pi-hole-server```
 1) Set up ```dnsmasq```
     1) Edit the following in ```/etc/dnsmasq.conf```
-        * Add `min-cache-ttl=3600` somewhere (note: this is the max value dnsmasq allows, and _may_ cause issues with out of date domains, but it should be fine, as the very least you may want to set this to like 600 (10 mins) as some domains (google) keep very short default ttl, causing unneeded lookups)
+        * Add `min-cache-ttl=3600` somewhere (note: this is the max value dnsmasq allows, and _may_ cause issues with out of date domains, but it should be fine. At the very least you may want to set this to like 600 (10 mins) as some domains (google) keep very short default ttl, causing unneeded lookups)
         * Uncomment: `no-resolv`
         * Uncomment: `no-poll`
         * Set ```server=127.0.0.1#513```
