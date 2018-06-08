@@ -28,14 +28,16 @@ general_patches()
     echo "@@ -40,2 +40,2 @@
 -CFLAGS=\"-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt\"
 -CXXFLAGS=\"-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt\"
-+CFLAGS=\"-march=native -mtune=native -O3 -pipe -fstack-protector-strong -fno-plt\"
-+CXXFLAGS=\"-march=native -mtune=native -O3 -pipe -fstack-protector-strong -fno-plt\"
++CFLAGS=\"-march=native -mtune=native -O2 -pipe -fstack-protector-strong -fno-plt -ftree-vectorize\"
++CXXFLAGS=\"${CFLAGS}\"
 @@ -44 +44 @@
 -#MAKEFLAGS=\"-j2\"
 +MAKEFLAGS=\"-j\$(nproc --all)\"
 @@ -62 +62 @@
 -BUILDENV=(\!distcc color \!ccache check \!sign)
 +BUILDENV=(fakeroot \!distcc color ccache check \!sign)" | sudo patch -p0 -N /etc/makepkg.conf
+
+    cbecho "Set -ftree-vectorize in /etc/makepkg.conf CFLAGS, /most/ newer systems support this, but it may need to be removed"
 
     ## colorgcc -> ccache
     cecho "Patching colorgcc to use ccache"
