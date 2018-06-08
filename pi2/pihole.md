@@ -45,6 +45,7 @@ and Dnscrypt for secure dns
         1) Change ```require_dnssec``` from ```false``` to ```true```
         1) Change ```fallback_resolver``` to ```1.1.1.1:53``` (cloudflare dns, see https://1.1.1.1)\
         1) Change ```listen_addresses``` to an empty array ```[]```
+        1) Change `ignore_systemd_dns` to `true`
     1) Sandbox dnscrypt-proxy: `systemctl edit dnscrypt-proxy.service` (each bulletpoint is a new line)
       * `[Service]`
       * `CapabilityBoundingSet=CAP_IPC_LOCK CAP_SETGID CAP_SETUID CAP_NET_BIND_SERVICE`
