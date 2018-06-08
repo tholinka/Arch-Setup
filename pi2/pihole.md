@@ -41,7 +41,7 @@ and Dnscrypt for secure dns
           * `ListenStream=127.0.0.1:513`
           * `ListenDatagram=127.0.0.1:513`
     1) Edit `/etc/dnscrypt-proxy/dnscrypt-proxy.toml`
-        1) Change `listen_addresses` to an empty array:``[]`
+        1) Change `listen_addresses` to an empty array:`[]`
         1) Change `ipv6_servers` from `false` to `true` if you have ipv6 access.
         1) Change `require_dnssec` from `false` to `true`
         1) Change `timeout` to something lower (e.g. `1000`) (or leave it if your connection is pretty spotty)
