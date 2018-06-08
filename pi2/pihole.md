@@ -17,8 +17,8 @@ and Dnscrypt for secure dns
         * Uncomment: `no-poll`
         * Set ```server=127.0.0.1#513```
         * Uncomment ```conf-dir=/etc/dnsmasq.d/,*.conf```
-    1) In ```/etc/dnsmasq.d/01-pihole.conf```
-        * Comment out the ```servers=``` list
+    1) In `/etc/dnsmasq.d/01-pihole.conf` and ```/etc/pihole/setupVars.conf```
+        * Remove the `server=` lines
     1) Enable/Start ```dnsmasq.service``` using systemctl
 1) Set up ```php``` in ```/etc/php/php.ini```
    1) Enable / uncomment the following extensions (e.g. remove the ```;``` in front of it)
