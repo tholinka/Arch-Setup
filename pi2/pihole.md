@@ -8,8 +8,8 @@ and Dnscrypt for secure dns
 ### This assumes you have trizen installed + a general system setup
 
 1) Install needed packages:
-    1) ```pacman```: ```unbound dnscrypt-proxy php-sqlite```
-    1) ```pacman --asdeps```: ```lighttpd php-cgi expat```
+    1) ```pacman```: ```dnscrypt-proxy php-sqlite```
+    1) ```pacman --asdeps```: ```lighttpd php-cgi```
     1) ```trizen``` ```pi-hole-ftl pi-hole-server```
 1) Set up ```dnsmasq```
     1) Edit the following in ```/etc/dnsmasq.conf```
@@ -36,37 +36,33 @@ and Dnscrypt for secure dns
     1) Enable ```dnscrypt-proxy.service``` in ```systemctl``` (to create symlink to socket)
     1) Change the port it listens on to not conflict with unbound / dnsmasq
         1) Edit the ```dnscrypt-proxy.socket``` systemd service, ```systemctl edit dnscrypt-proxy.socket```
-        1) Add the following:
-```
-[Socket]
-ListenStream=
-ListenDatagram=
-ListenStream=127.0.0.1:513
-ListenDatagram=127.0.0.1:513
-```
+        1) Add the following (each bullet on a new line):
+          * `[Socket]`
+          * `ListenStream=`
+          * `ListenDatagram=`
+          * `ListenStream=127.0.0.1:513`
+          * `ListenDatagram=127.0.0.1:513`
     1) Edit ```/etc/dnscrypt-proxy/dnscrypt-proxy.toml```
         1) Change ```ipv6_servers``` from ```false``` to ```true``` if you have ipv6 access.
         1) Change ```require_dnssec``` from ```false``` to ```true```
         1) Change ```fallback_resolver``` to ```1.1.1.1:53``` (cloudflare dns, see https://1.1.1.1)\
         1) Change ```listen_addresses``` to an empty array ```[]```
-    1) Sandbox dnscrypt-proxy: `systemctl edit dnscrypt-proxy.service`
-```
-[Service]
-CapabilityBoundingSet=CAP_IPC_LOCK CAP_SETGID CAP_SETUID CAP_NET_BIND_SERVICE
-ProtectSystem=strict
-ProtectHome=true
-ProtectKernelTunables=true
-ProtectKernelModules=true
-ProtectControlGroups=true
-PrivateTmp=true
-PrivateDevices=true
-MemoryDenyWriteExecute=true
-NoNewPrivileges=true
-RestrictRealtime=true
-RestrictAddressFamilies=AF_INET AF_INET6
-SystemCallArchitectures=native
-SystemCallFilter=~@clock @cpu-emulation @debug @keyring @ipc @module @mount @obsolete @raw-io
-```
+    1) Sandbox dnscrypt-proxy: `systemctl edit dnscrypt-proxy.service` (each bulletpoint is a new line)
+      * `[Service]`
+      * `CapabilityBoundingSet=CAP_IPC_LOCK CAP_SETGID CAP_SETUID CAP_NET_BIND_SERVICE`
+      * `ProtectSystem=strict`
+      * `ProtectHome=true`
+      * `ProtectKernelTunables=true`
+      * `ProtectKernelModules=true`
+      * `ProtectControlGroups=true`
+      * `PrivateTmp=true`
+      * `PrivateDevices=true`
+      * `MemoryDenyWriteExecute=true`
+      * `NoNewPrivileges=true`
+      * `RestrictRealtime=true`
+      * `RestrictAddressFamilies=AF_INET AF_INET6`
+      * `SystemCallArchitectures=native`
+      * `SystemCallFilter=~@clock @cpu-emulation @debug @keyring @ipc @module @mount @obsolete @raw-io`
     1) Start/Enable ```dnscrypt-proxy.socket``` in ```systemctl```
 1) Set up ```pi-hole-ftl```
     1) Edit the following in ```/etc/pihole/pihole-FTL.conf```
