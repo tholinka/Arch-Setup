@@ -32,21 +32,12 @@ and Dnscrypt for secure dns
     1) ```cp /usr/share/pihole/configs/lighttpd.example.conf /etc/lighttpd/lighttpd.conf```
     1) Enable/start ```lighttpd.service``` in ```systemctl```
 1) Set up ```dnscrypt-proxy```
-    1) Enable ```dnscrypt-proxy.service``` in ```systemctl``` (to create symlink to socket)
-    1) Change the port it listens on to not conflict with unbound / dnsmasq
-        1) Edit the ```dnscrypt-proxy.socket``` systemd service, ```systemctl edit dnscrypt-proxy.socket```
-        1) Add the following (each bullet on a new line):
-          * `[Socket]`
-          * `ListenStream=`
-          * `ListenDatagram=`
-          * `ListenStream=127.0.0.1:513`
-          * `ListenDatagram=127.0.0.1:513`
     1) Edit `/etc/dnscrypt-proxy/dnscrypt-proxy.toml`
-        1) Change `listen_addresses` to an empty array:`[]`
+        1) Change `listen_addresses` from port `53` to `513`
         1) Change `ipv6_servers` from `false` to `true` if you have ipv6 access.
         1) Change `require_dnssec` from `false` to `true`
         1) Change `timeout` to something lower (e.g. `1000`) (or leave it if your connection is pretty spotty)
-        1) Change `fallback_resolver` to `1.1.1.1:53` (cloudflare dns, see https://1.1.1.1)\
+        1) (Optional) Change `fallback_resolver` to something else, e.g. `1.1.1.1:53` (cloudflare dns, see https://1.1.1.1)\
         1) Change `ignore_systemd_dns` to `true` (if dnscrypt-proxy needs a backup dns, the system one is down anyway)
         1) Change `cache` from `true` to `false` (dnsmasq handles this)
     1) Sandbox dnscrypt-proxy: `systemctl edit dnscrypt-proxy.service` (each bulletpoint is a new line)
@@ -65,7 +56,7 @@ and Dnscrypt for secure dns
       * `RestrictAddressFamilies=AF_INET AF_INET6`
       * `SystemCallArchitectures=native`
       * `SystemCallFilter=~@clock @cpu-emulation @debug @keyring @ipc @module @mount @obsolete @raw-io`
-    1) Start/Enable ```dnscrypt-proxy.socket``` in ```systemctl```
+    1) Start/Enable ```dnscrypt-proxy.service``` in ```systemctl```
 1) Set up ```pi-hole-ftl```
     1) Edit the following in ```/etc/pihole/pihole-FTL.conf```
         * Change ```SOCKET_LISTENING``` to ```all```
