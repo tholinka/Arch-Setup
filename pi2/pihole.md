@@ -41,21 +41,21 @@ and Dnscrypt for secure dns
         1) Change `ignore_systemd_dns` to `true` (if dnscrypt-proxy needs a backup dns, the system one is down anyway)
         1) Change `cache` from `true` to `false` (dnsmasq handles this)
     1) Sandbox dnscrypt-proxy: `systemctl edit dnscrypt-proxy.service` (each bulletpoint is a new line)
-      * `[Service]`
-      * `CapabilityBoundingSet=CAP_IPC_LOCK CAP_SETGID CAP_SETUID CAP_NET_BIND_SERVICE`
-      * `ProtectSystem=strict`
-      * `ProtectHome=true`
-      * `ProtectKernelTunables=true`
-      * `ProtectKernelModules=true`
-      * `ProtectControlGroups=true`
-      * `PrivateTmp=true`
-      * `PrivateDevices=true`
-      * `MemoryDenyWriteExecute=true`
-      * `NoNewPrivileges=true`
-      * `RestrictRealtime=true`
-      * `RestrictAddressFamilies=AF_INET AF_INET6`
-      * `SystemCallArchitectures=native`
-      * `SystemCallFilter=~@clock @cpu-emulation @debug @keyring @ipc @module @mount @obsolete @raw-io`
+        * `[Service]`
+        * `CapabilityBoundingSet=CAP_IPC_LOCK CAP_SETGID CAP_SETUID CAP_NET_BIND_SERVICE`
+        * `ProtectSystem=strict`
+        * `ProtectHome=true`
+        * `ProtectKernelTunables=true`
+        * `ProtectKernelModules=true`
+        * `ProtectControlGroups=true`
+        * `PrivateTmp=true`
+        * `PrivateDevices=true`
+        * `MemoryDenyWriteExecute=true`
+        * `NoNewPrivileges=true`
+        * `RestrictRealtime=true`
+        * `RestrictAddressFamilies=AF_INET AF_INET6`
+        * `SystemCallArchitectures=native`
+        * `SystemCallFilter=~@clock @cpu-emulation @debug @keyring @ipc @module @mount @obsolete @raw-io`
     1) Start/Enable ```dnscrypt-proxy.service``` in ```systemctl```
 1) Set up ```pi-hole-ftl```
     1) Edit the following in ```/etc/pihole/pihole-FTL.conf```
