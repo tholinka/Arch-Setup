@@ -99,7 +99,7 @@ DOMAINS="$DOMAINS gfwsl.geforce.com"
 
 ### From https://wally3k.github.io/
 ## Amazon Web Services (Kowabit)
-DOMAINS="$DOMAINS s3.amazonaws.com"
+DOMAINS="$DOMAINS s3.amazonaws.com aws.amazon.com"
 
 ## Google Content (Andy Short)
 DOMAINS="$DOMAINS clients2.google.com"
@@ -193,6 +193,12 @@ DOMAINS="$DOMAINS weblb-wg.dual-gslb.spotify.com"
 
 # www.howtogeek.com
 DOMAINS="$DOMAINS www.howtogeek.com"
+
+# medium.com
+DOMAINS="$DOMAINS medium.com"
+
+# fidelity.com statement viewer
+DOMAINS="$DOMAINS nexus.ensighten.com"
 
 ### Whitelist items
 # unquoted so the spaces spit then into new arguments

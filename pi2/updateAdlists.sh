@@ -2,10 +2,10 @@
 
 #echo "Downloading adlist from wally3k.firebog.net"
 #echo;
-#sudo curl "https://v.firebog.net/hosts/lists.php?type=tick" -o /etc/pihole/adlists.list
+sudo curl "https://v.firebog.net/hosts/lists.php?type=tick" -o /etc/pihole/adlists.list
 
 # used when firebog's website is having issues
-echo "Warning: using static list"
+#echo "Warning: using static list"
 echo "https://hosts-file.net/grm.txt
 https://reddestdream.github.io/Projects/MinimalHosts/etc/MinimalHostsBlocker/minimalhosts
 https://raw.githubusercontent.com/StevenBlack/hosts/master/data/KADhosts/hosts
@@ -40,13 +40,14 @@ https://raw.githubusercontent.com/quidsup/notrack/master/malicious-sites.txt
 https://ransomwaretracker.abuse.ch/downloads/RW_DOMBL.txt
 https://v.firebog.net/hosts/Shalla-mal.txt
 https://raw.githubusercontent.com/StevenBlack/hosts/master/data/add.Risk/hosts
-https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist" | sudo tee /etc/pihole/adlists.list >/dev/null
+https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist" &>/dev/null #| sudo tee /etc/pihole/adlists.list >/dev/null
 
 echo;
 echo;
-echo "Adding windows tracking list"
+echo "Adding tholinka.github.io tracking lists"
 
-echo "https://tholinka.github.io/projects/hosts/wintracking/normal" | sudo tee -a /etc/pihole/adlists.list >/dev/null
+echo "https://tholinka.github.io/projects/hosts/wintracking/normal
+https://tholinka.github.io/projects/hosts/hosts" | sudo tee -a /etc/pihole/adlists.list >/dev/null
 
 echo;
 echo "Running pihole gravity"
