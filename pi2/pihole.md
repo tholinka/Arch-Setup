@@ -11,7 +11,7 @@ and Dnscrypt for secure dns
     1) ```pacman```: ```dnscrypt-proxy php-sqlite```
     1) ```pacman --asdeps```: ```lighttpd php-cgi```
     1) ```trizen```: ```pi-hole-server```
-1) Set up ```dnsmasq```
+1) Set up ```dnsmasq``` (this may be outdated now that pi-hole handles dnsmasq itself)
     1) Edit the following in ```/etc/dnsmasq.conf```
         * Add `min-cache-ttl=3600` somewhere (note: this is the max value dnsmasq allows, and _may_ cause issues with out of date domains, but it should be fine. At the very least you may want to set this to like 600 (10 mins) as some domains (google) keep very short default ttl, causing unneeded lookups)
         * Uncomment: `no-resolv`
@@ -20,7 +20,6 @@ and Dnscrypt for secure dns
         * Uncomment ```conf-dir=/etc/dnsmasq.d/,*.conf```
     1) In `/etc/dnsmasq.d/01-pihole.conf` and ```/etc/pihole/setupVars.conf```
         * Remove the `server=` lines
-    1) Enable/Start ```dnsmasq.service``` using systemctl
 1) Set up ```php``` in ```/etc/php/php.ini```
    1) Enable / uncomment the following extensions (e.g. remove the ```;``` in front of it)
        * ```extension=pdo_sqlite```
@@ -61,7 +60,7 @@ and Dnscrypt for secure dns
     1) Edit the following in ```/etc/pihole/pihole-FTL.conf```
         * Change ```SOCKET_LISTENING``` to ```all```
         * IF your on a solid state drive (e.g. ssd, sd card), set ```DBINTERVAL``` to ```60```
-    1) Restart ```pi-hole-ftl.service``` (it's statically enabled, don't enable it)
+    1) Restart ```pihole-FTL.service``` (it's statically enabled, don't enable it)
     1) run ```pihole -a -p``` and set a password
 1) There you go, pihole should be running, you can check the management console by going to [ip]/admin in your browser
 1) Final thing: restart the pi to be safe, and set your router to use the pi for dns
