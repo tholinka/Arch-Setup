@@ -62,5 +62,10 @@ and Dnscrypt for secure dns
         * IF your on a solid state drive (e.g. ssd, sd card), set ```DBINTERVAL``` to ```60```
     1) Restart ```pihole-FTL.service``` (it's statically enabled, don't enable it)
     1) run ```pihole -a -p``` and set a password
+1) Allow pihole through firewall (commands assume ufw is being used)
+    1) `ufw allow dns` to allow pihole/dnsmasq itself
+    1) `ufw allow 513` to allow dnscrypt-proxy
+    1) `ufw allow 80` to allow the web portal to work (optional: `ufw status numbered`, and then delete the ipv6 version of port 80)
+    1) `ufw allow 4711` to allow the web portal to access the pihole api (optional: same as previous, except delete the ipv6 version of port 4711)
 1) There you go, pihole should be running, you can check the management console by going to [ip]/admin in your browser
 1) Final thing: restart the pi to be safe, and set your router to use the pi for dns
