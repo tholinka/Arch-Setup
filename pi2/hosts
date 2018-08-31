@@ -1,0 +1,37 @@
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+# IP Addr     Host name
+# Note: the majority of these are only here for the pihole web interface to have names tied to ips
+192.168.1.29  unifiap.local
+
+192.168.1.25       d1.dns.local
+192.168.1.25   eth.d1.dns.local
+192.168.1.26  wifi.d1.dns.local
+
+192.168.1.20       t1.desktops.local
+192.168.1.20   eth.t1.desktops.local
+192.168.1.19  wifi.t1.desktops.local
+
+192.168.1.21   s1.servers.local
+192.168.1.21  p1.printers.local
+192.168.1.21  unifi
+
+192.168.1.1   r1.routers.local
+
+192.168.1.31  t1.phones.local
+192.168.1.33  m1.phones.local
+
+192.168.1.32  t1.tablets.local
+
+192.168.1.22  t1.laptops.local 
+192.168.1.36  t2.laptops.local    
+192.168.1.35  g1.laptops.local
+
+# disable proxy search
+127.0.0.1     wpad.local
+
+127.0.0.1     localhost
+127.0.0.1     localhost.local
+# distcc
+## disabled
+#192.168.1.21  distcc1.distcc.local
