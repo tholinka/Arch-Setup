@@ -27,11 +27,12 @@
 192.168.1.36  t2.laptops.local    
 192.168.1.35  g1.laptops.local
 
+# show "localhost" on the pihole web interface for local web queries
+127.0.0.1     localhost
+
 # disable proxy search
 127.0.0.1     wpad.local
 
-127.0.0.1     localhost
-127.0.0.1     localhost.local
 # distcc
 ## disabled
 #192.168.1.21  distcc1.distcc.local
