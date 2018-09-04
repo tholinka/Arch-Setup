@@ -224,6 +224,9 @@ DOMAINS="$DOMAINS nexus.ensighten.com"
 
 # aws
 DOMAINS="$DOMAINS aws.amazon.com"
+
+# random local websites
+DOMAINS="$DOMAINS eteamz.com www.eteamz.com"
 ### End my own
 
 ### Whitelist items
