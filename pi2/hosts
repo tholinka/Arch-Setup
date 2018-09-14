@@ -19,13 +19,18 @@
 192.168.1.1   r1.routers.local
 
 192.168.1.31  t1.phones.local
+192.168.1.38  t2.phones.local
 192.168.1.33  m1.phones.local
+192.168.1.34  m2.phones.local
 
 192.168.1.32  t1.tablets.local
 
 192.168.1.22  t1.laptops.local 
 192.168.1.36  t2.laptops.local    
 192.168.1.35  g1.laptops.local
+192.168.1.37  m1.laptops.local
+
+192.168.1.39  c1.consoles.local
 
 # show "localhost" on the pihole web interface for local web queries
 127.0.0.1     localhost
