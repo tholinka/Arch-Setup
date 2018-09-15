@@ -27,6 +27,7 @@ and Dnscrypt for secure dns
        * ```extension=sqlite3```
     1) Set (and uncomment) ```data.timezone = [America/Denver]```, see ```datetimectl``` to find your timezone
     1) Set (and uncomment) ```open_basedir``` to increase security, set to ```/srv/http/pihole:/run/pihole-ftl/pihole-FTL.port:/run/log/pihole/pihole.log:/run/log/pihole-ftl/pihole-FTL.log:/etc/pihole:/etc/hosts:/etc/hostname:/etc/dnsmasq.d/02-pihole-dhcp.conf:/etc/dnsmasq.d/03-pihole-wildcard.conf:/etc/dnsmasq.d/04-pihole-static-dhcp.conf:/proc/meminfo:/proc/cpuinfo:/sys/class/thermal/thermal_zone0/temp:/tmp```
+    1) If your using a ipv6 tunnel (e.g. hurricane electric) set up a hardlink (or copy) `02-disable-ipv6-on-some-domains.conf` to /etc/dnsmasq.d for various domains that perform badly on ipv6 (e.g. netflix thinks ipv6 tunnels are vpns and blocks access)
 1) Set up ```lighttpd```
     1) ```cp /usr/share/pihole/configs/lighttpd.example.conf /etc/lighttpd/lighttpd.conf```
     1) Enable/start ```lighttpd.service``` in ```systemctl```
@@ -60,6 +61,7 @@ and Dnscrypt for secure dns
     1) Edit the following in ```/etc/pihole/pihole-FTL.conf```
         * Change ```SOCKET_LISTENING``` to ```all```
         * IF your on a solid state drive (e.g. ssd, sd card), set ```DBINTERVAL``` to ```60```
+    1) Hardlink (or copy) `hosts` to `/etc/hosts` and edit as desired so that computer names are displayed instead of hostnames on the pihole web interface
     1) Restart ```pihole-FTL.service``` (it's statically enabled, don't enable it)
     1) run ```pihole -a -p``` and set a password
 1) Allow pihole through firewall (commands assume ufw is being used)

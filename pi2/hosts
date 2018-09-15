@@ -36,7 +36,7 @@
 127.0.0.1     localhost
 
 # disable proxy search
-127.0.0.1     wpad.local
+0.0.0.0     wpad.local
 
 # distcc
 ## disabled
