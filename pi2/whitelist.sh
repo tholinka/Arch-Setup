@@ -227,6 +227,9 @@ DOMAINS="$DOMAINS aws.amazon.com"
 
 # random local websites
 DOMAINS="$DOMAINS eteamz.com www.eteamz.com"
+
+# filesharing site
+DOMAINS="$DOMAINS my.mixtape.moe"
 ### End my own
 
 ### Whitelist items
