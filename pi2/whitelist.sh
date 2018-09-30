@@ -230,6 +230,18 @@ DOMAINS="$DOMAINS eteamz.com www.eteamz.com"
 
 # filesharing site
 DOMAINS="$DOMAINS my.mixtape.moe"
+
+# stitcher podcast website
+DOMAINS="$DOMAINS www.stitcher.com"
+
+# istherenaydeal links
+DOMAINS="$DOMAINS www.jdoqocy.com cj.dotomi.com www.emjcd.com"
+
+# supermicro
+DOMAINS="$DOMAINS www.supermicro.com supermicro.com"
+
+# students.robinhood.com
+DOMAINS="$DOMAINS bnc.lt"
 ### End my own
 
 ### Whitelist items
