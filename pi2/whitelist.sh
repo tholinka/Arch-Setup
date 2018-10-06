@@ -242,6 +242,9 @@ DOMAINS="$DOMAINS www.supermicro.com supermicro.com"
 
 # students.robinhood.com
 DOMAINS="$DOMAINS bnc.lt"
+
+# osrs, seems to have gotten caught up in blacklisting of malware lookalikes
+DOMAINS="$DOMAINS runescape.com oldschool.runescape.com"
 ### End my own
 
 ### Whitelist items
