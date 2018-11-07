@@ -10,6 +10,7 @@
     * if you set your keyboard earlier (to anything non-us), make those changes perminent in by editing ```/etc/vconsole.conf``` to include ```KEYMAP=[keymap setting]``` and, after a newline ```FONT=[font setting]```
 1. Select a timezone, ```tzselect``` to find the timezone to use, and then ```ln -s /usr/share/zoneinfo/[zone]/[subzone] /etc/localtime```, you may need to use ```ln -sf``` instead.
 1. Set your hardware clock, ```hwclock --systohc --utc```, this will "break" windows time if you are dual booting, see [this](https://wiki.archlinux.org/index.php/Time#UTC_in_Windows) to "fix" it
+    * run `timedatectl` and see if the time is correct.  If it's not, either set it manually, or (this is what's recommended) enable syncing through NTP by running `timedatectl set-ntp true`.  (NTP may be enabled by default, but it has been observed to be off on at least one machine)
 1. IF you used LVM in step 2
     * If you are using systemd (all new Arch installs are), replace ``udev`` with ```systemd``` and add ```sd-lvm2``` before ```filesystems``` on the HOOKS= line of ```/etc/mkinitcpio.conf```
     * If you are using non-systemd init (for some reason), add ```lvm2``` to the above file
