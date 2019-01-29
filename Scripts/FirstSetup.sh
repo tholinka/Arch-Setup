@@ -70,6 +70,12 @@ setup_aur
 echo;
 cecho "Installing lightdm greeter, and systemd-boot pacman hook (from aur, using yay)"
 yay -S --noconfirm --needed lightdm-webkit2-theme-material2 systemd-boot-pacman-hook
+echo;
+
+cecho "Install git flow (from aur, using yay)?"
+if __get "gitflow"; then
+    yay -S --noconfirm --needed gitflow-avh
+fi
 
 echo;
 cbecho "Package Installation done"
