@@ -19,12 +19,16 @@ DOMAINS="$DOMAINS outlook.office365.com products.office.com c.s-microsoft.com i.
 DOMAINS="$DOMAINS g.live.com"
 # Windows/Xbox store
 DOMAINS="$DOMAINS dl.delivery.mp.microsoft.com geo-prod.do.dsp.mp.microsoft.com displaycatalog.mp.microsoft.com"
-# Xbox Achievements (from /r/xboxone)
-DOMAINS="$DOMAINS xbox.ipv6.microsoft.com device.auth.xboxlive.com www.msftncsi.com title.mgt.xboxlive.com xsts.auth.xboxlive.com title.auth.xboxlive.com ctldl.windowsupdate.com attestation.xboxlive.com xboxexperiencesprod.experimentation.xboxlive.com xflight.xboxlive.com cert.mgt.xboxlive.com xkms.xbolive.com def-vef.xboxlive.com notify.xboxlive.com help.ui.xboxlive.com licensing.xboxlive.com eds.xboxlive.com www.xboxlive.com v10.vortex-win.data.microsoft.com settings-win.data.microsoft.com"
-# Xbox Live # If this domain is blacklisted, you will be unable to sign-in, create new accounts, or recover existing Microsoft Accounts on your Xbox One console.
+# used for sign-ins, new accounts, etc on xbox
 DOMAINS="$DOMAINS clientconfig.passport.net"
-# Skype #See the GitHub Topic on these domains.
-DOMAINS="$DOMAINS s.gateway.messenger.live.com ui.skype.com pricelist.skype.com apps.skype.com m.hotmail.com s.gateway.messenger.live.com sa.symcb.com s1.symcb.com s2.symcb.com s3.symcb.com s4.symcb.com s5.symcb.com"
+# Microsoft says this is used for xbox achievements
+DOMAINS="$DOMAINS v10.events.data.microsoft.com"
+# xbox messaging
+DOMAINS="$DOMAINS client-s.gateway.messenger.live.com"
+# Xbox Achievements (from /r/xboxone)
+DOMAINS="$DOMAINS xbox.ipv6.microsoft.com device.auth.xboxlive.com www.msftncsi.com title.mgt.xboxlive.com xsts.auth.xboxlive.com title.auth.xboxlive.com ctldl.windowsupdate.com attestation.xboxlive.com xboxexperiencesprod.experimentation.xboxlive.com xflight.xboxlive.com cert.mgt.xboxlive.com xkms.xboxlive.com def-vef.xboxlive.com notify.xboxlive.com help.ui.xboxlive.com licensing.xboxlive.com eds.xboxlive.com www.xboxlive.com v10.vortex-win.data.microsoft.com settings-win.data.microsoft.com"
+# Skype
+DOMAINS="$DOMAINS s.gateway.messenger.live.com client-s.gateway.messenger.live.com ui.skype.com pricelist.skype.com apps.skype.com m.hotmail.com sa.symcb.com s1.symcb.com s2.symcb.com s3.symcb.com s4.symcb.com s5.symcb.com"
 # Microsoft Office
 DOMAINS="$DOMAINS officeclient.microsoft.com"
 ## End Microsoft
@@ -39,8 +43,7 @@ DOMAINS="$DOMAINS spclient.wg.spotify.com apresolve.spotify.com"
 DOMAINS="$DOMAINS weeklyad.target.com m.weeklyad.target.com weeklyad.target.com.edgesuite.net"
 
 # Facebook
-DOMAINS="$DOMAINS creative.ak.fbcdn.net external-lhr0-1.xx.fbcdn.net external-lhr1-1.xx.fbcdn.net external-lhr10-1.xx.fbcdn.net external-lhr2-1.xx.fbcdn.net external-lhr3-1.xx.fbcdn.net external-lhr4-1.xx.fbcdn.net external-lhr5-1.xx.fbcdn.net external-lhr6-1.xx.fbcdn.net external-lhr7-1.xx.fbcdn.net external-lhr8-1.xx.fbcdn.net external-lhr9-1.xx.fbcdn.net fbcdn-creative-a.akamaihd.net scontent-lhr3-1.xx.fbcdn.net scontent.xx.fbcdn.net scontent.fgdl5-1.fna.fbcdn.net graph.facebook.com
-connect.facebook.com"
+DOMAINS="$DOMAINS upload.facebook.com creative.ak.fbcdn.net external-lhr0-1.xx.fbcdn.net external-lhr1-1.xx.fbcdn.net external-lhr10-1.xx.fbcdn.net external-lhr2-1.xx.fbcdn.net external-lhr3-1.xx.fbcdn.net external-lhr4-1.xx.fbcdn.net external-lhr5-1.xx.fbcdn.net external-lhr6-1.xx.fbcdn.net external-lhr7-1.xx.fbcdn.net external-lhr8-1.xx.fbcdn.net external-lhr9-1.xx.fbcdn.net fbcdn-creative-a.akamaihd.net scontent-lhr3-1.xx.fbcdn.net scontent.xx.fbcdn.net scontent.fgdl5-1.fna.fbcdn.net graph.facebook.com connect.facebook.com cdn.fbsbx.com api.facebook.com edge-mqtt.facebook.com mqtt.c10r.facebook.com portal.fb.com star.c10r.facebook.com star-mini.c10r.facebook.com b-api.facebook.com fb.me"
 
 # DirectTV
 DOMAINS="$DOMAINS directvnow.com directvapplications.hb.omtrdc.net s.zkcdn.net js.maxmind.com"
@@ -49,8 +52,7 @@ DOMAINS="$DOMAINS directvnow.com directvapplications.hb.omtrdc.net s.zkcdn.net j
 #DOMAINS="$DOMAINS ec-ns.sascdn.com"
 
 ## Plex Domains
-DOMAINS="$DOMAINS plex.tv tvdb2.plex.tv pubsub.plex.bz proxy.plex.bz proxy02.pop.ord.plex.bz cpms.spop10.ams.plex.bz meta-db-worker02.pop.ric.plex.bz meta.plex.bz tvthemes.plexapp.com.cdn.cloudflare.net tvthemes.plexapp.com 106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services meta.plex.tv cpms35.spop10.ams.plex.bz proxy.plex.tv metrics.plex.tv pubsub.plex.tv status.plex.tv www.plex.tv node.plexapp.com nine.plugins.plexapp.com staging.plex.tv
-app.plex.tv o1.email.plex.tv  o2.sg0.plex.tv dashboard.plex.tv"
+DOMAINS="$DOMAINS plex.tv tvdb2.plex.tv pubsub.plex.bz proxy.plex.bz proxy02.pop.ord.plex.bz cpms.spop10.ams.plex.bz meta-db-worker02.pop.ric.plex.bz meta.plex.bz tvthemes.plexapp.com.cdn.cloudflare.net tvthemes.plexapp.com 106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services meta.plex.tv cpms35.spop10.ams.plex.bz proxy.plex.tv metrics.plex.tv pubsub.plex.tv status.plex.tv www.plex.tv node.plexapp.com nine.plugins.plexapp.com staging.plex.tv app.plex.tv o1.email.plex.tv  o2.sg0.plex.tv dashboard.plex.tv"
 # Domains used by Plex
 # - custom login pictures
 DOMAINS="$DOMAINS gravatar.com"
@@ -61,7 +63,7 @@ DOMAINS="$DOMAINS themoviedb.com"
 ## End plex
 
 # Sonarr
-#DOMAINS="$DOMAINS services.sonarr.tv skyhook.sonarr.tv download.sonarr.tv apt.sonarr.tv forums.sonarr.tv"
+#DOMAINS="$DOMAINS services.sonarr.tv skyhook.sonarr.tv download.sonarr.tv apt.sonarr.tv forums.sonarr.tv
 
 # Placehold.it (Image placeholders often used during web design. Not sure why this is even blocked in the first place.)
 DOMAINS="$DOMAINS placehold.it placeholdit.imgix.net"
@@ -129,7 +131,7 @@ DOMAINS="$DOMAINS s3.amazonaws.com"
 DOMAINS="$DOMAINS clients2.google.com clients3.google.com clients4.google.com clients5.google.com"
 
 ## Link Shortners (Openphish, Hostsfile.org)
-DOMAINS="$DOMAINS www.bit.ly bit.ly ow.ly j.mp goo.gl"
+DOMAINS="$DOMAINS www.bit.ly bit.ly ow.ly j.mp goo.gl tinyurl.com"
 
 ## Microsoft Connectivity Checker (Mahakala)
 DOMAINS="$DOMAINS msftncsi.com www.msftncsi.com"
@@ -251,7 +253,7 @@ DOMAINS="$DOMAINS runescape.com oldschool.runescape.com"
 # Add anudeepND's whitelist first, then add these on top of it
 # from https://github.com/anudeepND/whitelist/blob/master/scripts/whitelist.sh#L28
 echo "Downloading anudeepND's whitelist"
-curl -sS https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt | sudo tee -a /etc/pihole/whitelist.txt 1>/dev/null
+pihole -w $(curl -sS https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt)
 
 # unquoted so the spaces spit then into new arguments
 echo "Adding more domains to whitelist"
