@@ -247,6 +247,12 @@ DOMAINS="$DOMAINS bnc.lt"
 
 # osrs, seems to have gotten caught up in blacklisting of malware lookalikes
 DOMAINS="$DOMAINS runescape.com oldschool.runescape.com"
+
+# coinbase
+DOMAINS="$DOMAINS www.coinbase.com coinbase.com pro.coinbase.com api.coinbase.com assets.coinbase.com images.coinbase.com binance.com"
+
+# unsubscribe from coinbase
+DOMAINS="$DOMAINS mixpanel.com"
 ### End my own
 
 ### Whitelist items
