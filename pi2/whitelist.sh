@@ -253,6 +253,12 @@ DOMAINS="$DOMAINS www.coinbase.com coinbase.com pro.coinbase.com api.coinbase.co
 
 # unsubscribe from coinbase
 DOMAINS="$DOMAINS mixpanel.com"
+
+# miningpoolhub, mining group
+DOMAINS="$DOMAINS miningpoolhub.com us-east.cryptonight-hub.miningpoolhub.com"
+
+# github.com tar.gz download
+DOMAINS="$DOMAINS codeload.github.com"
 ### End my own
 
 ### Whitelist items
