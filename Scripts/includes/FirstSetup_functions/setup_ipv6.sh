@@ -10,9 +10,9 @@ net.ipv6.conf.all.use_tempaddr = 2
 net.ipv6.conf.default.use_tempaddr = 2"
 
 	# need to get device names
-	for i in /sys/class/net/*; do
-		# ignore io, it's the loopback
-		if [ "$i" == "io" ]; then
+	for i in $(echo /sys/class/net/* | sed 's|/sys/class/net/||g'); do
+		# ignore lo, it's the loopback
+		if [ "$i" = "lo" ]; then
 			continue
 		fi
 
