@@ -10,7 +10,7 @@ function get_deps()
     # widevine (netflix support) is in aur
     chromium="pepper-flash"
     plasma="packagekit-qt5 gtk2 kross plasma-nm"
-    kdeApps="p7zip qt5-imageformats cdrtools vorbis-tools ffmpeg libvncserver opus"
+    #kdeApps="p7zip qt5-imageformats cdrtools vorbis-tools ffmpeg libvncserver opus"
 
     # pretty sure we have this after xorg, but (shrug)
     ssh="xorg-xauth x11-ssh-askpass"

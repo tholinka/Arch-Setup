@@ -23,7 +23,7 @@ sudo pacman -Syu
 
 echo;
 
-PACKAGES="base-devel pacman-contrib xorg zsh git nemo chromium guake vim gufw plasma kde-applications cpupower openssh networkmanager ccache fakeroot colorgcc irqbalance procps-ng unbound curl postfix"
+PACKAGES="base-devel pacman-contrib xorg zsh git nemo chromium guake vim gufw plasma cpupower openssh networkmanager ccache colorgcc irqbalance curl"
 
 # all the deps
 PACKAGESdeps=""
@@ -72,11 +72,6 @@ cecho "Installing lightdm greeter, and systemd-boot pacman hook (from aur, using
 yay -S --noconfirm --needed lightdm-webkit2-theme-material2 systemd-boot-pacman-hook
 echo;
 
-cecho "Install git flow (from aur, using yay)?"
-if __get "gitflow"; then
-    yay -S --noconfirm --needed gitflow-avh
-fi
-
 echo;
 cbecho "Package Installation done"
 echo;
@@ -84,11 +79,6 @@ echo;
 # remove extra / uneeded packages
 remove_pkgs KERNEL_SET
 echo;
-
-## Disabled, running local pihole now, so just standard networkmanger + dnsmasq works better
-# setup unbound to act as a local dns server to cache requests
-# setup_unbound
-# echo;
 
 # various config patches
 general_patches
@@ -114,6 +104,13 @@ echo;
 # network perf speed
 setup_sysctl
 echo;
+
+# minor performance boost
+disable_hardware_watchdog
+echo;
+
+# ipv6 privacy stuff
+setup_ipv6
 
 # enable systemctl services (e.g. NetworkManager, dnsmasq, lightdm)
 setup_systemctl
