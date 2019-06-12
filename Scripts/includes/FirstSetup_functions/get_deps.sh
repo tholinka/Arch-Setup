@@ -4,13 +4,12 @@
 function get_deps()
 {
     ## optional dependencies
-    git="tk perl-libwww perl-term-readkey python2 subversion"
-    nemo="ffmpegthumbnailer"
+    git="tk perl-libwww perl-term-readkey subversion libsecret"
 
-    # widevine (netflix support) is in aur
-    chromium="pepper-flash"
-    plasma="packagekit-qt5 gtk2 kross plasma-nm"
-    #kdeApps="p7zip qt5-imageformats cdrtools vorbis-tools ffmpeg libvncserver opus"
+    plasma="plasma-nm powerdevil kscreen"
+    kdeApps="qt5-imageformats ffmpeg opus"
+	# dolphin
+	kdeApps="$kdeApps kde-cli-tools ffmpegthumbs kdegraphics-thumbnailers purpose"
 
     # pretty sure we have this after xorg, but (shrug)
     ssh="xorg-xauth x11-ssh-askpass"

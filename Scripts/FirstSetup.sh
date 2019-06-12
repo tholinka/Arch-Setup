@@ -23,12 +23,12 @@ sudo pacman -Syu
 
 echo;
 
-PACKAGES="base-devel pacman-contrib xorg zsh git nemo chromium guake vim gufw plasma cpupower openssh networkmanager ccache colorgcc irqbalance curl"
+# base packages we always want
+PACKAGES="base-devel pacman-contrib zsh git firefox guake neovim ufw cpupower openssh networkmanager ccache colorgcc irqbalance curl"
 
 # all the deps
 PACKAGESdeps=""
 get_deps PACKAGESdeps
-
 
 cbecho "Enter "y" if the case applies to you"
 
@@ -68,8 +68,8 @@ echo;
 setup_aur
 
 echo;
-cecho "Installing lightdm greeter, and systemd-boot pacman hook (from aur, using yay)"
-yay -S --noconfirm --needed lightdm-webkit2-theme-material2 systemd-boot-pacman-hook
+cecho "Installing systemd-boot pacman hook (from aur, using yay)"
+yay -S --noconfirm --needed systemd-boot-pacman-hook
 echo;
 
 echo;
@@ -112,7 +112,7 @@ echo;
 # ipv6 privacy stuff
 setup_ipv6
 
-# enable systemctl services (e.g. NetworkManager, dnsmasq, lightdm)
+# enable systemctl services (e.g. NetworkManager, dnsmasq, sddm)
 setup_systemctl
 echo;
 

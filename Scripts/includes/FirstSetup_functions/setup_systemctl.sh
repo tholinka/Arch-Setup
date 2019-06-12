@@ -3,8 +3,8 @@
 function setup_systemctl()
 {
     cbecho "Enabling services in systemctl"
-    cecho "Enabling lightdm"
-    sudo systemctl enable lightdm.service
+    cecho "Enabling sddm"
+    sudo systemctl enable sddm.service
 
     cecho "Enabling NetworkManager (please manually disable wifi menu profiles through ${BOLD}systemctl disable netctl@<wifi-menu-profile>${NORMAL})"
     sudo systemctl enable NetworkManager.service

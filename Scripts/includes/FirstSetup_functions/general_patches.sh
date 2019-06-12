@@ -4,14 +4,6 @@
 general_patches()
 {
     cbecho "Applying patches to config files"
-    ## lightdm
-    cecho "Applying patch to lightdm.conf"
-    echo "--- lightdm.conf.orig  2017-12-30 23:35:34.621600509 -0700
-+++ lightdm.conf        2017-12-30 23:28:44.163553765 -0700
-@@ -108 +108 @@
--#greeter-session=example-gtk-gnome
-+greeter-session=lightdm-webkit2-greeter" | sudo patch -p0 -N /etc/lightdm/lightdm.conf
-
     ## pacman
     cecho "Patching pacman.conf"
     echo "@@ -34 +34 @@
@@ -26,16 +18,16 @@ general_patches()
     # makepkg (part of pacman)
     cecho "Patching makepkg.conf"
     echo "@@ -40,2 +40,2 @@
--CFLAGS=\"-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt\"
--CXXFLAGS=\"-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt\"
-+CFLAGS=\"-march=native -mtune=native -O2 -pipe -fstack-protector-strong -fno-plt -ftree-vectorize\"
-+CXXFLAGS=\"${CFLAGS}\"
+-CFLAGS=\"-march=x86-64 -mtune=generic -O2 -pipe -fno-plt\"
+-CXXFLAGS=\"-march=x86-64 -mtune=generic -O2 -pipe -fno-plt\"
++CFLAGS=\"-march=native -mtune=native -O2 -pipe -fno-plt\"
++CXXFLAGS=\"\$\{CFLAGS}\"
 @@ -44 +44 @@
 -#MAKEFLAGS=\"-j2\"
-+MAKEFLAGS=\"-j\$(nproc --all)\"
++MAKEFLAGS=\"-j\$\(nproc --all)\"
 @@ -62 +62 @@
 -BUILDENV=(\!distcc color \!ccache check \!sign)
-+BUILDENV=(fakeroot \!distcc color ccache check \!sign)" | sudo patch -p0 -N /etc/makepkg.conf
++BUILDENV=(\!distcc color ccache check \!sign)" | sudo patch -p0 -N /etc/makepkg.conf
 
     cbecho "Set -ftree-vectorize in /etc/makepkg.conf CFLAGS, /most/ newer systems support this, but it may need to be removed"
 
