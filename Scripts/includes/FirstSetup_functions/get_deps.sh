@@ -23,6 +23,8 @@ function get_deps()
     # uncomment out if your using unbound
     #unbound="expat"
 
-    together="$git $firefox $plasma $kdeApps $ssh $networkManager $unbound"
-    eval "$1='$together'"
+	pacman="xdelta3"
+
+	together="$git $firefox $plasma $kdeApps $ssh $networkManager $unbound $pacman"
+	eval "$1='$together'"
 }
