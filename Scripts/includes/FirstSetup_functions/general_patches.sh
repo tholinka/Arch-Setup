@@ -6,14 +6,15 @@ general_patches()
     cbecho "Applying patches to config files"
     ## pacman
     cecho "Patching pacman.conf"
-    echo "--- pacman.conf.orig	2019-06-17 15:48:47.755239016 -0600
-+++ pacman.conf	2019-06-17 15:39:34.268267874 -0600
-@@ -22 +22 @@
+    echo "@@ -22 +22 @@
 -#UseDelta    = 0.7
 +UseDelta    = 0.7
 @@ -34 +34 @@
 -#Color
 +Color
+@@ -43 +43 @@
+-#RemoteFileSigLevel = Required
++RemoteFileSigLevel = Required
 @@ -93,2 +93,2 @@
 -#[multilib]
 -#Include = /etc/pacman.d/mirrorlist
