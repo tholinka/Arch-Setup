@@ -6,7 +6,9 @@ general_patches()
     cbecho "Applying patches to config files"
     ## pacman
     cecho "Patching pacman.conf"
-    echo "@@ -22 +22 @@
+    echo "--- pacman.conf.orig	2019-06-18 10:14:10.074828437 -0600
++++ pacman.conf	2019-06-17 15:54:46.964564073 -0600
+@@ -22 +22 @@
 -#UseDelta    = 0.7
 +UseDelta    = 0.7
 @@ -34 +34 @@

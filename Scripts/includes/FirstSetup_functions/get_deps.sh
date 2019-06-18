@@ -25,6 +25,8 @@ function get_deps()
 
 	pacman="xdelta3"
 
-	together="$git $firefox $plasma $kdeApps $ssh $networkManager $unbound $pacman"
+	neovim="python-neovim xclip xsel"
+
+	together="$git $firefox $plasma $kdeApps $ssh $networkManager $unbound $pacman $neovim"
 	eval "$1='$together'"
 }
