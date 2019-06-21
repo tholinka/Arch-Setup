@@ -259,6 +259,9 @@ DOMAINS="$DOMAINS miningpoolhub.com us-east.cryptonight-hub.miningpoolhub.com"
 
 # github.com tar.gz download
 DOMAINS="$DOMAINS codeload.github.com"
+
+# class survey
+DOMAINS="$DOMAINS qualtrics.com und.qualtrics.com"
 ### End my own
 
 ### Whitelist items
