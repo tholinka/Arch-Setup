@@ -14,15 +14,22 @@ function remove_pkgs()
     fi
 
     if [ ! -z ${0+x} ]; then
-        if __get "Remove normal linux kernel (aka linux) $BOLD (DON'T FORGET TO CHANGE /boot ENTRY!)"; then
-            if pacman -Q linux &>/dev/null; then
-                REMOVE_PACKAGES="$REMOVE_PACKAGES linux"
-            fi
-            if pacman -Q linux-headers &>/dev/null; then
-                REMOVE_PACKAGES="$REMOVE_PACKAGES linux-headers"
-            fi
+        if pacman -Q linux &>/dev/null; then
+            if __get "Remove normal linux kernel (aka linux) $BOLD (DON'T FORGET TO CHANGE /boot ENTRY!)"; then
+				if pacman -Q linux &>/dev/null; then
+			        REMOVE_PACKAGES="$REMOVE_PACKAGES linux"
+		        fi
+                if pacman -Q linux-headers &>/dev/null; then
+					REMOVE_PACKAGES="$REMOVE_PACKAGES linux-headers"
+				fi
+			fi
         fi
     fi
 
-    sudo pacman -Rns --noconfirm $REMOVE_PACKAGES
+    # if variable isn't empty
+    if [[ "$REMOVE_PACKAGES" ]]; then
+        sudo pacman -Rns --noconfirm $REMOVE_PACKAGES
+    else
+        cbecho "No uneeded packages"
+    fi
 }

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #set -x
+set -e
 
 # find script location so we can get includes
 SCRIPTSLOC=$(dirname "$0")
@@ -125,4 +126,4 @@ setup_zsh
 echo;
 
 cbecho "Running pacman update (pacman -Syu) to grab multilib and update system"
-sudo pacman -Syu
+sudo pacman -Syu || true

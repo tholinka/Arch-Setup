@@ -1,8 +1,13 @@
 #!/bin/bash
 
 # "general" patches, aka one or two off patches for random things (e.g. unbound is a seperate file because there are many patches for one "thing"
+# ignores set -e
 general_patches()
 {
+    # disable set -e if enabled
+    OLDOPTS=$(set +o)
+    set +e
+
     cbecho "Applying patches to config files"
     ## pacman
     cecho "Patching pacman.conf"
@@ -102,4 +107,6 @@ ipv6.ip6-privacy=2
 #method=auto
 #dns=::1;
 #ignore-auto-dns=true" &> /dev/null # sudo tee /etc/NetworkManager/NetworkManager.conf &>/dev/null
+
+    eval "$OLDOPTS"
 }

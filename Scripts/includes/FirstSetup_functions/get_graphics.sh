@@ -39,6 +39,4 @@ function get_graphics()
     fi
 
     eval "$1='$norm'"
-
-    return 1
 }

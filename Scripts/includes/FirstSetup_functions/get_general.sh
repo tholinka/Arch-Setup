@@ -5,14 +5,15 @@ function get_general()
 {
 	if __get "UI (Minimal KDE)"; then
 		# add kde packages, very minimal
-		_GENERAL_PACKAGES="$_GENERAL_PACKAGES plasma-desktop sddm-kcm plasma-pa"
+        _GENERAL_PACKAGES="$_GENERAL_PACKAGES plasma-desktop sddm-kcm plasma-pa kde-gtk-config breeze-gtk"
 		if __get "Optional UI (dolphin, konsole, etc)"; then
-			_GENERAL_PACKAGES="$_GENERAL_PACKAGES dolphin konsole kdeplasma-addons"
+            _GENERAL_PACKAGES="$_GENERAL_PACKAGES dolphin konsole kdeplasma-addons ark"
 		fi
 	fi
 
 	if __get "General UI things (firefox, guake, gufw)"; then
 		_GENERAL_PACKAGES="$_GENERAL_PACKAGES firefox guake gufw"
+    fi
 
     if __get "WiFi"; then
         _GENERAL_PACKAGES="$_GENERAL_PACKAGES crda"
@@ -22,11 +23,5 @@ function get_general()
         _GENERAL_PACKAGES="$_GENERAL_PACKAGES systemd-swap"
     fi
 
-    if [ -z ${_GENERAL_PACKAGES+x} ]; then
-        eval "$1='$_GENERAL_PACKAGES'"
-        return 0
-    fi
-
-
-    return 1
+    eval "$1='$_GENERAL_PACKAGES'"
 }
