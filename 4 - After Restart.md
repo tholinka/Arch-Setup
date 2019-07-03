@@ -10,8 +10,8 @@
 1. ```exit``` and login to your user account
 1. Lock the root account `passwd -l root`
 1. ```ping google.com```, if you don't have a connection, repeat process from step 1
-1. Clone this repository into something like .settings-git, ```git clone --recursive git@github.com:link07/Linux-Settings-and-Setup.git .settings-git
-1. Run ```FirstSetup.sh``` in ```Arch/Scripts``` to install automatically set up most of the system
+1. Clone this repository into something like .arch-setup, ```git clone --recursive https://github.com/tholinka/Arch-Setup.git .arch-setup```
+1. Run ```FirstSetup.sh``` in ```Scripts``` to install automatically set up most of the system
 1. configure installed packages
     1. switch to new kernel (if installed)
         * edit ```/boot/loader/loader.conf``` to default to linux-[kernel name], e.g. linux-zen
