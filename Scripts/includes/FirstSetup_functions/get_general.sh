@@ -5,7 +5,7 @@ function get_general()
 {
 	if __get "UI (Minimal KDE)"; then
 		# add kde packages, very minimal
-        _GENERAL_PACKAGES="$_GENERAL_PACKAGES plasma-desktop sddm-kcm plasma-pa kde-gtk-config breeze-gtk"
+        _GENERAL_PACKAGES="$_GENERAL_PACKAGES plasma-desktop sddm-kcm plasma-pa kde-gtk-config breeze-gtk user-manager"
 		if __get "Optional UI (dolphin, konsole, etc)"; then
             _GENERAL_PACKAGES="$_GENERAL_PACKAGES dolphin konsole kdeplasma-addons ark"
 		fi

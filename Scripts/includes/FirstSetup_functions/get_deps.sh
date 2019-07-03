@@ -9,7 +9,7 @@ function get_deps()
 
 	firefox="libnotify pulseaudio hunspell-en_US hunspell"
 
-    plasma="plasma-nm powerdevil kscreen"
+    plasma="plasma-nm powerdevil kscreen drkonqi"
     kdeApps="qt5-imageformats ffmpeg opus"
 	# dolphin
 	kdeApps="$kdeApps kde-cli-tools ffmpegthumbs kdegraphics-thumbnailers purpose"
