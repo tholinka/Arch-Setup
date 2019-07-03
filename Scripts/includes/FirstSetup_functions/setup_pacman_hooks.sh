@@ -33,4 +33,18 @@ Target = *
 Description = Cleaning pacman cache (remove, removing all versions)...
 When = PostTransaction
 Exec = /usr/bin/paccache -ruk0" | sudo tee /etc/pacman.d/hooks/paccache-remove.hook > /dev/null
+
+
+    if pacman -Q refind-efi &>/dev/null; then
+        cecho "Setting up pacman hook to update refind"
+        echo "[Trigger]
+Operation=Upgrade
+Type=Package
+Target=refind-efi
+
+[Action]
+Description = Updating rEFInd on ESP
+When=PostTransaction
+Exec=/usr/bin/refind-install" | sudo tee /etc/pacman.d/hooks/refind-upgrade.hook >/dev/null
+    fi
 }
