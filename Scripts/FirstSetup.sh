@@ -25,7 +25,7 @@ sudo pacman -Syu
 echo;
 
 # base packages we always want
-PACKAGES="base-devel pacman-contrib zsh git neovim ufw cpupower openssh networkmanager ccache colorgcc irqbalance curl"
+PACKAGES="base-devel pacman-contrib zsh git neovim ufw cpupower openssh networkmanager ccache colorgcc irqbalance curl rng-tools"
 
 # all the deps
 PACKAGESdeps=""

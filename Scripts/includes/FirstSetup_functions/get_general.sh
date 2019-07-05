@@ -15,10 +15,6 @@ function get_general()
 		_GENERAL_PACKAGES="$_GENERAL_PACKAGES firefox guake gufw"
     fi
 
-    if __get "WiFi"; then
-        _GENERAL_PACKAGES="$_GENERAL_PACKAGES crda"
-    fi
-
     if __get "zswap (adds ~25% of ram as compressed swap that reduces i/o use of normal swap)"; then
         _GENERAL_PACKAGES="$_GENERAL_PACKAGES systemd-swap"
     fi

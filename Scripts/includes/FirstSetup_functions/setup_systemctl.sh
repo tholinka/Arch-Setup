@@ -33,6 +33,10 @@ function setup_systemctl()
     sudo systemctl enable ufw
     sudo systemctl start ufw
 
+	cecho "Enabling rngd"
+	sudo systemctl enable rngd
+	sudo systemctl start rngd
+
     if pacman -Q systemd-swap &>/dev/null; then
         # https://wiki.archlinux.org/index.php/zswap#Enabling_zswap
         cecho "Enabling systemd-swap (zswap)"
@@ -42,5 +46,5 @@ function setup_systemctl()
 
     cecho "Disabling dhcpcd (NetworkManager uses dhclient)"
     sudo systemctl disable dhcpcd
-    sudo systemctl stop dhcpcd
+    sudo systemctl stop dhcpcd # this'll kill active network connections
 }

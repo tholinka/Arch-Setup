@@ -11,8 +11,7 @@ function get_deps()
 
     plasma="plasma-nm powerdevil kscreen drkonqi"
     kdeApps="qt5-imageformats ffmpeg opus"
-	# dolphin
-	kdeApps="$kdeApps kde-cli-tools ffmpegthumbs kdegraphics-thumbnailers purpose"
+	kdeApps="$kdeApps kde-cli-tools ffmpegthumbs kdegraphics-thumbnailers purpose" # dolphin
 
     ssh="xorg-xauth x11-ssh-askpass"
 
@@ -27,6 +26,8 @@ function get_deps()
 
 	neovim="python-neovim xclip xsel"
 
-	together="$git $firefox $plasma $kdeApps $ssh $networkManager $unbound $pacman $neovim"
+	linux="crda"
+
+	together="$git $firefox $plasma $kdeApps $ssh $networkManager $unbound $pacman $neovim $linux"
 	eval "$1='$together'"
 }
