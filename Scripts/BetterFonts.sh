@@ -15,9 +15,9 @@ echo -e "${CB}Installing font packages ${RESET}"
 yay -S --needed fonts-meta-extended-lt ttf-hack
 
 # install win fonts seperately, so if you have win-7/8/10 fonts installed you can cancel without loosing the rest
-echo # newline
-echo -e "${GB}Cancel this if you have win7/8/10 fonts installed ${RESET}"
-yay -S --needed ttf-ms-fonts ttf-vista-fonts ttf-tahoma
+#echo # newline
+#echo -e "${GB}Cancel this if you have win7/8/10 fonts installed ${RESET}"
+#yay -S --needed ttf-ms-fonts ttf-vista-fonts ttf-tahoma
 
 echo -e "${CB}Font's installed ${RESET}"; echo # newline
 echo -e "${CB}Updating Font Cache ${RESET}"
@@ -57,4 +57,3 @@ cd ${prefix}/drive_c/windows/Fonts && for i in /usr/share/fonts/**/*.{ttf,otf}; 
 
 echo # newline
 echo -e "${GB}Log out / in for the new fonts to register all the way, run 'wineserver -kw' to restart the wine server ${RESET}"
-echo -e "${GB}Don't forget to change your font Super + N -> gear -> font ${RESET}"
