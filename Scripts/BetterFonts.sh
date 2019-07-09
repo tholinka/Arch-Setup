@@ -1,6 +1,10 @@
 #!/bin/bash
 
-source includes/colordefines.sh
+# find script location so we can get includes
+SCRIPTSLOC=$(dirname "$0")
+INCLUDESLOC="$SCRIPTSLOC/includes"
+
+source "$INCLUDESLOC"/colordefines.sh
 
 # https://gist.github.com/cryzed/e002e7057435f02cc7894b9e748c5671
 # symlink settings
@@ -19,7 +23,13 @@ yay -S --needed fonts-meta-extended-lt ttf-hack
 #echo -e "${GB}Cancel this if you have win7/8/10 fonts installed ${RESET}"
 #yay -S --needed ttf-ms-fonts ttf-vista-fonts ttf-tahoma
 
-echo -e "${CB}Font's installed ${RESET}"; echo # newline
+echo -e "${CB}Font's installed ${RESET}"
+
+echo -e "${CB}Linking /etc/fonts config ${RESET}"
+
+sudo ln -sf /etc/fonts/conf.avail/30-infinality-aliases.conf /etc/fonts/conf.d
+
+echo # newline
 echo -e "${CB}Updating Font Cache ${RESET}"
 
 # probably not needed
