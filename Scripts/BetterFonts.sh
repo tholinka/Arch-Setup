@@ -35,6 +35,10 @@ echo -e "${CB}Updating Font Cache ${RESET}"
 # probably not needed
 fc-cache -r
 
+sudo fc-cache -r
+
+sudo gdk-pixbuf-query-loaders --update-cache
+
 echo -e "${CB}Font-cache updated ${RESET}"; echo # newline
 echo -e "${CB}Removing Orphan packages ${RESET}"
 
