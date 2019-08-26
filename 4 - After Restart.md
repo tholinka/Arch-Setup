@@ -23,7 +23,10 @@
         * `rw splash quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log-priority=3` to have startup / stop be show less information
         * `nowatchdog` to [disable the software watchdog](https://wiki.archlinux.org/index.php/Improving_performance#Watchdogs)
         * `resume=PARTUUID=[your swap partition's partuuid]` to enable hibernation
-    * For a marginal boot speed increase, edit `/etc/fstab` and remove the `rw` line from your `/` partition, as systemd will now do that instead
-6. reboot again, you should reboot into a login menu.
+6. `etc/fstab` edits
+  * For a marginal boot speed increase, edit `/etc/fstab` and remove the `rw` line from your `/` partition, as systemd will now do that instead
+  * Also, if you're using btrfs, you can specify compression and compress level, e.g. `compress=zstd:15`
+    * e.g. your full `fstab` entry for `/` might be `relatime,ssd,space_cache,compress=zstd:15,subvolid=5,subvol=/`
+7. reboot again, you should reboot into a login menu.
     * for wifi, open up Settings -> Network and use that menu now
-7. Continue to Part 5, misc setup
+8. Continue to Part 5, misc setup
