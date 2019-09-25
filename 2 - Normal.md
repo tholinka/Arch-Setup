@@ -32,5 +32,6 @@
     * run `mkfs.ext4 /dev/sdXn` (or your `mkfs.` of [choice](https://wiki.archlinux.org/index.php/File_systems)) on your non-boot non-swap partitions
 1. Mount the partitions to the designated spots
     * run `mount /dev/sdXn /mnt` to mount your root file system first
+      * if your using btrfs, you might want to mount with the option of `compress=[compression]:[level]`, so that the pacstrap will get compressed. e.g. add the following to the mount command `-o compress=zstd:15`
     * run `mkdir -p /mnt/[location]` and then `mount /dev/sdXn /mnt/[location]` to mount the rest, e.g. /boot would be `mkdir -p /mnt/boot` and then `mount /dev/sdXn /mnt/boot`
 1. Next, move on to `3 - Pacstrap and Chroot`

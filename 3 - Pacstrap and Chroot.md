@@ -1,11 +1,18 @@
 # Installing Part 3 - Pacstrap and Chroot
 
-> This assumes that Part 2 is already done, and your sitting on the command prompt with your partitions mount to /mnt.
+> This assumes that Part 2 is already done, and your sitting on the command prompt with your partitions mounted to /mnt.
 
 1. run `pacstrap /mnt base base-devel`
-    * You can also add on to that command to install other things, I'd recommend adding `git vim networkmanager`, and `intel-ucode` if you have an intel cpu.
+    * You can also add on to that command to install other things, I'd recommend adding `git vim networkmanager`, and `intel-ucode`or `amd-ucode` as applicable.
     * e.g. `pacstrap /mnt base base-devel git vim networkmanager`.
 2. Make fstab with `genfstab -U /mnt >> /mnt/etc/fstab`
+   * `/mnt/etc/fstab` edits
+     * For a marginal boot speed increase, edit `/etc/fstab` and remove the `rw` line from your `/` partition, as systemd will now do that instead
+     * `btrfs` changes
+       * You may want to specify a compression and compression level, e.g. `compress=zstd:15`
+       * e.g. your full `fstab` entry for a `btrfs` filesystem might be `relatime,autodefrag,compress=zstd:15,subvolid=5,subvol=/`
+         * `ssd` or `nossd` might be useful, but it should get autodetected
+         * `space_cache=v2` might be useful in the future when the `btrfs` command gets better (non-read-only) support for it, but right now `v1` is the default.
 3. chroot into the new install, `arch-chroot /mnt /bin/bash`
 4. Uncomment `en_US.UTF-8 UTF-8` (or your locale, you can uncomment multiple) in `/etc/locale.gen` and then run `locale-gen` and then run `echo LANG=en_US.UTF-8 > /etc/locale.conf` (replace en_US.UTF-8 with your locale).
     * if you set your keyboard earlier (to anything non-us), make those changes perminent in by editing `/etc/vconsole.conf` to include `KEYMAP=[keymap setting]` and, after a newline `FONT=[font setting]`
@@ -14,9 +21,9 @@
     * This will "break" windows time (until it resyncs with NTP) if you are dual booting, see [this](https://wiki.archlinux.org/index.php/Time#UTC_in_Windows).  Using the method in the wiki to configure windows to use utc will work for Windows 7 and later, but for older systems (or just for ease of configuration), instead run `hwclock --systohc --localtime`.  Note however this will cause the clock to be wrong if the daylight savings switch happens while the computer is offline (until it resyncs with NTP).
     * run `timedatectl` and see if the time is correct.  If it's not, and NTP is disabled, run `timedatectl set-ntp true`, or, optionally, set it manually.
 7. Edit `/etc/mkinitcpio.conf`, the HOOKS= line
-    * Convert mkinitcpio to using systemd (some installs see a speed increase with this)
+    * Convert `mkinitcpio` to using `systemd` (some installs see a speed increase with this)
       * Hooks line should read something like `base systemd autodetect modconf block filesystems resume fsck`, see [common hooks](https://wiki.archlinux.org/index.php/Mkinitcpio#Common_hooks)
-    * Add `resume` right before fsck if you want to be able to hibernate.
+    * Add `resume` right before `fsck` if you want to be able to hibernate.
       * This isn't suppose to be needed, since the `systemd` hook supports resuming, but it doesn't seem to work without it (this might be an lvm config issue?)
     * Add `sd-lvm2` after block if you're using lvm (e.g. `block sd-lvm2 filesystems`)
     * Regen the init with `mkinitcpio -p linux`
@@ -26,16 +33,21 @@
         * `timeout 5`
         * `editor 0`
     * Create /boot/loader/entries/arch.conf
-        * `title   Arch Linux`
-        * `linux   /vmlinuz-linux`
-        * IF you have an intel cpu add: `initrd   /intel-ucode.img`
-        * `initrd /initramfs-linux.img`
-        * `options   root=[READ BELOW]`
-            * IF you used lvm for part 2, set `options root=` to the location of your root partition logical volume, e.g. `/dev/mapper/VolGroup00-rootpart`
-            * Otherwise, find your UUID by first knowing your /dev/sdXn of your root partition (use `fdisk -l` to find it), and then `ls /dev/disk/by-partuuid -l` and finding which uuid -> to your sdXn.  Write that down and edit that the options line to be `options root=PARTUUID=[your part uuid]` to it
-            * If you have an nvidia graphics card, you may want to add ``nomodeset`` to the options, the nvidia drivers should fix this, but we don't install these until reboot
-            * You can also add the following to quiet a lot of the bootup messages: `rw splash quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log-priority=3 nowatchdog`
-            * Add `resume=PARTUUID=[your resume PARTUUID]` to enable hibernation / resume
+      * `title   Arch Linux`
+      * `linux   /vmlinuz-linux`
+      * Add intel / amd ucode if applicable
+        * `initrd   /[intel|amd]-ucode.img`
+      * `initrd /initramfs-linux.img`
+      * `options  [space separated list of things from below]`
+        * `root=[READ BELOW]`
+          * IF you used lvm for part 2, set `options root=` to the location of your root partition logical volume, e.g. `/dev/mapper/VolGroup00-rootpart`
+          * Otherwise, find your UUID by first knowing your /dev/sdXn of your root partition (use `fdisk -l` to find it), and then `ls /dev/disk/by-partuuid -l` and finding which uuid -> to your sdXn.  Write that down and edit that the options line to be `options root=PARTUUID=[your part uuid]` to it.
+            * a useful way to insert this is to find your `partuuid` and then run `ls /dev/disk/by-partuuid | grep [first three characters of your partuuid] >> arch.conf`, then you can just delete the extra newline
+        * If you have an nvidia graphics card, you may want to add `nomodeset` the nvidia drivers should fix this, but we don't install these until reboot
+        * Optional stuff:
+          * `rw splash quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log-priority=3` to have startup / stop be show less information
+          * `nowatchdog` to [disable the software watchdog](https://wiki.archlinux.org/index.php/Improving_performance#Watchdogs)
+          * `resume=PARTUUID=[your swap partition's partuuid]` to enable hibernation
 9.  Set your hostname in `/etc/hostname`, set the file to the name, e.g. `Arch`
 10. enable `NetworkManager.service` to ensure we get `nmcli` works on boot, `systemctl enable NetworkManager.service`
 11. set the root password `passwd`
