@@ -8,7 +8,8 @@ function get_graphics()
     nvidia="nvidia-dkms nvidia-utils libva-vdpau-driver xorg-server-devel nvidia-settings opencl-nvidia" # closed source drivers
     amd="xf86-video-amdgpu mesa libva-mesa-driver mesa-vdpau" # open source drivers
     intel="xf86-video-intel mesa libva-intel-driver libvdpau-va-gl" # open source drivers
-    vm="open-vm-tools xf86-video-vmware xf86-input-vmmouse mesa-libgl libva-mesa-driver mesa-vdpau virtualbox-guest-dkms virtualbox-guest-utils gtkmm gtkmm3 libxtst" # open source drivers
+    vmware="open-vm-tools xf86-video-vmware xf86-input-vmmouse" # open source drivers
+    virtualbox="virtualbox-guest-dkms virtualbox-guest-utils"
 
     if __get "Nvidia"; then
         eval "$1='$nvidia'"
@@ -31,10 +32,17 @@ function get_graphics()
         return 0
     fi
 
-    if __get "VirtualBox / VMware"; then
-        eval "$1='$vm'"
+    if __get "VMware"; then
+        eval "$1='$vmware'"
         eval "$2='y'"
-        eval "$3='vm'"
+        eval "$3='vmware'"
+        return 0
+    fi
+
+    if __get "VirtualBox"; then
+        eval "$1='$virtualbox'"
+        eval "$2='y'"
+        eval "$3='virtualbox'"
         return 0
     fi
 
