@@ -25,4 +25,10 @@ options i915 enable_rc6=1 enable_fbc=1 semaphores=1 enable_guc_loading=1" | sudo
   Driver      \"intel\"
 EndSection" | sudo tee /etc/X11/xorg.conf.d/20-intel.conf 1>/dev/null
     fi
+
+	# virtualbox
+	if [ "$1" == "virtualbox" ]; then
+		# enable systemd service
+		sudo systemctl enable vboxservice.service
+	fi
 }
