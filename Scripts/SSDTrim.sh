@@ -1,20 +1,17 @@
 #!/bin/bash
 
+set -e
+
 # find script location so we can get includes
 SCRIPTSLOC=$(dirname "$0")
 INCLUDESLOC="$SCRIPTSLOC/includes"
 
 source "$INCLUDESLOC/colordefines.sh"
 
-# enable periodic trim timers, it's part of util-linux so it should be installed anyway
-
-if ! pacman -Q util-linux &>/dev/null; then
-    sudo pacman -S --needed --noconfirm util-linux
-fi
+# enable periodic trim timers
 
 cecho "Enabling & starting fstrim.timer"
-sudo systemctl enable fstrim.timer
-sudo systemctl start fstrim.timer
+sudo systemctl enable fstrim.timer --now
 
 cecho "Running fstrim.service, as it won't run until the timer activates in ~a week otherwise"
 sudo systemctl start fstrim.service
@@ -34,5 +31,3 @@ if pacman -Q lvm2 &>/dev/null; then
  	# Configuration option devices/allow_changes_with_duplicate_pvs.
  	# Allow VG modification while a PV appears on multiple devices." | sudo patch -p0 -N /etc/lvm/lvm.conf
 fi
-
-gbecho "On supported filesystems (ext4, btrfs, jfs, xfs, f2fs, vfat) (NOT ntfs or ext3, see arch wiki for more) you may want to add \"discard\" to the options section of your /etc/fstab entries"

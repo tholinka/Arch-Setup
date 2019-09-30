@@ -20,4 +20,10 @@
       * add `-[kernel name]` to the `vmlinuz` and `initramfs` lines of the config
 10. reboot again, you should reboot into a login menu.
     * for wifi, open up Settings -> Network and use that menu now
-11. Continue to Part 5, misc setup
+
+## Some post-install notes
+
+* The themes I use are:
+  * from aur:
+    * moka-icon-theme
+    * xcursor-human

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # find script location so we can get includes
 SCRIPTSLOC=$(dirname "$0")
 INCLUDESLOC="$SCRIPTSLOC/includes"
@@ -8,13 +10,13 @@ source "$INCLUDESLOC"/colordefines.sh
 
 # https://gist.github.com/cryzed/e002e7057435f02cc7894b9e748c5671
 # symlink settings
-echo -e "${CB}Symlinking settings (lcdfilter-default, sub-pixel-rgb, hinting-slight) ${RESET}"
+cbecho "Symlinking settings (lcdfilter-default, sub-pixel-rgb, hinting-slight)"
 sudo ln -sf /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
 sudo ln -sf /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
 sudo ln -sf /etc/fonts/conf.avail/10-hinting-slight.conf /etc/fonts/conf.d
 
-echo -e "${CB}Symlinking done ${RESET}"; echo # newline
-echo -e "${CB}Installing font packages ${RESET}"
+cbecho "Symlinking done"; echo # newline
+cbecho "Installing font packages"
 # install fonts-meta-extened-lt + some more fonts from the aur -- note: manually install win 7 / 8 /10 fonts if win 7 / 8 / 10 install to link against is available, remove ttf-ms-fonts and ttf-vista-fonts if you do
 yay -S --needed fonts-meta-extended-lt ttf-hack
 
@@ -23,14 +25,14 @@ yay -S --needed fonts-meta-extended-lt ttf-hack
 #echo -e "${GB}Cancel this if you have win7/8/10 fonts installed ${RESET}"
 #yay -S --needed ttf-ms-fonts ttf-vista-fonts ttf-tahoma
 
-echo -e "${CB}Font's installed ${RESET}"
+cbecho "Font's installed"
 
-echo -e "${CB}Linking /etc/fonts config ${RESET}"
+cbecho "Linking /etc/fonts config"
 
 sudo ln -sf /etc/fonts/conf.avail/30-infinality-aliases.conf /etc/fonts/conf.d
 
 echo # newline
-echo -e "${CB}Updating Font Cache ${RESET}"
+cbecho "Updating Font Cache"
 
 # probably not needed
 fc-cache -r
@@ -39,18 +41,18 @@ sudo fc-cache -r
 
 sudo gdk-pixbuf-query-loaders --update-cache
 
-echo -e "${CB}Font-cache updated ${RESET}"; echo # newline
-echo -e "${CB}Removing Orphan packages ${RESET}"
+cbecho "Font-cache updated"; echo # newline
+cbecho "Removing Orphan packages"
 
 if pacman -Qtdq &>/dev/null; then
 	sudo pacman -Rns $(pacman -Qtdq) # remove orphans we created (cabextract and font-forge)
 else
-    echo -e "${GREEN}No Orphans ${RESET}"
+    gecho "No Orphans"
 fi
 
 # update jre to use patched fonts
 echo # newline
-echo -e "${CB}Patching java to use better fonts ${RESET}"
+cbecho "Patching java to use better fonts"
 echo "# Do not change this unless you want to completely by-pass Arch Linux' way of handling Java versions and vendors. Instead, please use script 'archlinux-java'
 export PATH=\${PATH}:/usr/lib/jvm/default/bin
 
@@ -59,15 +61,17 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'" | s
 echo # newline
 
 # update wine to use patched fonts, assuming
-echo -e "${CB}Linking wine against new fonts ${RESET}"
+cbecho "Linking wine against new fonts"
 if [ -z ${WINEPREFIX+x} ]; then
-    echo -e "${GREEN}run this command with 'env WINEPREFIX=[your prefix]' before the command to use something other than $HOME/.wine as your wine prefix ${RESET}"
+    gecho "run this command with 'env WINEPREFIX=[your prefix]' before the command to use something other than $HOME/.wine as your wine prefix"
     prefix="$HOME/.wine"
 else
     prefix="${WINEPREFIX}"
 fi
-
-cd ${prefix}/drive_c/windows/Fonts && for i in /usr/share/fonts/**/*.{ttf,otf}; do ln -sf "$i" ; done
+if [ -d "${prefix}" ]; then
+	cd "${prefix}"/drive_c/windows/Fonts && for i in /usr/share/fonts/**/*.{ttf,otf}; do ln -sf "$i" ; done
+	gbecho "run 'wineserver -kw' to restart the wine server"
+fi
 
 echo # newline
-echo -e "${GB}Log out / in for the new fonts to register all the way, run 'wineserver -kw' to restart the wine server ${RESET}"
+gbecho "Relog for the new fonts to register"
