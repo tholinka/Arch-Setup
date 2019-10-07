@@ -1,5 +1,5 @@
 [Unit]
-Description=Check for Low Battery
+Description=Cleanup journald logs daily
 
 [Service]
 Type=oneshot
