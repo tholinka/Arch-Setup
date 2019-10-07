@@ -1,0 +1,13 @@
+pkgname=my-base-devel-meta
+pkgdesc="Meta packages in base-devel"
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=(
+	# things in the base-devel group
+	'autoconf' 'automake' 'binutils' 'bison'
+	'fakeroot' 'file' 'findutils' 'flex' 'gawk'
+	'gcc' 'gettext' 'grep' 'groff' 'gzip' 'libtool'
+	'm4' 'make' 'pacman' 'patch' 'pkgconf' 'sed'
+	'sudo' 'systemd' 'texinfo' 'util-linux' 'which'
+)
