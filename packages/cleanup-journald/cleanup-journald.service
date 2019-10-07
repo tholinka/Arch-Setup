@@ -1,0 +1,6 @@
+[Unit]
+Description=Check for Low Battery
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/journalctl --vacuum-time=1m

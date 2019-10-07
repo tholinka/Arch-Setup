@@ -1,0 +1,17 @@
+pkgname=cleanup-journald
+pkgdesc="systemd service / timers to cleanup journald"
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=()
+source=(
+	'cleanup-journald.service'
+	'cleanup-journald.timer'
+)
+md5sums=('2fbefac08cbb1df980f021448859a527'
+         'c9326651ee13cfd3459ee83291fbbb9b')
+
+package() {
+	install -Dm644 cleanup-journald.service "$pkgdir"/usr/lib/systemd/system/cleanup-journald.service
+	install -Dm644 cleanup-journald.timer "$pkgdir"/usr/lib/systemd/system/cleanup-journald.timer
+}
