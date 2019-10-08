@@ -1,3 +1,5 @@
+# NOTE: you might need to run pacman -S --asdeps fakeroot binutils
+# if your installing this without any base-devel stuff
 pkgname=my-base-devel-meta
 pkgdesc="Meta packages in base-devel"
 pkgver=1
