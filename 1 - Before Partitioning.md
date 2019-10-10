@@ -17,4 +17,4 @@
         * get wifi interface from above step, and then run `wifi-menu -o [device name]`
         * if that doesn't connect, `ip link set [device name] up`, scan for access points `iw dev interface scan | less`, connect to the wifi through wpa_supplicant, `wpa_supplicant -B -i wlan0 -c <(wpa_passphrase "your_SSID" "your_key")`, remove -B to check to make sure it connects, as that sends the process to the background.  Then start the dhcp service on the interface to get a ip address, `systemctl restart dhcpcd.service`
         * Check [here](https://wiki.archlinux.org/index.php/Wireless_network_configuration) for more help.
-2. Partitioning time, go to `2 - LVM` if your using [Logical Volume manager](https://wiki.archlinux.org/index.php/LVM), or `2 - Standard` for normal partitioning
+1. Partitioning time, go to `2 - LVM` if your using [Logical Volume manager](https://wiki.archlinux.org/index.php/LVM), or `2 - Standard` for normal partitioning

@@ -24,8 +24,14 @@ sudo pacman -Syu
 
 echo;
 
+# assume base-devel is installed from meta package
+if ! pacman -Q my-base-devel-meta &>/dev/null; then
+	cbecho "Please install base-devel-meta from packages directory first"
+	exit 1
+fi
+
 # base packages we always want
-PACKAGES="base-devel pacman-contrib zsh git neovim ufw cpupower openssh networkmanager ccache colorgcc irqbalance curl rng-tools"
+PACKAGES="pacman-contrib zsh git neovim ufw cpupower openssh networkmanager ccache colorgcc irqbalance curl rng-tools"
 
 # all the deps
 PACKAGESdeps=""
@@ -115,10 +121,6 @@ setup_ipv6
 
 # enable systemctl services (e.g. NetworkManager, dnsmasq, sddm)
 setup_systemctl
-echo;
-
-# set up pacman hooks
-setup_pacman_hooks
 echo;
 
 # switch to zsh / set up root's zsh

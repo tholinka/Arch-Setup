@@ -12,7 +12,7 @@ function get_general()
 	fi
 
 	if __get "General UI things (firefox, guake, gufw)"; then
-		_GENERAL_PACKAGES="$_GENERAL_PACKAGES firefox guake gufw"
+		_GENERAL_PACKAGES="$_GENERAL_PACKAGES firefox guake"
     fi
 
     if __get "zswap (adds ~25% of ram as compressed swap that reduces i/o use of normal swap)"; then

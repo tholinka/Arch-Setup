@@ -1,0 +1,17 @@
+pkgname=pacman-cache-cleanup-hooks
+pkgdesc="pacman hooks to cleanup pacman cache"
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=()
+source=(
+	'paccache-remove.hook'
+	'paccache-upgrade.hook'
+)
+md5sums=('870a5b08c611b2c4136825c9c9911755'
+         'ccb3e71360f434625aaf69fd6dc41a63')
+
+package() {
+	install -Dm644 paccache-remove.hook "$pkgdir"/usr/share/libalpm/hooks/paccache-remove.hook
+	install -Dm644 paccache-upgrade.hook "$pkgdir"/usr/share/libalpm/hooks/paccache-upgrade.hook
+}

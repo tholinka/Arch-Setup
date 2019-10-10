@@ -1,0 +1,22 @@
+pkgname=reflector-hooks-services
+pkgdesc="systemd services and pacman hooks to run reflector"
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=('reflector')
+source=(
+	'reflector.hook'
+	'reflector.service'
+	'reflector.timer'
+)
+md5sums=('86b30046dc113b858629aead4b01f837'
+         'e9684a5cc2ecc2fae50f54a8a0f20d01'
+         '3d73c16ef89e6defb15f23787fd35808')
+
+package() {
+	install -Dm644 reflector.hook "$pkgdir"/usr/share/libalpm/hooks/reflector.hook
+
+	# edit this to your country of choice
+	install -Dm644 reflector.service "$pkgdir"/usr/lib/systemd/system/reflector.service
+	install -Dm644 reflector.timer "$pkgdir"/usr/lib/systemd/system/reflector.timer
+}

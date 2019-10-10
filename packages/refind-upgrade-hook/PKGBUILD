@@ -1,0 +1,15 @@
+pkgname=refind-upgrade-hook
+pkgdesc="pacman hook to auto update refind"
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=()
+source=(
+	'refind-upgrade.hook'
+)
+md5sums=(''
+         '')
+
+package() {
+	install -Dm644 refind-upgrade.hook "$pkgdir"/usr/share/libalpm/hooks/refind-upgrade.hook
+}
