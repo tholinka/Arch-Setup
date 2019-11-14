@@ -1,9 +1,9 @@
 pkgname=pacman-cache-cleanup-hooks
 pkgdesc="pacman hooks to cleanup pacman cache"
-pkgver=1
+pkgver=2
 pkgrel=1
 arch=('any')
-depends=()
+depends=('pacman-contrib')
 source=(
 	'paccache-remove.hook'
 	'paccache-upgrade.hook'
