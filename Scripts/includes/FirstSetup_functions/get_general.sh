@@ -11,7 +11,7 @@ function get_general()
 		fi
 	fi
 
-	if __get "General UI things (firefox, guake, gufw)"; then
+	if __get "General UI things (firefox, guake)"; then
 		_GENERAL_PACKAGES="$_GENERAL_PACKAGES firefox guake"
     fi
 
