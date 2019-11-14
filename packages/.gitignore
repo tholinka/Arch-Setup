@@ -1,3 +1,7 @@
+# pacman (makepkg) packages
 pkg/
 src/
+
 *.tar.xz
+*.tar.zst
+*.tar.gz

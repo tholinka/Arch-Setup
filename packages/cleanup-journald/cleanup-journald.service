@@ -1,5 +1,5 @@
 [Unit]
-Description=Cleanup journald logs daily
+Description=Cleanup old journald logs (older than 1 month)
 
 [Service]
 Type=oneshot

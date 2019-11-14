@@ -8,8 +8,8 @@ source=(
 	'cleanup-journald.service'
 	'cleanup-journald.timer'
 )
-md5sums=('61a8a82b6443b89fe5be5924973ca683'
-         '255ace3e99726c961f29208678dbc0a7')
+sha512sums=('2e93b7b67a5c6b8e04a5960ff9e6d4c6b521a3db27571e885879d6f1b8dd25deef44c24b792363e6b91952f485d2166f9afe42c83db3c6cf665ee869f3aba425'
+            'c059a0bd594e9846bdcf38032d093d01bf4c6385b9dca7b3c92ce2e52a5c3ac25ac8a9c560e1ababe937b2292417e47419df7ec30e1e12dc5e9b8afffb76bd2b')
 
 package() {
 	install -Dm644 cleanup-journald.service "$pkgdir"/usr/lib/systemd/system/cleanup-journald.service
