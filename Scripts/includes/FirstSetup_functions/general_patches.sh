@@ -29,18 +29,24 @@ general_patches()
 +Include = /etc/pacman.d/mirrorlist" | sudo patch -p0 -N /etc/pacman.conf
 
     # makepkg (part of pacman)
+	## note: so we don't have to escape everything, this glues together a single quoted string a double quoted string
     cecho "Patching makepkg.conf"
-    echo "@@ -40,2 +40,2 @@
--CFLAGS=\"-march=x86-64 -mtune=generic -O2 -pipe -fno-plt\"
--CXXFLAGS=\"-march=x86-64 -mtune=generic -O2 -pipe -fno-plt\"
-+CFLAGS=\"-march=native -mtune=native -O2 -pipe -fno-plt\"
-+CXXFLAGS=\"\$\{CFLAGS}\"
+	echo '--- /etc/makepkg.conf.orig      2020-01-05 17:08:48.110808900 -0700
++++ /etc/makepkg.conf   2020-01-05 17:12:44.727566400 -0700
+@@ -40,2 +40,2 @@
+-CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
+-CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
++CFLAGS="-march=native -mtune=native -O2 -pipe -fno-plt"
++CXXFLAGS="${CFLAGS}"
 @@ -44 +44 @@
--#MAKEFLAGS=\"-j2\"
-+MAKEFLAGS=\"-j\$\(nproc --all)\"
+-#MAKEFLAGS="-j2"
++MAKEFLAGS="-j$(nproc --all)"
 @@ -62 +62 @@
--BUILDENV=(\!distcc color \!ccache check \!sign)
-+BUILDENV=(\!distcc color ccache check \!sign)" | sudo patch -p0 -N /etc/makepkg.conf
+-BUILDENV=(!distcc color !ccache check !sign)
++BUILDENV=(!distcc color ccache check !sign)
+@@ -144 +144 @@'"
+-PKGEXT='.pkg.tar.xz'
++PKGEXT='.pkg.tar.zst'" | sudo patch -p0 -N /etc/makepkg.conf
 
     cbecho "Set -ftree-vectorize in /etc/makepkg.conf CFLAGS, /most/ newer systems support this, but it may need to be removed"
 
