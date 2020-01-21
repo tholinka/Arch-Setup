@@ -57,7 +57,7 @@ echo "# Do not change this unless you want to completely by-pass Arch Linux' way
 export PATH=\${PATH}:/usr/lib/jvm/default/bin
 
 # https://wiki.archlinux.org/index.php/java#Better_font_rendering
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -jdk.gtk.version=3'" | sudo tee /etc/profile.d/jre.sh 1> /dev/null
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'" | sudo tee /etc/profile.d/jre.sh 1> /dev/null
 echo # newline
 
 # update wine to use patched fonts, assuming
