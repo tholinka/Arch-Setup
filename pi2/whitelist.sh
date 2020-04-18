@@ -262,6 +262,13 @@ DOMAINS="$DOMAINS codeload.github.com"
 
 # class survey
 DOMAINS="$DOMAINS qualtrics.com und.qualtrics.com"
+
+# discord
+DOMAINS="$DOMAINS cdn.discordapp.com"
+
+# Google Forms link
+DOMAINS="$DOMAINS forms.gle"
+
 ### End my own
 
 ### Whitelist items
