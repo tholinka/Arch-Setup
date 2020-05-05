@@ -269,6 +269,11 @@ DOMAINS="$DOMAINS cdn.discordapp.com"
 # Google Forms link
 DOMAINS="$DOMAINS forms.gle"
 
+# Gleam promo's
+DOMAINS="$DOMAINS gleam.io"
+
+# honey coupons
+DOMAINS="$DOMAINS joinhoney.com d.joinhoney.com s.joinhoney.com"
 ### End my own
 
 ### Whitelist items
