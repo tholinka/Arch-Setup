@@ -6,7 +6,7 @@
 1) ```useradd -m -g users -G wheel,alarm,power -s /bin/zsh 'username'``` to create a new user
     * it's a better idea to make your own account, but you _can_ just instead change the password, ```passwd```
 1) exit out of ssh, and relogin using that new user, and then delete the old one ```userdel -r alarm```
-1) Lock the root account, ```passwd -l root``
+1) Lock the root account, `passwd -l root`
     * or, change it if you _really_ want to use the root account (seriously, you should lock it)
 1) Updating locale:
     1) Uncomment your locale (and any others you want) in ```/etc/locale.gen``` (e.g. uncomment ```en_US.UTF-8 UTF-8```)
@@ -25,18 +25,18 @@
 1) Enable pacman package signing (this requires either `haveged` or `rngd` to be running)
    1) run `pacman -S archlinuxarm-keyring --needed`
    1) run `pacman-key --init && pacman-key --populate archlinuxarm`
-1) Update mkinitcpio settings in ```/etc/mkinitcpio.conf:
+1) Update mkinitcpio settings in `/etc/mkinitcpio.conf`:
     1) Change HOOKS line to ```HOOKS=(base systemd autodetect modconf block keyboard fsck filesystems)```
     1) run ```mkinitcpio -P``` to regen the image, having no modules is normal
 1) Setup ```/etc/pacman.conf```: Uncomment ```#Color```
-1) Setup ```/etc/makepkg.conf```:
-    * (probably uneeded): Change the ```march``` setting of ```CFLAGS```, and ```CXXFLAGS``` to be instead ```march=native```
+2) Setup ```/etc/makepkg.conf```:
     * Change the makeflags line to: ```MAKEFLAGS="-j$(nproc --all)"```
-1) Allow reboot: install ```polkit``` using pacman
-1) At this point, you probably want to restart, because you probably got a new kernel when you updated earlier
-1) Some of the general scripts are useful, including some of the first setup scripts (e.g. trizen), but unless you want graphics you probably don't want to run the firstsetup script (I really should refactor it to ask more questions on what to install)
+1) Add `export CARCH=armv7h` to your `~/.bashrc` or `~/.zshrc` if you run into `makepkg` arch errors.
+3) Allow reboot: install ```polkit``` using pacman
+4) At this point, you probably want to restart, because you probably got a new kernel when you updated earlier
+5) Some of the general scripts are useful, including some of the first setup scripts (e.g. trizen), but unless you want graphics you probably don't want to run the firstsetup script (I really should refactor it to ask more questions on what to install)
     * The most useful are likely to be ```setup_aur```, ```setup_pacman_hooks```, ```setup_wifi```, ```setup_sysctl```, ```setup_ipv6```, ```setup_firewall```
       * Note, for setup_wifi you need to define a WIFI variable or it just immeditly exits
     * These included first setup scripts can be called pretty easily, for most of them, just ```source [script]``` then call the function
       * Source ```colordefines.sh``` first for the echo definitions it has
-1) see [the pi wiki](https://archlinuxarm.org/platforms/armv7/broadcom/raspberry-pi-2) for more information, such as Audio over hdmi and gpio pins
+6) see [the pi wiki](https://archlinuxarm.org/platforms/armv7/broadcom/raspberry-pi-2) for more information, such as Audio over hdmi and gpio pins
