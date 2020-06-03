@@ -1,0 +1,24 @@
+pkgname=my-graphical
+pkgdesc="Meta package for my graphical install"
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=(
+	# base
+	'my-base'
+
+	# kde
+	'plasma-desktop' 'plasma-pa'
+	'kde-gtk-config' 'sddm-kcm' 'user-manager'
+	'dolphin'
+
+	# programs
+	'firefox'
+	'code'
+	'guake'
+
+	# fonts
+	'powerline-fonts' 'ttf-hack' 'noto-fonts'
+	'xcursor-human'
+	'moka-icon-theme'
+)

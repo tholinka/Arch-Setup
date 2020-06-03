@@ -1,0 +1,22 @@
+pkgname=my-base
+pkgdesc="Meta package for my base / devel stuff"
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=(
+	# base
+	'base' 'my-base-devel-meta'
+	# pacman
+	'pacman-contrib' 'pacman-cache-cleanup-hooks'
+	# terminal
+	'zsh'
+	# dev
+	'git' 'openssh'
+	# compiler stuff
+	'ccache' 'colorgcc'
+	# management stuff
+	'htop' 'glances' 'neovim'
+	'overdue'
+	# man stuff
+	'man-db' 'man-pages'
+)
