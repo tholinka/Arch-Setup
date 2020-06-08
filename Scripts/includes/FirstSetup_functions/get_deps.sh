@@ -5,7 +5,7 @@
 function get_deps()
 {
     ## optional dependencies
-    git="tk perl-libwww perl-term-readkey subversion libsecret"
+    git="tk subversion"
 
 	firefox="libnotify pulseaudio hunspell-en_US hunspell"
 
