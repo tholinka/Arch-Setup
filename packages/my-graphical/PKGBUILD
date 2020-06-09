@@ -8,12 +8,11 @@ depends=(
 	'my-base'
 
 	# kde
-	'plasma-desktop' 'plasma-pa'
+	'plasma-desktop'
 	'kde-gtk-config' 'sddm-kcm' 'user-manager'
 	'dolphin'
 
 	# programs
-	'firefox'
 	'code'
 	'guake'
 
@@ -21,4 +20,8 @@ depends=(
 	'powerline-fonts' 'ttf-hack' 'noto-fonts'
 	'xcursor-human'
 	'moka-icon-theme'
+)
+optdepends=(
+	'firefox: Browser'
+	'plasma-pa: Sound'
 )
