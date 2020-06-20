@@ -1,8 +1,12 @@
 #!/bin/sh
 
+# new sqlite approach based on https://discourse.pi-hole.net/t/blocklist-management-in-pihole-v5/31971/9
+
+sudo sqlite3 /etc/pihole/gravity.db "DELETE FROM adlist"
+
 #echo "Downloading adlist from wally3k.firebog.net"
 #echo;
-sudo curl "https://v.firebog.net/hosts/lists.php?type=tick" -o /etc/pihole/adlists.list
+sudo curl "https://v.firebog.net/hosts/lists.php?type=tick" | xargs -I {} sudo sqlite3 /etc/pihole/gravity.db "INSERT INTO adlist (Address, Comment, Enabled) VALUES ('{}', 'firebog, added `date +%F`', 1);"
 
 # used when firebog's website is having issues
 #echo "Warning: using static list"
@@ -40,14 +44,14 @@ https://raw.githubusercontent.com/quidsup/notrack/master/malicious-sites.txt
 https://ransomwaretracker.abuse.ch/downloads/RW_DOMBL.txt
 https://v.firebog.net/hosts/Shalla-mal.txt
 https://raw.githubusercontent.com/StevenBlack/hosts/master/data/add.Risk/hosts
-https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist" &>/dev/null #| sudo tee /etc/pihole/adlists.list >/dev/null
+https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist" &>/dev/null #| sudo xargs -I {} sudo sqlite3 /etc/pihole/gravity.db "INSERT INTO adlist (Address) VALUES ('{}');"
 
 echo;
 echo;
 echo "Adding tholinka.github.io tracking lists"
 
 echo "https://tholinka.github.io/projects/hosts/wintracking/normal
-https://tholinka.github.io/projects/hosts/hosts" | sudo tee -a /etc/pihole/adlists.list >/dev/null
+https://tholinka.github.io/projects/hosts/hosts" | xargs -I {} sudo sqlite3 /etc/pihole/gravity.db "INSERT INTO adlist (Address, Comment, Enabled) VALUES ('{}', 'tholinka.github.io, added `date +%F`', 1);"
 
 echo;
 echo "Running pihole gravity"
