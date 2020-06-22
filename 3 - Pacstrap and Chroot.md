@@ -26,6 +26,7 @@
        * e.g. your full `fstab` entry for a `btrfs` filesystem might be `relatime,autodefrag,compress=zstd:15,subvolid=5,subvol=/`
          * `ssd` or `nossd` might be useful, but it should get autodetected
          * `space_cache=v2` might be useful in the future when the `btrfs` command gets better (non-read-only) support for it, but right now `v1` is the default.
+         * `discard=async` to enable discard, `autodefrag` to enable defrag.
 1. chroot into the new install, `arch-chroot /mnt /bin/bash`
    * you may want to install `pacman -S --asdeps --needed` a few things
      * `base-devel`: if you plan to use the meta package later and haven't installed it yet
@@ -64,6 +65,7 @@
           * `rw splash quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log-priority=3` to have startup / stop be show less information
           * `nowatchdog` to [disable the software watchdog](https://wiki.archlinux.org/index.php/Improving_performance#Watchdogs)
           * `resume=PARTUUID=[your swap partition's partuuid]` to enable hibernation
+          * Set the root mount options, for instance, with `BTRFS` `rootflags=relatime,autodefrag,ssd,compress=zstd:15,subvolid=5,subvol=/,discard=async`
 1. Set your hostname in `/etc/hostname`, set the file to the name, e.g. `Arch`
 1. enable `NetworkManager.service`
 1. set the root password `passwd` (optional, since we lock the root later anyway)
