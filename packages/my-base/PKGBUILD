@@ -16,7 +16,9 @@ depends=(
 	'ccache' 'colorgcc'
 	# management stuff
 	'htop' 'glances' 'neovim'
-	'overdue'
 	# man stuff
 	'man-db' 'man-pages'
+)
+optdepends=(
+	'my-aur: things from the aur'
 )
