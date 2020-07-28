@@ -24,6 +24,6 @@
 ## Some post-install notes
 
 * The themes I use are:
+  * breeze dark
   * from aur:
-    * moka-icon-theme
     * xcursor-human

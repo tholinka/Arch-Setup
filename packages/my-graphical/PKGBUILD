@@ -24,7 +24,6 @@ depends=(
 	'noto-fonts-extra'
 
 	'xcursor-human'
-	'moka-icon-theme'
 )
 optdepends=(
 	'firefox: Browser'
