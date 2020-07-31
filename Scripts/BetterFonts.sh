@@ -13,9 +13,9 @@ source "$INCLUDESLOC"/colordefines.sh
 # https://gist.github.com/cryzed/e002e7057435f02cc7894b9e748c5671
 # symlink settings
 cbecho "Symlinking settings (lcdfilter-default, sub-pixel-rgb, hinting-slight)"
-sudo ln -sf /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
-sudo ln -sf /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
-sudo ln -sf /etc/fonts/conf.avail/10-hinting-slight.conf /etc/fonts/conf.d
+sudo ln -sf /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
+sudo ln -sf /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
+sudo ln -sf /etc/fonts/conf.avail/10-hinting-slight.conf /etc/fonts/conf.d/
 
 cbecho "Symlinking done"; echo # newline
 
@@ -23,10 +23,10 @@ echo # newline
 cbecho "Updating Font Cache"
 
 # probably not needed
-fc-cache -r
-sudo fc-cache -r
+fc-cache -r || true
+sudo fc-cache -r || true
 
-sudo gdk-pixbuf-query-loaders --update-cache
+sudo gdk-pixbuf-query-loaders --update-cache || true
 
 cbecho "Font-cache updated"; echo # newline
 
