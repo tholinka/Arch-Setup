@@ -277,6 +277,9 @@ DOMAINS="$DOMAINS joinhoney.com d.joinhoney.com s.joinhoney.com"
 
 # windows store / updates
 DOMAINS="$DOMAINS slscr.update.microsoft.com"
+
+# teams / office
+DOMAINS="$DOMAINJS self.events.data.microsoft.com"
 ### End my own
 
 ### Whitelist items
