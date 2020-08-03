@@ -274,6 +274,9 @@ DOMAINS="$DOMAINS gleam.io"
 
 # honey coupons
 DOMAINS="$DOMAINS joinhoney.com d.joinhoney.com s.joinhoney.com"
+
+# windows store / updates
+DOMAINS="$DOMAINS slscr.update.microsoft.com"
 ### End my own
 
 ### Whitelist items
