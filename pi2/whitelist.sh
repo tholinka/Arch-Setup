@@ -280,6 +280,9 @@ DOMAINS="$DOMAINS slscr.update.microsoft.com"
 
 # teams / office
 DOMAINS="$DOMAINJS self.events.data.microsoft.com"
+
+# brandonsanderson.com
+DOMAINS="$DOMAINS hb.wpmucdn.com"
 ### End my own
 
 ### Whitelist items
