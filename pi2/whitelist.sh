@@ -283,6 +283,9 @@ DOMAINS="$DOMAINJS self.events.data.microsoft.com"
 
 # brandonsanderson.com
 DOMAINS="$DOMAINS hb.wpmucdn.com"
+
+# msn
+DOMAINS="$DOMAINS www.msn.com"
 ### End my own
 
 ### Whitelist items
