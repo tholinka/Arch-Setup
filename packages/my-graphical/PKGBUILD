@@ -9,7 +9,8 @@ depends=(
 
 	# kde
 	'plasma-desktop'
-	'kde-gtk-config' 'sddm-kcm' 'user-manager'
+	'kde-gtk-config' 'sddm-kcm' 
+	#'user-manager' -> replaced with plasma-desktop
 	'dolphin'
 
 	# programs
