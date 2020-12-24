@@ -1,0 +1,3 @@
+post_install() {
+	echo "Don't forget to setup /etc/xdg/reflector/reflector.conf!"
+}
