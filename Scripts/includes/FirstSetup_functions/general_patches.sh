@@ -13,9 +13,6 @@ general_patches()
     cecho "Patching pacman.conf"
     echo "--- pacman.conf.orig	2019-06-18 10:14:10.074828437 -0600
 +++ pacman.conf	2019-06-17 15:54:46.964564073 -0600
-@@ -22 +22 @@
--#UseDelta    = 0.7
-+UseDelta    = 0.7
 @@ -34 +34 @@
 -#Color
 +Color
@@ -43,10 +40,7 @@ general_patches()
 +MAKEFLAGS="-j$(nproc --all)"
 @@ -62 +62 @@
 -BUILDENV=(!distcc color !ccache check !sign)
-+BUILDENV=(!distcc color ccache check !sign)
-@@ -144 +144 @@'"
--PKGEXT='.pkg.tar.xz'
-+PKGEXT='.pkg.tar.zst'" | sudo patch -p0 -N /etc/makepkg.conf
++BUILDENV=(!distcc color ccache check !sign)" | sudo patch -p0 -N /etc/makepkg.conf
 
     cbecho "Set -ftree-vectorize in /etc/makepkg.conf CFLAGS, /most/ newer systems support this, but it may need to be removed"
 

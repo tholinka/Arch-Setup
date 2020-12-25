@@ -12,7 +12,7 @@ function setup_aur()
 	cbecho "Setting up AUR (yay)"
 
     cecho "Cloning yay's AUR repo to /tmp"
-    git clone https://aur.archlinux.org/yay.git /tmp/yay
+    git clone https://aur.archlinux.org/yay-bin.git /tmp/yay
 	cd /tmp/yay
 
 	echo
