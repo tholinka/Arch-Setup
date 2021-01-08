@@ -286,6 +286,10 @@ DOMAINS="$DOMAINS hb.wpmucdn.com"
 
 # msn
 DOMAINS="$DOMAINS www.msn.com"
+
+# jobs
+DOMAINS="$DOMAINS boards.greenhouse.io"
+
 ### End my own
 
 ### Whitelist items
