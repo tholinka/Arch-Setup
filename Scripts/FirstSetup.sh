@@ -71,12 +71,12 @@ sudo pacman -S --needed --noconfirm --asdeps $PACKAGESdeps
 
 echo;
 
-# install yay, we need it for the next step
+# install aur helper, we need it for the next step
 setup_aur
 
 echo;
-cecho "Installing systemd-boot pacman hook (from aur, using yay)"
-yay -S --noconfirm --needed systemd-boot-pacman-hook
+cecho "Installing systemd-boot pacman hook (from aur, using aur helper)"
+paru -S --noconfirm --needed systemd-boot-pacman-hook
 echo;
 
 echo;
