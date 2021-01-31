@@ -288,7 +288,7 @@ DOMAINS="$DOMAINS hb.wpmucdn.com"
 DOMAINS="$DOMAINS www.msn.com"
 
 # jobs
-DOMAINS="$DOMAINS boards.greenhouse.io"
+DOMAINS="$DOMAINS boards.greenhouse.io dpm.demdex.net"
 
 ### End my own
 
