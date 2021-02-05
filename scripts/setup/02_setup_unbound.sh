@@ -1,22 +1,25 @@
 #!/bin/bash
 
-setup_unbound()
-{
-    cbecho "Setting up unbound as local dns server / cache"
+# find script location so we can get includes
+SCRIPTSLOC=$(dirname "$0")
+INCLUDESLOC="$SCRIPTSLOC/../includes"
+source "$INCLUDESLOC/colordefines.sh"
 
-    cecho "Setting system resolver to use unbound"
-    echo "nameserver ::1
+cbecho "Setting up unbound as local dns server / cache"
+
+cecho "Setting system resolver to use unbound"
+echo "nameserver ::1
 nameserver 127.0.0.1" | sudo tee /etc/resolv.conf 1>/dev/null
 
-    # protect /etc/resolv.conf so NetworkManager doesn't overwrite it
-    sudo chattr +i /etc/resolv.conf
+# protect /etc/resolv.conf so NetworkManager doesn't overwrite it
+sudo chattr +i /etc/resolv.conf
 
-    cecho "Getting unbound root hints"
-    sudo curl -o /etc/unbound/root.hints https://www.internic.net/domain/named.cache
+cecho "Getting unbound root hints"
+sudo curl -o /etc/unbound/root.hints https://www.internic.net/domain/named.cache
 
-    cecho "Setting up unbound root.hint autorefresh using systemd"
-    # https://wiki.archlinux.org/index.php/unbound#Roothints_systemd_timer
-    echo "[Unit]
+cecho "Setting up unbound root.hint autorefresh using systemd"
+# https://wiki.archlinux.org/index.php/unbound#Roothints_systemd_timer
+echo "[Unit]
 Description=Update root hints for unbound
 After=network.target
 
@@ -32,11 +35,11 @@ Persistent=true
 [Install]
 WantedBy=timers.target" | sudo tee /etc/systemd/system/roothints.timer 1>/dev/null
 
-    cecho "Patching unbound.conf"
-    sudo rm /etc/unbound/unbound.conf
-    sudo cp /etc/unbound/unbound.conf.example /etc/unbound/unbound.conf
+cecho "Patching unbound.conf"
+sudo rm /etc/unbound/unbound.conf
+sudo cp /etc/unbound/unbound.conf.example /etc/unbound/unbound.conf
 
-    echo "@@ -38 +38 @@
+echo "@@ -38 +38 @@
 -	# num-threads: 1
 +	num-threads: $(nproc --all)
 @@ -159 +159 @@
@@ -101,6 +104,5 @@ WantedBy=timers.target" | sudo tee /etc/systemd/system/roothints.timer 1>/dev/nu
 -	# control-enable: no
 +	control-enable: yes" | sudo patch -p0 -N /etc/unbound/unbound.conf
 
-    cecho "Initializing unbound-control"
-    sudo unbound-control-setup
-}
+cecho "Initializing unbound-control"
+sudo unbound-control-setup

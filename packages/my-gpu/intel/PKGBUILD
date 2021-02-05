@@ -1,0 +1,9 @@
+pkgname=my-gpu-intel
+provides=my-gpu
+pkgdesc="Meta packages for your intel gpu"
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=(
+	'xf86-video-intel' 'mesa' 'libva-intel-driver' 'libvdpau-va-gl' # open source drivers
+)

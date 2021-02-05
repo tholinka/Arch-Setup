@@ -1,0 +1,6 @@
+# refind-upgrade-hook
+
+## install before `makepkg`
+
+* `my-base-devel-meta`
+  * `makepkg` needs devel to work

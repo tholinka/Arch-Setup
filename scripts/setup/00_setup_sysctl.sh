@@ -1,9 +1,12 @@
 #!/bin/bash
 
-function setup_sysctl()
-{
-    cbecho "Adding network core settings to sysctl"
-    echo "# from https://wiki.archlinux.org/index.php/Sysctl#Improving_performance
+# find script location so we can get includes
+SCRIPTSLOC=$(dirname "$0")
+INCLUDESLOC="$SCRIPTSLOC/../includes"
+source "$INCLUDESLOC/colordefines.sh"
+
+cbecho "Adding network core settings to sysctl"
+echo "# from https://wiki.archlinux.org/index.php/Sysctl#Improving_performance
 # The maximum size of the receive queue.
 # The received frames will be stored in this queue after taking them from the ring buffer on the NIC.
 # Use high value for high speed cards to prevent loosing packets.
@@ -67,4 +70,3 @@ net.ipv4.tcp_mtu_probing = 1
 
 # Turn timestamps off to reduce performance spikes related to timestamp generation.
 net.ipv4.tcp_timestamps = 0" | sudo tee /etc/sysctl.d/52-net-core.conf 1>/dev/null
-}

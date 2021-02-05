@@ -12,7 +12,7 @@
 6. `ping google.com`, if you don't have a connection, repeat process from step 1, using nmcli instead
    1. e.g. for wifi `nmcli dev wifi rescan`, then `nmcli dev wifi connect [SSID] passowrd [PASSWORD]`
 7. Clone this repository into something like .arch-setup, `git clone https://github.com/tholinka/Arch-Setup.git .arch-setup`
-8. Run `FirstSetup.sh` in `Scripts` to install automatically set up most of the system
+8. Run `00` scripts in `scripts`, then install the meta packages in `packages`, finally run the other scripts in `scripts`
 9. configure installed packages
     1. switch to new kernel (if installed)
       * copy `/boot/loader/config/arch.conf` to `arch-[kernel name].conf`

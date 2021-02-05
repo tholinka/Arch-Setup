@@ -1,17 +1,15 @@
 #!/bin/bash
 
-# "general" patches, aka one or two off patches for random things (e.g. unbound is a seperate file because there are many patches for one "thing"
-# ignores set -e
-general_patches()
-{
-    # disable set -e if enabled
-    OLDOPTS=$(set +o)
-    set +e
+# find script location so we can get includes
+SCRIPTSLOC=$(dirname "$0")
+INCLUDESLOC="$SCRIPTSLOC/../includes"
+source "$INCLUDESLOC/colordefines.sh"
 
-    cbecho "Applying patches to config files"
-    ## pacman
-    cecho "Patching pacman.conf"
-    echo "--- pacman.conf.orig	2019-06-18 10:14:10.074828437 -0600
+# "general" patches, aka one or two off patches for random things (e.g. unbound is a seperate file because there are many patches for one "thing"
+cbecho "Applying patches to config files"
+## pacman
+cecho "Patching pacman.conf"
+echo "--- pacman.conf.orig	2019-06-18 10:14:10.074828437 -0600
 +++ pacman.conf	2019-06-17 15:54:46.964564073 -0600
 @@ -34 +34 @@
 -#Color
@@ -25,10 +23,10 @@ general_patches()
 +[multilib]
 +Include = /etc/pacman.d/mirrorlist" | sudo patch -p0 -N /etc/pacman.conf
 
-    # makepkg (part of pacman)
-	## note: so we don't have to escape everything, this glues together a single quoted string a double quoted string
-    cecho "Patching makepkg.conf"
-	echo '--- /etc/makepkg.conf.orig      2020-01-05 17:08:48.110808900 -0700
+# makepkg (part of pacman)
+## note: so we don't have to escape everything, this glues together a single quoted string a double quoted string
+cecho "Patching makepkg.conf"
+echo '--- /etc/makepkg.conf.orig      2020-01-05 17:08:48.110808900 -0700
 +++ /etc/makepkg.conf   2020-01-05 17:12:44.727566400 -0700
 @@ -40,2 +40,2 @@
 -CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
@@ -59,7 +57,7 @@ general_patches()
 +cc: /usr/lib/ccache/bin/cc
 +g77:/usr/bin/g77
 +f77:/usr/bin/g77
-+gcj:/usr/bin/gcj" | sudo patch -p0 -N /etc/colorgcc/colorgccrc
++gcj:/usr/bin/gcj"' | sudo patch -p0 -N /etc/colorgcc/colorgccrc
 
     ## cpupower
     cecho "Patching cpupower to use performance governor"
@@ -67,14 +65,14 @@ general_patches()
 -#governor='ondemand'
 +governor='performance'" | sudo patch -p0 -N /etc/default/cpupower
 
-    ## NetworkManager
-    cecho "Setting up NetworkManager to use ipv6 privacy extensions & dnsmasq"
+## NetworkManager
+cecho "Setting up NetworkManager to use ipv6 privacy extensions & dnsmasq"
 
-    # Tell dnsmasq to listen for ipv6 as well
-    echo "listen-address=::1" | sudo tee /etc/NetworkManager/dnsmasq.d/ipv6_listen.conf &>/dev/null
+# Tell dnsmasq to listen for ipv6 as well
+echo "listen-address=::1" | sudo tee /etc/NetworkManager/dnsmasq.d/ipv6_listen.conf &>/dev/null
 
-    # use the patch below that's being echo'd to /dev/null if your using unbound
-    echo "# Configuration file for NetworkManager.
+# use the patch below that's being echo'd to /dev/null if your using unbound
+echo "# Configuration file for NetworkManager.
 # See \"man 5 NetworkManager.conf\" for details.
 
 # https://wiki.archlinux.org/index.php/dnsmasq#NetworkManager
@@ -85,8 +83,8 @@ dns=dnsmasq
 [connection]
 ipv6.ip6-privacy=2" | sudo tee /etc/NetworkManager/NetworkManager.conf &>/dev/null
 
-    # disabled, use instead of above if your using unbound
-    echo "# Configuration file for NetworkManager.
+# disabled, use instead of above if your using unbound
+echo "# Configuration file for NetworkManager.
 # See \"man 5 NetworkManager.conf\" for details.
 
 [main]
@@ -107,6 +105,3 @@ ipv6.ip6-privacy=2
 #method=auto
 #dns=::1;
 #ignore-auto-dns=true" &> /dev/null # sudo tee /etc/NetworkManager/NetworkManager.conf &>/dev/null
-
-    eval "$OLDOPTS"
-}

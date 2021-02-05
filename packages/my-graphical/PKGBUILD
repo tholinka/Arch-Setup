@@ -9,7 +9,8 @@ depends=(
 
 	# kde
 	'plasma-desktop'
-	'kde-gtk-config' 'sddm-kcm' 
+	'kde-gtk-config' 'sddm-kcm'
+	'breeze-gtk'
 	#'user-manager' -> replaced with plasma-desktop
 	'dolphin'
 
@@ -29,4 +30,8 @@ depends=(
 optdepends=(
 	'firefox: Browser'
 	'plasma-pa: Sound'
+	'dolphin: filemanager'
+	'konsole: console'
+	'kdeplasma-addons'
+	'ark: file archiver'
 )

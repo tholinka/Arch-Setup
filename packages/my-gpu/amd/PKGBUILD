@@ -1,0 +1,9 @@
+pkgname=my-gpu-amd
+provides=my-gpu
+pkgdesc="Meta packages for your amd gpu"
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=(
+	'xf86-video-amdgpu' 'mesa' 'libva-mesa-driver' 'mesa-vdpau' # open source drivers
+)

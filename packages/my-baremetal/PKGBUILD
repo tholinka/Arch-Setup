@@ -15,6 +15,7 @@ depends=(
 
 	# others
 	'systemd-boot-pacman-hook'
+	'my-gpu'
 )
 
-optdepends=('systemd-swap')
+optdepends=('systemd-swap' 'linux-lts')
