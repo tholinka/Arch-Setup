@@ -38,13 +38,13 @@ echo '--- /etc/makepkg.conf.orig      2020-01-05 17:08:48.110808900 -0700
 +MAKEFLAGS="-j$(nproc --all)"
 @@ -62 +62 @@
 -BUILDENV=(!distcc color !ccache check !sign)
-+BUILDENV=(!distcc color ccache check !sign)" | sudo patch -p0 -N /etc/makepkg.conf
++BUILDENV=(!distcc color ccache check !sign)' | sudo patch -p0 -N /etc/makepkg.conf
 
-    cbecho "Set -ftree-vectorize in /etc/makepkg.conf CFLAGS, /most/ newer systems support this, but it may need to be removed"
+cbecho "Set -ftree-vectorize in /etc/makepkg.conf CFLAGS, /most/ newer systems support this, but it may need to be removed"
 
-    ## colorgcc -> ccache
-    cecho "Patching colorgcc to use ccache"
-    echo "@@ -39,5 +39,8 @@
+## colorgcc -> ccache
+cecho "Patching colorgcc to use ccache"
+echo '@@ -39,5 +39,8 @@
 -# Uncomment this if you want set up default path to gcc
 -#g++: /usr/bin/g++
 -#gcc: /usr/bin/gcc
@@ -57,11 +57,11 @@ echo '--- /etc/makepkg.conf.orig      2020-01-05 17:08:48.110808900 -0700
 +cc: /usr/lib/ccache/bin/cc
 +g77:/usr/bin/g77
 +f77:/usr/bin/g77
-+gcj:/usr/bin/gcj"' | sudo patch -p0 -N /etc/colorgcc/colorgccrc
++gcj:/usr/bin/gcj' | sudo patch -p0 -N /etc/colorgcc/colorgccrc
 
-    ## cpupower
-    cecho "Patching cpupower to use performance governor"
-    echo "@@ -3 +3 @@
+## cpupower
+cecho "Patching cpupower to use performance governor"
+echo "@@ -3 +3 @@
 -#governor='ondemand'
 +governor='performance'" | sudo patch -p0 -N /etc/default/cpupower
 
