@@ -1,5 +1,5 @@
 pkgname=my-gpu-vmware
-provides=my-gpu
+provides=('my-gpu')
 pkgdesc="Meta packages for your vmware \"gpu\""
 pkgver=1
 pkgrel=1

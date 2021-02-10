@@ -1,5 +1,5 @@
 pkgname=my-gpu-amd
-provides=my-gpu
+provides=('my-gpu')
 pkgdesc="Meta packages for your amd gpu"
 pkgver=1
 pkgrel=1
