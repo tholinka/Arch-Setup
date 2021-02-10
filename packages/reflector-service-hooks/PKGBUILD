@@ -11,4 +11,4 @@ md5sums=('86b30046dc113b858629aead4b01f837')
 install=reflector.install
 package() {
 	install -Dm644 reflector.hook "$pkgdir"/usr/share/libalpm/hooks/reflector.hook
-i}
+}
