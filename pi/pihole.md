@@ -9,8 +9,8 @@ Dnscrypt for secure dns
 ### A general system setup and aur access
 
 1) Install needed packages:
-    1) `pacman`: `dnscrypt-proxy php-sqlite`
-    1) `pacman --asdeps`: `php-sqlite lighttpd php-cgi`
+    1) `pacman`: `dnscrypt-proxy`
+    1) `pacman --asdeps`: `lighttpd php-cgi`
     1) `aur`: `pi-hole-server`
 2) Set up `dnsmasq`
     1) Edit the following in ```/etc/dnsmasq.conf```
