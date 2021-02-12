@@ -290,6 +290,9 @@ DOMAINS="$DOMAINS www.msn.com"
 # jobs
 DOMAINS="$DOMAINS boards.greenhouse.io dpm.demdex.net"
 
+# opengapps.org
+DOMAINS="$DOMAINS storage.googleapis.com"
+
 ### End my own
 
 ### Whitelist items

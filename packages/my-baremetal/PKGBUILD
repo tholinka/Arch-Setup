@@ -7,15 +7,16 @@ depends=(
 	# enable these
 	'cleanup-journald'
 	'irqbalance'
-	'linux-zen'
+	#'linux-zen'
 	'networkmanager'
-	'reflector-hooks-services'
+	#'reflector-hooks-services'
 	'rng-tools'
 	'ufw'
+	'cpupower'
 
 	# others
-	'systemd-boot-pacman-hook'
-	'my-gpu'
+	#'systemd-boot-pacman-hook'
+	#'my-gpu'
 )
 
 optdepends=('systemd-swap' 'linux-lts')
