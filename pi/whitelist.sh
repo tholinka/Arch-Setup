@@ -293,6 +293,9 @@ DOMAINS="$DOMAINS boards.greenhouse.io dpm.demdex.net"
 # opengapps.org
 DOMAINS="$DOMAINS storage.googleapis.com"
 
+# Mining
+DOMAINS="$DOMAINS nanopool.org"
+
 ### End my own
 
 ### Whitelist items
