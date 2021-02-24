@@ -296,6 +296,9 @@ DOMAINS="$DOMAINS storage.googleapis.com"
 # Mining
 DOMAINS="$DOMAINS nanopool.org"
 
+# diploma
+DOMAINS="$DOMAINS trackemail.parchment.com"
+
 ### End my own
 
 ### Whitelist items
