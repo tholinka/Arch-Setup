@@ -299,6 +299,9 @@ DOMAINS="$DOMAINS nanopool.org"
 # diploma
 DOMAINS="$DOMAINS trackemail.parchment.com"
 
+# google forms
+DOMAINS="$DOMAINS forms.gle"
+
 ### End my own
 
 ### Whitelist items
