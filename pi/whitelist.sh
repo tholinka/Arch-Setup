@@ -279,7 +279,7 @@ DOMAINS="$DOMAINS joinhoney.com d.joinhoney.com s.joinhoney.com"
 DOMAINS="$DOMAINS slscr.update.microsoft.com"
 
 # teams / office
-DOMAINS="$DOMAINJS self.events.data.microsoft.com"
+DOMAINS="$DOMAINS self.events.data.microsoft.com"
 
 # brandonsanderson.com
 DOMAINS="$DOMAINS hb.wpmucdn.com"
@@ -298,9 +298,6 @@ DOMAINS="$DOMAINS nanopool.org"
 
 # diploma
 DOMAINS="$DOMAINS trackemail.parchment.com"
-
-# google forms
-DOMAINS="$DOMAINS forms.gle"
 
 ### End my own
 
