@@ -159,7 +159,7 @@ DOMAINS="$DOMAINS tomshardware.com"
 DOMAINS="$DOMAINS ocsp.apple.com"
 
 ## Blocked by various lists
-DOMAINS="$DOMAINS s.shopify.com"
+DOMAINS="$DOMAINS cdn.shopify.com s.shopify.com"
 # (Malwarebytes server)
 DOMAINS="$DOMAINS keystone.mwbsys.com"
 # (Others)
@@ -298,7 +298,6 @@ DOMAINS="$DOMAINS nanopool.org"
 
 # diploma
 DOMAINS="$DOMAINS trackemail.parchment.com"
-
 ### End my own
 
 ### Whitelist items
