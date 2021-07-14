@@ -298,6 +298,9 @@ DOMAINS="$DOMAINS nanopool.org"
 
 # diploma
 DOMAINS="$DOMAINS trackemail.parchment.com"
+
+# email tracking link -.-
+DOMAINS="$DOMAINS e.customeriomail.com"
 ### End my own
 
 ### Whitelist items
