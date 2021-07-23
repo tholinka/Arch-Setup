@@ -301,9 +301,18 @@ DOMAINS="$DOMAINS trackemail.parchment.com"
 
 # email tracking links -.-
 DOMAINS="$DOMAINS e.customeriomail.com lb.service01.email-allstate.com click.notifications.txu.com"
+
+# pancheros app
+DOMAINS="$DOMAINS mobileandroidapi.punchh.com"
+
+# fidelity app
+DOMAINS="$DOMAINS smetrics.sdcvisit.com cm.everesttech.net"
 ### End my own
 
 ### Whitelist items
+echo "Nuking existing whitelist"
+pihole -w --nuke
+
 # Add anudeepND's whitelist first, then add these on top of it
 # from https://github.com/anudeepND/whitelist/blob/master/scripts/whitelist.sh#L28
 echo "Downloading anudeepND's whitelist"
