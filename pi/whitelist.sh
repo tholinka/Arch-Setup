@@ -310,6 +310,9 @@ DOMAINS="$DOMAINS smetrics.sdcvisit.com cm.everesttech.net"
 
 # discover referal
 DOMAINS="$DOMAINS refer.discover.com"
+
+# bank tracking link
+DOMAINS="$DOMAINS click.linksynergy.com"
 ### End my own
 
 ### Whitelist items
