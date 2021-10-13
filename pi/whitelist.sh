@@ -313,6 +313,9 @@ DOMAINS="$DOMAINS refer.discover.com"
 
 # bank tracking link
 DOMAINS="$DOMAINS click.linksynergy.com"
+
+# steam mcc achievements
+DOMAINS="$DOMAINS vortex.data.microsoft.com"
 ### End my own
 
 ### Whitelist items
