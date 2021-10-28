@@ -316,6 +316,9 @@ DOMAINS="$DOMAINS click.linksynergy.com"
 
 # steam mcc achievements
 DOMAINS="$DOMAINS vortex.data.microsoft.com"
+
+# shipping notification
+DOMAINS="$DOMAINS post.spmailtechno.com"
 ### End my own
 
 ### Whitelist items
