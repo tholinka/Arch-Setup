@@ -319,6 +319,9 @@ DOMAINS="$DOMAINS vortex.data.microsoft.com"
 
 # shipping notification
 DOMAINS="$DOMAINS post.spmailtechno.com"
+
+# blood donation email
+DOMAINS="$DOMAINS b.dl.redcrossblood.org"
 ### End my own
 
 ### Whitelist items
