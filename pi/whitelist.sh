@@ -322,6 +322,10 @@ DOMAINS="$DOMAINS post.spmailtechno.com"
 
 # blood donation email
 DOMAINS="$DOMAINS b.dl.redcrossblood.org"
+
+# etsy email
+DOMAINS="$DOMAINS ablink.email.etsy.com"
+
 ### End my own
 
 ### Whitelist items
