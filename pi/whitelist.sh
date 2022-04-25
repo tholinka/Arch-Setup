@@ -183,7 +183,7 @@ DOMAINS="$DOMAINS t.co"
 DOMAINS="$DOMAINS youtu.be"
 
 # newegg links
-DOMAINS="$DOMAINS anrdoezrs.net"
+DOMAINS="$DOMAINS www.anrdoezrs.net anrdoezrs.net"
 
 # patreon (and other websites that use the service) email links
 DOMAINS="$DOMAINS mandrillapp.com"
