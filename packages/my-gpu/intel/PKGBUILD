@@ -5,5 +5,5 @@ pkgver=1
 pkgrel=1
 arch=('any')
 depends=(
-	'xf86-video-intel' 'mesa' 'libva-intel-driver' 'libvdpau-va-gl' # open source drivers
+	'mesa' 'lib32-mesa' 'vulkan-intel' 'libva-intel-driver' 'libvdpau-va-gl' # open source drivers
 )
