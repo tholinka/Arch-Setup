@@ -4,19 +4,33 @@ pkgver=1
 pkgrel=1
 arch=('any')
 depends=(
-	# enable these
+	# systemctl enable these
 	'cleanup-journald'
 	'irqbalance'
-	#'linux-zen'
 	'networkmanager'
-	#'reflector-hooks-services'
-	'rng-tools'
-	'ufw'
 	'cpupower'
 
-	# others
-	#'systemd-boot-pacman-hook'
-	#'my-gpu'
+	'ufw' # sudo ufw enable this
+
+	'linux-zen'
+	'reflector-hooks-services'
 )
 
-optdepends=('systemd-swap' 'linux-lts')
+optdepends=(
+	'linux-lts'
+
+	'intel-ucode' 'amd-ucode'
+	'systemd-boot-pacman-hook'
+	'secure-boot-pacman-hooks'
+
+	'my-gpu'
+
+	'snapper: btrfs snapshot tool'
+	'compsize: btrfs see real vs compressed file size'
+
+	# systemctl enable these
+	'rng-tools: makes entropy generation better for most machines'
+	'systemd-swap'
+	'tlp: laptop power saving settings'
+
+)

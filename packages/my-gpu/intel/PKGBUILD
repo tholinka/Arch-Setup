@@ -5,5 +5,14 @@ pkgver=1
 pkgrel=1
 arch=('any')
 depends=(
-	'mesa' 'lib32-mesa' 'vulkan-intel' 'libva-intel-driver' 'libvdpau-va-gl' # open source drivers
+	# intel open source drivers
+	'mesa' 'lib32-mesa'
+	'vulkan-intel'
+	'libva-intel-driver' # coffee lake (2017) and newer, but it also, through dependencies, handles broadwell (2014) and newer
+	'libvdpau-va-gl'
+)
+optdepends=(
+	# nvidia closed source drivers
+	'nvidia-prime: nvidia prime offloading for laptops'
+	'nvidia-dkms: nvidia dkms drivers for nvidia prime offloading'
 )

@@ -1,0 +1,17 @@
+# mkinitcpio preset file for the 'linux-zen' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-zen" # <-- change to your kernel name
+ALL_microcode=(/boot/*-ucode.img)
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-zen.img" # <!-- change to your kernel name
+default_efi_image="/boot/EFI/Linux/archlinux-linux-zen.efi" # <-- change to your kernel name
+default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-zen-fallback.img" # <-- change to your kernel name
+fallback_efi_image="/boot/EFI/Linux/archlinux-linux-zen-fallback.efi" <-- change to your kernel name
+fallback_options="-S autodetect --splash /usr/share/systemd/bootctl/splash-arch.bmp"

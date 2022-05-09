@@ -1,0 +1,28 @@
+# sign all *linux*.efi, systemd-boot64.EFI, *BOOTX64.EFI images
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+
+# copied from mkinitcpio-install.hook
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/initcpio/*
+
+[Trigger]
+Type = Package
+Operation = Upgrade
+
+# copied from systemd-boot-pacman-hook
+Target = systemd
+
+# ucode
+Target = intel-ucode
+Target = amd-ucode
+
+[Action]
+Description = Signing efi's for SecureBoot
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/99-secure-boot-efi-sign.sh
+Depends = sbsigntools
+Depends = findutils

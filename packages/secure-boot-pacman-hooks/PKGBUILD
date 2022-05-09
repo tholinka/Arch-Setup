@@ -1,0 +1,24 @@
+pkgname=secure-boot-pacman-hooks
+pkgdesc="pacman hooks to run secure-boot resigning"
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=('sbsigntools' 'findutils' 'sh')
+source=(
+	'90-mkinitcpio-update-on-ucode.hook'
+	'99-secure-boot-efi-sign.hook'
+	'99-secure-boot-efi-sign.sh'
+	'unified-example-hook.preset'
+)
+sha256sums=('3dd621cad938697932ee13d73ac13de80cd224212c06088f43bf7786d31d8f4b'
+            '1beefdae52ebf39efde2f8a751c68ff609579046575ec9c618292ce3b0ee0580'
+            '56de16d8aa62b53a69d042aa5aeebb9e19d5dcaf5182f25704ef138373826be4'
+            '1db250a01b9750fdfa2a73c3817f1e33eb39d7de75f21e2db31c55b6d68ece6a')
+install=secure-boot.install
+package() {
+	install -Dm644 90-mkinitcpio-update-on-ucode.hook "$pkgdir"/usr/share/libalpm/hooks/90-mkinitcpio-update-on-ucode.hook
+	install -Dm644 99-secure-boot-efi-sign.hook "$pkgdir"/usr/share/libalpm/hooks/99-secure-boot-efi-sign.hook
+	install -Dm755 99-secure-boot-efi-sign.sh "$pkgdir"/usr/share/libalpm/scripts/99-secure-boot-efi-sign.sh
+
+	install -Dm644 unified-example-hook.preset "$pkgdir"/usr/share/mkinitcpio/unified-example-hook.preset
+}

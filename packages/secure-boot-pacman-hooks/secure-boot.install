@@ -1,0 +1,14 @@
+post_install() {
+	echo -e ">> \e[32mCopy and edit /usr/share/mkinitcpio/unified-example-hook.preset to /etc/mkinitcpio.d/*.preset to change mkinitcpio to make unified images!\e[0m"
+    echo ">> Don't forget to do this if you install a new type of kernel, or it won't be secure boot signed!"
+    echo -e ">> \e[32mSet up your /etc/kernel/cmdline, e.g. with \"cat /proc/cmdline | tee /etc/kernel/cmdline\", so that mkinitcpio tells the efi image how to startup. Don't forget your root!\e[0m"
+    
+    echo -n ">>> Attempting to find /'s PARTUUID...: "
+    PARTUUID="$(blkid | grep $(mount | grep --color=never 'on / type' | awk '{print $1}') | awk -v RS=' +|\n' '{print $0}' | grep --color=never PARTUUID | awk -F'\"' '{print $1$2}')"
+    echo "$PARTUUID"
+    echo ">> Example basic cmdline for your current root: \"root=$PARTUUID rw quiet nowatchdog bgrt_disable\""
+}
+
+post_upgrade() {
+    post_install
+}
