@@ -13,6 +13,8 @@ depends=(
 	'breeze-gtk'
 	#'user-manager' -> replaced with plasma-desktop
 	'dolphin'
+	'plasma-disks' # smart monitoring in kinfocenter
+	'powerdevil' # power settings
 
 	# programs
 	'code'

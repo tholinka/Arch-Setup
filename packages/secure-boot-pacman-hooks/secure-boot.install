@@ -7,6 +7,7 @@ post_install() {
     PARTUUID="$(blkid | grep $(mount | grep --color=never 'on / type' | awk '{print $1}') | awk -v RS=' +|\n' '{print $0}' | grep --color=never PARTUUID | awk -F'\"' '{print $1$2}')"
     echo "$PARTUUID"
     echo ">> Example basic cmdline for your current root: \"root=$PARTUUID rw quiet nowatchdog bgrt_disable\""
+    echo -e "> \e[32mSee https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot about how to generate and enroll your secure boot keys!\e[0m"
 }
 
 post_upgrade() {

@@ -3,6 +3,10 @@ pkgdesc="Meta package for a baremetal install"
 pkgver=1
 pkgrel=1
 arch=('any')
+source=(
+	'smartdnotify.sh'
+)
+sha256sums=('790de7c9ffda40a00eeedc4077ba0360209ab6f198dfad0e32670dd5ea96e0f1')
 depends=(
 	# systemctl enable these
 	'cleanup-journald'
@@ -14,6 +18,11 @@ depends=(
 
 	'linux-zen'
 	'reflector-hooks-services'
+
+	# configure /etc/smartd.conf and systemd enable this
+	# use the installed notify script, an example config: DEVICESCAN -a -o on -S on -n standby,q -s (S/../.././02|L/../../6/03) -W 4,35,40 -m @smartdnotify
+	# see https://wiki.archlinux.org/title/S.M.A.R.T. for info
+	'smartmontools'
 )
 
 optdepends=(
@@ -28,9 +37,14 @@ optdepends=(
 	'snapper: btrfs snapshot tool'
 	'compsize: btrfs see real vs compressed file size'
 
+	'libnotify: Needed for desktop SMART alerts'
+	'sudo: Needed for desktop SMART alerts'
+
 	# systemctl enable these
 	'rng-tools: makes entropy generation better for most machines'
 	'systemd-swap'
 	'tlp: laptop power saving settings'
-
 )
+package() {
+	install -Dm755 smartdnotify.sh "$pkgdir"/usr/share/smartmontools/smartd_warning.d/smartdnotify
+}
