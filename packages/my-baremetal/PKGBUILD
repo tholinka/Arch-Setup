@@ -43,7 +43,8 @@ optdepends=(
 	# systemctl enable these
 	'rng-tools: makes entropy generation better for most machines'
 	'systemd-swap'
-	'tlp: laptop power saving settings'
+	'tlp: laptop power saving settings' # you probably want to set SATA_LINKPWR_ON_BAT/AC=max_performance if your using btrfs, as corruption has been noted before
+	'tlp-rdw: laptop power savings settings radio devices'
 )
 package() {
 	install -Dm755 smartdnotify.sh "$pkgdir"/usr/share/smartmontools/smartd_warning.d/smartdnotify
