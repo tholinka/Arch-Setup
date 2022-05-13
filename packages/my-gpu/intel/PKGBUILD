@@ -15,4 +15,5 @@ optdepends=(
 	# nvidia closed source drivers
 	'nvidia-prime: nvidia prime offloading for laptops'
 	'nvidia-dkms: nvidia dkms drivers for nvidia prime offloading'
+	'intel-gpu-tools: intel_gpu_top command'
 )

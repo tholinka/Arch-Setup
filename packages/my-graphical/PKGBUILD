@@ -3,6 +3,8 @@ pkgdesc="Meta package for my graphical install"
 pkgver=1
 pkgrel=1
 arch=('any')
+source=('guake-toggle.desktop')
+sha256sums=('c491e8b6d75c60a4f9055136c6eb5af37886b29f5f0c4d968d73e063164aa4ec')
 depends=(
 	# base
 	'my-base'
@@ -15,9 +17,12 @@ depends=(
 	'dolphin'
 	'plasma-disks' # smart monitoring in kinfocenter
 	'powerdevil' # power settings
+	'xdg-desktop-portal'
 
 	# programs
 	'code'
+	# you probably want to set these in /etc/environment:
+	#GUAKE_ENABLE_WAYLAND=1
 	'guake'
 
 	# fonts
@@ -30,10 +35,28 @@ depends=(
 	'xcursor-human'
 )
 optdepends=(
+	# you probably want to set these in /etc/environment:
+	## use wayland when on wayland
+	# MOZ_ENABLE_WAYLAND=1
+	## X11 hardware accel
+	#MOZ_X11_EGL=1
+	## use kde file picker / print dialog
+	#GTK_USE_PORTAL=1
 	'firefox: Browser'
 	'plasma-pa: Sound'
 	'dolphin: filemanager'
 	'konsole: console'
 	'kdeplasma-addons'
 	'ark: file archiver'
+	'spectacle: screenshots'
+
+	# wayland modifications you might need:
+	# set up keyboard shortcut for guake-toggle.desktop to open/close the dropdown
+	# dconf-editor: org.gnome.desktop.interface -> font-antialiasing -> set to rgba
+	'plasma-wayland-session: wayland'
+	'sddm-git: wayland' # need config changes to make wayland work
+	'xdg-desktop-portal-gnome: fix fonts for gtk on wayland'
 )
+package() {
+	install -Dm644 guake-toggle.desktop "$pkgdir"/usr/share/applications/guake-toggle.desktop
+}
