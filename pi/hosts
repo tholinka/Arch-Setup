@@ -6,7 +6,9 @@
 192.168.1.26  d2.dns.local
 
 192.168.1.20  t1.desktops.local
-192.168.1.20  unifi
+192.168.1.25  unifi
+
+192.168.1.21 m1.media.local
 
 192.168.1.1   r1.routers.local
 
