@@ -326,6 +326,9 @@ DOMAINS="$DOMAINS b.dl.redcrossblood.org"
 # etsy email
 DOMAINS="$DOMAINS ablink.email.etsy.com"
 
+# mint budget tracker
+DOMAINS="$DOMAINS mint.intuit.com"
+
 ### End my own
 
 ### Whitelist items
