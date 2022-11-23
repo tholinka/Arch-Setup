@@ -13,7 +13,7 @@ depends=(
 	# dev
 	'git' 'openssh'
 	# compiler stuff
-	'ccache' 'colorgcc'
+	'ccache' #'colorgcc'
 	# management stuff
 	'htop' 'glances' 'neovim'
 	# man stuff
