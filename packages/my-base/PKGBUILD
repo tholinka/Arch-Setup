@@ -21,4 +21,5 @@ depends=(
 )
 optdepends=(
 	'my-aur: things from the aur'
+	'exa: nicer ls colors'
 )
