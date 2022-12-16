@@ -11,5 +11,5 @@ depends=(
 	'fakeroot' 'file' 'findutils' 'flex' 'gawk'
 	'gcc' 'gettext' 'grep' 'groff' 'gzip' 'libtool'
 	'm4' 'make' 'pacman' 'patch' 'pkgconf' 'sed'
-	'sudo' 'systemd' 'texinfo' 'util-linux' 'which'
+	'sudo' 'systemd' 'texinfo' 'util-linux' 'which' 'debugedit'
 )
