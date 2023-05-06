@@ -9,7 +9,7 @@ depends=(
 	# pacman
 	'pacman-contrib' 'pacman-cache-cleanup-hooks'
 	# terminal
-	'zsh'
+	'zsh' 'tmux'
 	# dev
 	'git' 'openssh'
 	# compiler stuff
