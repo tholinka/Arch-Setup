@@ -11,9 +11,12 @@
 192.168.1.20  t1.desktops.local
 192.168.1.25  unifi
 
-192.168.1.21 m1.media.local
+192.168.1.21  s1.servers.local
 
 192.168.1.1   r1.routers.local
+
+192.168.1.11  t2.android.local
+192.168.1.12  t1.android.local
 
 # show "localhost" on the pihole web interface for local web queries
 127.0.0.1     localhost
