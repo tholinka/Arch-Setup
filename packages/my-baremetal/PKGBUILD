@@ -5,8 +5,10 @@ pkgrel=1
 arch=('any')
 source=(
 	'smartdnotify.sh'
+	'zram-generator.conf'
 )
-sha256sums=('790de7c9ffda40a00eeedc4077ba0360209ab6f198dfad0e32670dd5ea96e0f1')
+sha256sums=('790de7c9ffda40a00eeedc4077ba0360209ab6f198dfad0e32670dd5ea96e0f1'
+            '693faf88c6bd88e2ee9b4e1f10d2ddfaadb04ecd49dc796c677898a067f8ed9f')
 depends=(
 	# systemctl enable these
 	'cleanup-journald'
@@ -42,10 +44,11 @@ optdepends=(
 
 	# systemctl enable these
 	'rng-tools: makes entropy generation better for most machines'
-	'systemd-swap'
+	'zram-generator: enables zram, see https://wiki.archlinux.org/title/Zram#Using_zram-generator for setting up'
 	'tlp: laptop power saving settings' # you probably want to set SATA_LINKPWR_ON_BAT/AC=max_performance if your using btrfs, as corruption has been noted before
 	'tlp-rdw: laptop power savings settings radio devices'
 )
 package() {
 	install -Dm755 smartdnotify.sh "$pkgdir"/usr/share/smartmontools/smartd_warning.d/smartdnotify
+	install -Dm755 zram-generator.conf "$pkgdir"/usr/lib/systemd/zram-generator.conf 
 }
