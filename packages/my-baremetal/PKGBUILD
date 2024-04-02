@@ -42,6 +42,8 @@ optdepends=(
 	'libnotify: Needed for desktop SMART alerts'
 	'sudo: Needed for desktop SMART alerts'
 
+	'sbctl: Secure boot'
+
 	# systemctl enable these
 	'rng-tools: makes entropy generation better for most machines'
 	'zram-generator: enables zram, see https://wiki.archlinux.org/title/Zram#Using_zram-generator for setting up'
@@ -50,5 +52,5 @@ optdepends=(
 )
 package() {
 	install -Dm755 smartdnotify.sh "$pkgdir"/usr/share/smartmontools/smartd_warning.d/smartdnotify
-	install -Dm755 zram-generator.conf "$pkgdir"/usr/lib/systemd/zram-generator.conf 
+	install -Dm755 zram-generator.conf "$pkgdir"/usr/lib/systemd/zram-generator.conf
 }
