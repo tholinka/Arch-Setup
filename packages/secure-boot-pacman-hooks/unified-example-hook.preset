@@ -7,10 +7,10 @@ PRESETS=('default') #'fallback') # <!-- uncomment if you want fallback
 
 #default_config="/etc/mkinitcpio.conf"
 #default_image="/boot/initramfs-linux-zen.img" # <-- change to your kernel name
-default_uki="/efi/EFI/Linux/arch-linux-zen.efi" # <-- change to your kernel name
+default_uki="/boot/efi/EFI/Linux/arch-linux-zen.efi" # <-- change to your kernel name
 default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
 
 #fallback_config="/etc/mkinitcpio.conf"
 #fallback_image="/boot/initramfs-linux-zen-fallback.img" <-- change to your kernel name
-fallback_uki="/efi/EFI/Linux/arch-linux-zen-fallback.efi" <-- change to your kernel name
+fallback_uki="/boot/efi/EFI/Linux/arch-linux-zen-fallback.efi" <-- change to your kernel name
 fallback_options="-S autodetect"
