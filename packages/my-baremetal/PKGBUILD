@@ -32,7 +32,7 @@ optdepends=(
 
 	'intel-ucode' 'amd-ucode'
 	'systemd-boot-pacman-hook'
-	'secure-boot-pacman-hooks'
+	'secure-boot-pacman-hooks: Secure boot'
 
 	'my-gpu'
 
@@ -41,8 +41,6 @@ optdepends=(
 
 	'libnotify: Needed for desktop SMART alerts'
 	'sudo: Needed for desktop SMART alerts'
-
-	'sbctl: Secure boot'
 
 	# systemctl enable these
 	'rng-tools: makes entropy generation better for most machines'
