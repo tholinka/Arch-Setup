@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/Release/Butane-Schema.json
+variant: fcos
+version: 1.6.0
+ignition:
+  config:
+    merge:
+      - source: https://tholinka.github.io/projects/coreos/rpi4.ign
+passwd:
+  users:
+    - name: tyler
+      groups:
+        - sudo
+        - wheel
+      ssh_authorized_keys:
+        - ssh-rsa x
+        - ssh-ed25519 x
+      password_hash: x
+storage:
+  files:
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: |
+          pX.servers.local
+    - path: /var/lib/rancher/k3s/token.env
+      mode: 0600
+      contents:
+        inline: |
+          K3S_TOKEN=x
