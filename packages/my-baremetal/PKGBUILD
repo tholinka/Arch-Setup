@@ -4,21 +4,22 @@ pkgver=1
 pkgrel=1
 arch=('any')
 source=(
-	'smartdnotify.sh'
-	'zram-generator.conf'
-)
-sha256sums=('790de7c9ffda40a00eeedc4077ba0360209ab6f198dfad0e32670dd5ea96e0f1'
-            '693faf88c6bd88e2ee9b4e1f10d2ddfaadb04ecd49dc796c677898a067f8ed9f')
+	'smartdnotify.sh')
+#	'zram-generator.conf'
+#)
+sha256sums=('790de7c9ffda40a00eeedc4077ba0360209ab6f198dfad0e32670dd5ea96e0f1')
+#            '693faf88c6bd88e2ee9b4e1f10d2ddfaadb04ecd49dc796c677898a067f8ed9f')
+
 depends=(
+	# require ANY kernel
+	'WIREGUARD-MODULE'
+
 	# systemctl enable these
 	'cleanup-journald'
-	'irqbalance'
-	'networkmanager'
 	'cpupower'
 
-	'ufw' # sudo ufw enable this
+	'ufw' # sudo ufw enable
 
-	'linux-zen'
 	'reflector-hooks-services'
 
 	# configure /etc/smartd.conf and systemd enable this
@@ -28,7 +29,9 @@ depends=(
 )
 
 optdepends=(
-	'linux-lts'
+	'linux: server and genral computing'
+	'linux-zen: slightly better for desktop'
+	'linux-lts: lts'
 
 	'intel-ucode' 'amd-ucode'
 	'systemd-boot-pacman-hook'

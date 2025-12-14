@@ -6,7 +6,7 @@ pkgrel=1
 arch=('any')
 depends=(
 	# intel open source drivers
-	'mesa' 'lib32-mesa'
+	'mesa' #'lib32-mesa'
 	'vulkan-intel'
 	'libva-intel-driver' # coffee lake (2017) and newer, but it also, through dependencies, handles broadwell (2014) and newer
 	'libvdpau-va-gl'

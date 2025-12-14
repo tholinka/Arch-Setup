@@ -6,5 +6,5 @@ arch=('any')
 depends=(
 	'paru'
 	'overdue'
-	'kernel-modules-hook'
+	'kernel-modules-hook-hardlinks'
 )

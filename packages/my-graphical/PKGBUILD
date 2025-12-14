@@ -8,6 +8,10 @@ sha256sums=('c491e8b6d75c60a4f9055136c6eb5af37886b29f5f0c4d968d73e063164aa4ec')
 depends=(
 	# base
 	'my-base'
+	'linux-zen' # zen is a bit better for desktop usage
+
+	# graphical should use networkmanager, as that's got the best ui's
+	'networkmanager'
 
 	# kde
 	'plasma-desktop'
